@@ -31,8 +31,10 @@ function Conversion(props) {
         navigate('/SpeedToVelocityPage')
     }
 
-    return (
-
+    function HandleVelocitytoSpeed(e){
+        navigate('/VelocityToSpeedPage')
+    }
+    return(
         <div className="container mb-5 center">
             <div className="box justify-content-center">
                 <form className="was-validated">
@@ -41,7 +43,7 @@ function Conversion(props) {
                     <div>
                     <button type="button" class="btn btn-dark" onClick={HandleSpeedtoVelocity}>Convert Speed to Velocity</button>
                     <br></br><br></br>
-                    <button type="button" class="btn btn-dark">Convert Velocity to Speed</button>
+                    <button type="button" class="btn btn-dark" onClick={HandleVelocitytoSpeed}>Convert Velocity to Speed</button>
                     <br></br><br></br>
                     <button type="button" class="btn btn-dark">Dark</button>
                     <br></br><br></br>
