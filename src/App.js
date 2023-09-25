@@ -6,16 +6,16 @@ import {
 import './App.css';
 import { useState } from 'react';
 import NavBar from './components/Navbar.js';
-import Calculator from "./components/Calculator";
-import HomePage from "./components/HomePage";
-import ConversionPage from "./components/CategoryPages/Conversion/ConversionPage";
-import KinEnergyEqvSpeedLGPage from "./components/CategoryPages/KinEnergyEqvSpeedLG/KinEnergyEqvSpeedLGPage";
-import VelocityToSpeedConverter from "./components/CategoryPages/Conversion/FormulaPage/VelocityToSpeedPage";
-import SpeedToVelocityPage from "./components/CategoryPages/Conversion/FormulaPage/SpeedToVelocityPage";
-import SpeedSlidingToStop from "./components/CategoryPages/KinEnergyEqvSpeedLG/FormulaPage/SpeedSlidingToStopPage";
+import CalculatorPage from "./pages/CalculatorPage";
+import HomePage from "./pages/HomePage";
+import ConversionPage from "./pages/CategoryPages/Conversion/ConversionPage";
+import KinEnergyEqvSpeedLGPage from "./pages/CategoryPages/KinEnergyEqvSpeedLG/KinEnergyEqvSpeedLGPage";
+import VelocityToSpeedConverter from "./pages/CategoryPages/Conversion/FormulaPage/VelocityToSpeedPage";
+import SpeedToVelocityPage from "./pages/CategoryPages/Conversion/FormulaPage/SpeedToVelocityPage";
+import SpeedSlidingToStop from "./pages/CategoryPages/KinEnergyEqvSpeedLG/FormulaPage/SpeedSlidingToStopPage";
 import Footer from "./components/Footer.js";
-import VelocitySlidingToStop from "./components/CategoryPages/KinEnergyEqvSpeedLG/FormulaPage/VelocitySlidingToStopPage";
-import GradeAndSuperElevationPage from "./components/CategoryPages/GradeAndSuperElevation/GradeAndSuperElevationPage";
+import VelocitySlidingToStop from "./pages/CategoryPages/KinEnergyEqvSpeedLG/FormulaPage/VelocitySlidingToStopPage";
+import GradeAndSuperElevationPage from "./pages/CategoryPages/GradeAndSuperElevation/GradeAndSuperElevationPage";
 
 
 
@@ -31,13 +31,12 @@ function App() {
 
 
   return (
-    <div className="mainContainer">
 
       <Router>
         <NavBar />
         <Routes>
         <Route path="/" element={<HomePage toggleState={toggleState}/>} />
-        <Route path = "/Calculator" element={<Calculator toggleState={toggleState}/>} />
+        <Route path = "/CalculatorPage" element={<CalculatorPage toggleState={toggleState}/>} />
         <Route path = "/HomePage" element={<HomePage toggleState={toggleState}/>} />
         <Route path = "/ConversionPage" element={<ConversionPage toggleState={toggleState}/>} />
         <Route path = "/VelocityToSpeedPage" element={<VelocityToSpeedConverter toggleState= {toggleState} />}/>
@@ -60,7 +59,6 @@ function App() {
 
 
 
-    </div>
   );
 }
 
