@@ -1,5 +1,6 @@
 import FormulaList from "../../../components/FormulaList";
 
+
 function Conversion(props) {
 
     const navigationButtons = [
@@ -8,8 +9,8 @@ function Conversion(props) {
         // Add more buttons as needed
     ];
 
-    return (
-            <FormulaList categoryName={"Conversion"} buttons={navigationButtons} />
+    return(
+        <FormulaList categoryName={"Conversion"} buttons={navigationButtons} />
     )
 }
 

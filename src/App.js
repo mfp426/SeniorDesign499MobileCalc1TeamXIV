@@ -6,7 +6,7 @@ import {
 import './App.css';
 import { useState } from 'react';
 import NavBar from './components/Navbar.js';
-import CalculatorPage from "./pages/CalculatorPage";
+import Calculator from "./pages/CalculatorPage";
 import HomePage from "./pages/HomePage";
 import ConversionPage from "./pages/CategoryPages/Conversion/ConversionPage";
 import KinEnergyEqvSpeedLGPage from "./pages/CategoryPages/KinEnergyEqvSpeedLG/KinEnergyEqvSpeedLGPage";
@@ -31,12 +31,13 @@ function App() {
 
 
   return (
+    <div className="mainContainer">
 
       <Router>
         <NavBar />
         <Routes>
         <Route path="/" element={<HomePage toggleState={toggleState}/>} />
-        <Route path = "/CalculatorPage" element={<CalculatorPage toggleState={toggleState}/>} />
+        <Route path = "/Calculator" element={<Calculator toggleState={toggleState}/>} />
         <Route path = "/HomePage" element={<HomePage toggleState={toggleState}/>} />
         <Route path = "/ConversionPage" element={<ConversionPage toggleState={toggleState}/>} />
         <Route path = "/VelocityToSpeedPage" element={<VelocityToSpeedConverter toggleState= {toggleState} />}/>
@@ -59,6 +60,7 @@ function App() {
 
 
 
+    </div>
   );
 }
 

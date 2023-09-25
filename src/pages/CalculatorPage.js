@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import CategoryCard from "../components/CategoryCard";
 
 function CalculatorPage(props) {
-    
+
     const navigate = useNavigate();
 
     return (
