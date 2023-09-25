@@ -29,7 +29,7 @@ function NavBar(props) {
                 <Link to ="/HomePage" className="nav-link">Home</Link>
               </li>
               <li className="nav-item">
-                <Link to ="/CalculatorPage" className="nav-link">Calculator</Link>
+                <Link to ="/Calculator" className="nav-link">Calculator</Link>
               </li>
             </ul>
 
@@ -57,7 +57,7 @@ function NavBar(props) {
                 <Link to ="/SignupPage" className="nav-link">Sign up</Link>
               </li> */}
               <li className="nav-item">
-                <Link to ="/CalculatorPage" className="nav-link">CalculatorPage</Link>
+                <Link to ="/Calculator" className="nav-link">Calculator</Link>
               </li>
             </ul>
           </div>
