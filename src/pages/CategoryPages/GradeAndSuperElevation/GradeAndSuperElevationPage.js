@@ -4,7 +4,7 @@ function GradeAndSuperElevation(props){
 
     const navigationButtons = [
         { route: "/PercentGradePage", title: "Percent Grade" },
-        { route: "/PercentSuperelevation", title: "Percent of Superelevation" },
+        { route: "/PercentSuperelevationPage", title: "Percent of Superelevation" },
         // Add more buttons as needed
     ];
 
