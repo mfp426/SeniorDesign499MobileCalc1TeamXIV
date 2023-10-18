@@ -20,7 +20,11 @@ import PercentGradePage from "./pages/CategoryPages/GradeAndSuperElevation/Formu
 import PercentSuperelevationPage from "./pages/CategoryPages/GradeAndSuperElevation/FormulaPage/PercentSuperelevationPage";
 import EDRPage from "./pages/CategoryPages/EDR/EDRPage";
 import SpeedAtImpactPage from "./pages/CategoryPages/EDR/SpeedAtImpactPage";
-
+import ConstUniAvgEquationPage from "./pages/CategoryPages/ConstUniAvgEquation/ConstUniAvgEquationPage";
+import ConstantDistancePage from "./pages/CategoryPages/ConstUniAvgEquation/FormulaPage/ConstantDistancePage";
+import ConstantVelocityPage from "./pages/CategoryPages/ConstUniAvgEquation/FormulaPage/ConstantVelocityPage";
+import ConstantTimePage from "./pages/CategoryPages/ConstUniAvgEquation/FormulaPage/ConstantTimePage";
+import SlidetoStopDistWithDragPage from "./pages/CategoryPages/ConstUniAvgEquation/FormulaPage/SlidetoStopDistWithDragPage.js"
 
 
 function App() {
@@ -52,6 +56,11 @@ function App() {
           <Route path = "/PercentSuperelevationPage" element={<PercentSuperelevationPage toggleState={toggleState}/>}/>
           <Route path = "/EDRPage" element={<EDRPage toggleState={toggleState}/>}/>
           <Route path = "/SpeedAtImpactPage" element={<SpeedAtImpactPage/>}/>
+          <Route path = "/ConstantDistancePage" element={<ConstantDistancePage/>}/>
+          <Route path = "/ConstUniAvgEquationPage" element={<ConstUniAvgEquationPage/>}/>
+          <Route path = "/ConstantVelocityPage" element = {<ConstantVelocityPage/>}/>
+          <Route path = "/ConstantTimePage" element = {<ConstantTimePage/>}/>
+          <Route path = "/SlidetoStopDistWithDragPage" element ={<SlidetoStopDistWithDragPage/>}/>
         </Routes>
         <Footer/>
       </Router>
