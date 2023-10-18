@@ -7,12 +7,12 @@ function ConstUniAvgEquation(props) {
         { route: "/ConstantVelocityPage", title: "Constant Velocity" },
         { route: "/ConstantTimePage", title: "Constant Time" },
         { route: "/ConstantDistancePage", title: "Constant Distance"},
-        { route: "/SlidetoStopDistWithDragPage", title: "Slide to Stop Distance(known distance and drag factor)"}
+        { route: "/SlidetoStopDistWithDragPage", title: "Slide to Stop Distance(known distance and drag factor)"},
         // Add more buttons as needed
     ];
 
     return(
-        <FormulaList categoryName={"ConstUniAvgEquation"} buttons={navigationButtons} />
+        <FormulaList categoryName={"Constant, Uniform, or Average Kinematic Equations"} buttons={navigationButtons} />
     )
 }
 

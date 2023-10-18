@@ -34,6 +34,12 @@ function CalculatorPage(props) {
                     imgSrc={"https://picsum.photos/300/300"}
                     categoryName={"Constant, Uniform, or Average Kinematic Equations"}
                 />
+
+                <CategoryCard
+                    navigationItem={() => navigate('/CenterOfMassEquationPage')}
+                    imgSrc={"https://picsum.photos/300/300"}
+                    categoryName={"Center of Mass Equations"}
+                />
                 {/* Add more CategoryCard components as needed */}
             </div>
         </div>
