@@ -57,8 +57,8 @@ export default function SpeedAtImpactResultsPage() {
         return (
         <div>
             <h1>Last Speed Data Point</h1>
-            <p>{speed_point} mph {kph_last_speed} kph</p>
-            <p>{speed_point} mph {kph_last_speed} kph</p>
+            <p>{speed_point} mph {speed_point} mph</p>
+            <p>{kph_last_speed} kph {kph_last_speed} kph</p>
             <br/>
 
             <h1>Possible Braking Speed Loss</h1>

@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import {useNavigate} from 'react-router-dom';
-import IntField from "../../../components/IntField";
+import NumericField from "../../../components/NumericField";
 import ToggleField from "../../../components/ToggleField";
 
 const intFieldDescriptions = {
     lastSpeedData: "Last Speed Data Point",
     samplesPerSecond: "Samples per Second",
     dragFactor: "Drag Factor / Slowing Rate",
-    slipPercentage: "Slip Percentage",
     speedometerAccuracy: "Speedometer Accuracy",
 };
+
+const toggleIntFieldDescriptions = {
+    slipPercentage: "Slip Percentage",
+}
 
 const toggleFieldDescriptions = {
     heavyOrAntiLock: "Heavy or AntiLock",
@@ -22,6 +25,7 @@ export default function SpeedAtImpact() {
         dragFactor: 0,
         slipPercentage: 0,
         speedometerAccuracy: 0,
+        heavyOrAntiLock: false,
     });
 
     const navigate = useNavigate();
@@ -38,10 +42,21 @@ export default function SpeedAtImpact() {
                 {Object.keys(toggleFieldDescriptions).map((fieldName) => (
                     <ToggleField
                         description={toggleFieldDescriptions[fieldName]}
+                        onChange={(newValue) => handleValueChange(fieldName, newValue)}
+                    />
+                ))}
+
+                {Object.keys(toggleIntFieldDescriptions).map((fieldName) => (
+                    <NumericField
+                        key={fieldName}
+                        description={toggleIntFieldDescriptions[fieldName]}
+                        value={currFields[fieldName]}
+                        onChange={(newValue) => handleValueChange(fieldName, newValue)}
+                        disabled={!currFields.heavyOrAntiLock}
                     />
                 ))}
                 {Object.keys(intFieldDescriptions).map((fieldName) => (
-                    <IntField
+                    <NumericField
                         key={fieldName}
                         description={intFieldDescriptions[fieldName]}
                         value={currFields[fieldName]}
