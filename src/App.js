@@ -25,6 +25,14 @@ import ConstantDistancePage from "./pages/CategoryPages/ConstUniAvgEquation/Form
 import ConstantVelocityPage from "./pages/CategoryPages/ConstUniAvgEquation/FormulaPage/ConstantVelocityPage";
 import ConstantTimePage from "./pages/CategoryPages/ConstUniAvgEquation/FormulaPage/ConstantTimePage";
 import SlidetoStopDistWithDragPage from "./pages/CategoryPages/ConstUniAvgEquation/FormulaPage/SlidetoStopDistWithDragPage.js"
+import SpeedAtImpactResultsPage from "./pages/CategoryPages/EDR/SpeedAtImpactResultsPage";
+import CenterOfMassEquationPage from "./pages/CategoryPages/CenterOfMassEquation/CenterOfMassEquationPage";
+import COMLateralLeftPage from "./pages/CategoryPages/CenterOfMassEquation/FormulaPage/COMLateralLeftPage";
+import COMLateralRightPage from "./pages/CategoryPages/CenterOfMassEquation/FormulaPage/COMLateralRightPage";
+import COMLongitudinalFrontPage from "./pages/CategoryPages/CenterOfMassEquation/FormulaPage/COMLongitudinalFrontPage";
+import COMLongitudinalRearPage from "./pages/CategoryPages/CenterOfMassEquation/FormulaPage/COMLongitudinalRearPage";
+
+
 
 
 function App() {
@@ -61,6 +69,13 @@ function App() {
           <Route path = "/ConstantVelocityPage" element = {<ConstantVelocityPage/>}/>
           <Route path = "/ConstantTimePage" element = {<ConstantTimePage/>}/>
           <Route path = "/SlidetoStopDistWithDragPage" element ={<SlidetoStopDistWithDragPage/>}/>
+          <Route path ="/SpeedAtImpactResultsPage" element={<SpeedAtImpactResultsPage/>} />
+          <Route path = "/CenterOfMassEquationPage" element ={<CenterOfMassEquationPage/>}/>
+          <Route path = "/COMLateralLeftPage" element ={<COMLateralLeftPage/>}/>
+          <Route path = "/COMLateralRightPage" element ={<COMLateralRightPage/>}/>
+          <Route path = "/COMLongitudinalFrontPage" element ={<COMLongitudinalFrontPage/>}/>
+          <Route path = "/COMLongitudinalRearPage" element ={<COMLongitudinalRearPage/>}/>
+
         </Routes>
         <Footer/>
       </Router>
