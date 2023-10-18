@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const ToggleElement = ({description}) => {
+const ToggleField = ({description}) => {
 
     return (
         <div>
@@ -13,4 +13,4 @@ const ToggleElement = ({description}) => {
     );
 };
 
-export default ToggleElement;
+export default ToggleField;

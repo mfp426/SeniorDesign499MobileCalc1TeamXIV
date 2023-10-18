@@ -1,6 +1,7 @@
 import React from 'react';
 
-const IntElement = ({ description, value, onChange }) => {
+// TODO: create reactive design, see formulaList and follow conventions there
+const IntField = ({ description, value, onChange }) => {
     const handleInputChange = (e) => {
         const newValue = parseInt(e.target.value, 10);
         onChange(newValue);
@@ -21,4 +22,4 @@ const IntElement = ({ description, value, onChange }) => {
     );
 };
 
-export default IntElement;
+export default IntField;

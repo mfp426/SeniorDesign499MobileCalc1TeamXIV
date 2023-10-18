@@ -20,6 +20,7 @@ import PercentGradePage from "./pages/CategoryPages/GradeAndSuperElevation/Formu
 import PercentSuperelevationPage from "./pages/CategoryPages/GradeAndSuperElevation/FormulaPage/PercentSuperelevationPage";
 import EDRPage from "./pages/CategoryPages/EDR/EDRPage";
 import SpeedAtImpactPage from "./pages/CategoryPages/EDR/SpeedAtImpactPage";
+import SpeedAtImpactResultsPage from "./pages/CategoryPages/EDR/SpeedAtImpactResultsPage";
 
 
 
@@ -52,6 +53,7 @@ function App() {
           <Route path = "/PercentSuperelevationPage" element={<PercentSuperelevationPage toggleState={toggleState}/>}/>
           <Route path = "/EDRPage" element={<EDRPage toggleState={toggleState}/>}/>
           <Route path = "/SpeedAtImpactPage" element={<SpeedAtImpactPage/>}/>
+          <Route path ="/SpeedAtImpactResultsPage" element={<SpeedAtImpactResultsPage/>} />
         </Routes>
         <Footer/>
       </Router>
