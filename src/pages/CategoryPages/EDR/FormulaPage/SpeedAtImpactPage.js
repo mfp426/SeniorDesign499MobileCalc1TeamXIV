@@ -3,6 +3,8 @@ import {useNavigate} from 'react-router-dom';
 import NumericField from "../../../../components/NumericField";
 import ToggleField from "../../../../components/ToggleField";
 
+// TODO: add input validation
+// TODO: make the page more responsive for larger screens
 const intFieldDescriptions = {
     lastSpeedData: "Last Speed Data Point",
     samplesPerSecond: "Samples per Second",
@@ -34,7 +36,6 @@ export default function SpeedAtImpact() {
         setCurrFields({ ...currFields, [fieldName]: newValue });
     }
 
-    // TODO: create functionality to include ToggleField in calculation
     return (
         <div>
            <h2 className="text-4xl page-header mt-3 mb-3">EDR Speed at Impact</h2>

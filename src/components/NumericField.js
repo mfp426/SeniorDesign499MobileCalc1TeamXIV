@@ -1,5 +1,6 @@
 import React from 'react';
 
+// TODO: add input validation
 const NumericField = ({ description, value, onChange, disabled }) => {
     const handleInputChange = (e) => {
         if (!disabled) {
@@ -27,3 +28,4 @@ const NumericField = ({ description, value, onChange, disabled }) => {
 };
 
 export default NumericField;
+
