@@ -56,31 +56,52 @@ export default function SpeedAtImpactResultsPage() {
 
         return (
         <div>
-            <h1>Last Speed Data Point</h1>
-            <p>{speed_point} mph {speed_point} mph</p>
-            <p>{kph_last_speed} kph {kph_last_speed} kph</p>
-            <br/>
+            {/* put the headers to the left and results to the right using tailwind grid*/}
+            <div className="grid grid-cols-2 gap-4">
+                <h1 className="text-xl font-semibold">Last Speed Data Point</h1>
+                <div className={"grid grid-cols-2"}>
+                    <p>Minimum</p>
+                    <p>Maximum</p>
+                    <p className="text-sm">{speed_point} mph</p>
+                    <p className="text-sm">{kph_last_speed} kph</p>
+                    <p className="text-sm">{speed_point} mph</p>
+                    <p className="text-sm">{kph_last_speed} kph</p>
+                </div>
 
-            <h1>Possible Braking Speed Loss</h1>
-            <p>{speed_loss} mph 0.0 mph</p>
-            <p>{kph_speed_loss} kph 0.0 kph</p>
-            <br/>
+                <h1 className="text-xl font-semibold">Possible Braking Speed Loss</h1>
+                <div className={"grid grid-cols-2"}>
+                    <p className="text-sm">{speed_point} mph</p>
+                    <p className="text-sm">{speed_point} mph</p>
+                    <p className="text-sm">{kph_last_speed} kph</p>
+                    <p className="text-sm">{kph_last_speed} kph</p>
+                </div>
 
-            <h1>Speed Slip Underreporting</h1>
-            <p>{speed_underreporting} mph {speed_underreporting} mph</p>
-            <p>{kph_speed_underreporting} kph {kph_speed_underreporting} kph</p>
-            <br/>
 
-            <h1>Speedometer Tolerance Gain/Loss</h1>
-            <p>{min_speedometer_tolerance} mph {max_speedometer_tolerance} mph</p>
-            <p>{kph_min_speedometer_tolerance} kph {kph_max_speedometer_tolerance} kph</p>
-            <br/>
+                <h1 className="text-xl font-semibold">Speed Slip Underreporting</h1>
+                <div className={"grid grid-cols-2"}>
+                    <p className="text-sm">{speed_underreporting} mph</p>
+                    <p className="text-sm">{speed_underreporting} mph</p>
+                    <p className="text-sm">{kph_speed_underreporting} kph</p>
+                    <p className="text-sm">{kph_speed_underreporting} kph</p>
+                </div>
 
-            <p>Min Speed Max Speed</p>
-            <p>{min_speed} mph {max_speed} mph</p>
-            <p>{fps_min_speed} fps {fps_max_speed} fps</p>
-            <p>{kph_min_speed} kph {kph_max_speed} kph</p>
-            <p>{mps_min_speed} mps {mps_max_speed} mps</p>
+                <h1 className="text-xl font-semibold">Speedometer Tolerance Gain/Loss</h1>
+                <div className={"grid grid-cols-2"}>
+                    <p className="text-sm">{min_speedometer_tolerance} mph</p>
+                    <p className="text-sm">{max_speedometer_tolerance} mph</p>
+                    <p className="text-sm">{kph_min_speedometer_tolerance} kph</p>
+                    <p className="text-sm">{kph_max_speedometer_tolerance} kph</p>
+                </div>
+            </div>
+            <br/>
+            <div className={"grid grid-cols-2"}>
+                <h1 className="text-xl font-semibold">Min Speed</h1>
+                <h1 className="text-xl font-semibold">Max Speed</h1>
+                <p>{min_speed} mph</p> <p>{max_speed} mph</p>
+                <p>{fps_min_speed} fps</p> <p>{fps_max_speed} fps</p>
+                <p>{kph_min_speed} kph</p> <p>{kph_max_speed} kph</p>
+                <p>{mps_min_speed} mps</p> <p>{mps_max_speed} mps</p>
+            </div>
         </div>
         );
     }
@@ -88,7 +109,7 @@ export default function SpeedAtImpactResultsPage() {
     // Check if fields are available and perform rendering based on that
     if (fields) {
         return (
-            <div>
+            <div className={"px-4"}>
                 {calculateSpeedAtImpact()}
                 <button className="btn btn-primary mt-4" onClick={() => navigate(-1)}>Back</button>
             </div>

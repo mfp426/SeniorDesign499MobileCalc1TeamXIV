@@ -11,7 +11,7 @@ const NumericField = ({ description, value, onChange, disabled }) => {
     };
 
     return (
-        <div className="mb-4 flex items-center">
+        <div className="grid grid-cols-2">
             <label className="pr-4 text-gray-700 text-sm font-bold">
                 {description}
             </label>

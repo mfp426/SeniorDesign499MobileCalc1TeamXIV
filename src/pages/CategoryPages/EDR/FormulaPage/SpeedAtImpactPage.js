@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {useNavigate} from 'react-router-dom';
-import NumericField from "../../../components/NumericField";
-import ToggleField from "../../../components/ToggleField";
+import NumericField from "../../../../components/NumericField";
+import ToggleField from "../../../../components/ToggleField";
 
 const intFieldDescriptions = {
     lastSpeedData: "Last Speed Data Point",
@@ -45,7 +45,6 @@ export default function SpeedAtImpact() {
                         onChange={(newValue) => handleValueChange(fieldName, newValue)}
                     />
                 ))}
-
                 {Object.keys(toggleIntFieldDescriptions).map((fieldName) => (
                     <NumericField
                         key={fieldName}

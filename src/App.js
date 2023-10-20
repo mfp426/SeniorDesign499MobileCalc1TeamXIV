@@ -19,13 +19,13 @@ import GradeAndSuperElevationPage from "./pages/CategoryPages/GradeAndSuperEleva
 import PercentGradePage from "./pages/CategoryPages/GradeAndSuperElevation/FormulaPage/PercentGradePage";
 import PercentSuperelevationPage from "./pages/CategoryPages/GradeAndSuperElevation/FormulaPage/PercentSuperelevationPage";
 import EDRPage from "./pages/CategoryPages/EDR/EDRPage";
-import SpeedAtImpactPage from "./pages/CategoryPages/EDR/SpeedAtImpactPage";
+import SpeedAtImpactPage from "./pages/CategoryPages/EDR/FormulaPage/SpeedAtImpactPage";
 import ConstUniAvgEquationPage from "./pages/CategoryPages/ConstUniAvgEquation/ConstUniAvgEquationPage";
 import ConstantDistancePage from "./pages/CategoryPages/ConstUniAvgEquation/FormulaPage/ConstantDistancePage";
 import ConstantVelocityPage from "./pages/CategoryPages/ConstUniAvgEquation/FormulaPage/ConstantVelocityPage";
 import ConstantTimePage from "./pages/CategoryPages/ConstUniAvgEquation/FormulaPage/ConstantTimePage";
 import SlidetoStopDistWithDragPage from "./pages/CategoryPages/ConstUniAvgEquation/FormulaPage/SlidetoStopDistWithDragPage.js"
-import SpeedAtImpactResultsPage from "./pages/CategoryPages/EDR/SpeedAtImpactResultsPage";
+import SpeedAtImpactResultsPage from "./pages/CategoryPages/EDR/FormulaPage/SpeedAtImpactResultsPage";
 import CenterOfMassEquationPage from "./pages/CategoryPages/CenterOfMassEquation/CenterOfMassEquationPage";
 import COMLateralLeftPage from "./pages/CategoryPages/CenterOfMassEquation/FormulaPage/COMLateralLeftPage";
 import COMLateralRightPage from "./pages/CategoryPages/CenterOfMassEquation/FormulaPage/COMLateralRightPage";
