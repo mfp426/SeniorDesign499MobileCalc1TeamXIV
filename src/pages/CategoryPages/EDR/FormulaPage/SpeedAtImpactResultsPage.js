@@ -1,6 +1,6 @@
 import React from 'react';
 import {useLocation, useNavigate} from 'react-router-dom';
-import {mphToFps, mphToKph, mphToMps, roundToDecimal} from "../../../../utils/conversions";
+import {mphToFps, mphToKph, mphToMps, round} from "../../../../utils/conversions";
 
 // TODO: Consider aligning headers to the left as it was in previous application
 function ResultElement({ title, values }) {
@@ -39,7 +39,7 @@ export default function SpeedAtImpactResultsPage() {
     const fields = location.state ? location.state.fields : null;
     const navigate = useNavigate();
 
-    function calculateSpeedAtImpact() {
+    function calculateResults() {
         const {
             lastSpeedData,
             samplesPerSecond,
@@ -57,10 +57,10 @@ export default function SpeedAtImpactResultsPage() {
         const minSpeedometerTolerance = lastSpeedData * speedometerAccuracyFactor * -1;
         const maxSpeedometerTolerance = lastSpeedData * speedometerAccuracyFactor;
 
-        const minSpeed = roundToDecimal(lastSpeedData + speedLoss + speedUnderreporting + minSpeedometerTolerance);
-        const maxSpeed = roundToDecimal(lastSpeedData + maxSpeedometerTolerance + speedUnderreporting);
+        const minSpeed = round(lastSpeedData + speedLoss + speedUnderreporting + minSpeedometerTolerance);
+        const maxSpeed = round(lastSpeedData + maxSpeedometerTolerance + speedUnderreporting);
 
-        const kphConversion = (value) => roundToDecimal(mphToKph(value));
+        const kphConversion = (value) => round(mphToKph(value));
         const fpsMinSpeed = kphConversion(mphToFps(minSpeed));
         const kphMinSpeed = kphConversion(minSpeed);
         const mpsMinSpeed = kphConversion(mphToMps(minSpeed));
@@ -71,10 +71,10 @@ export default function SpeedAtImpactResultsPage() {
 
         return {
             speedPoint: lastSpeedData,
-            speedLoss: roundToDecimal(speedLoss),
-            speedUnderreporting: roundToDecimal(speedUnderreporting),
-            minSpeedometerTolerance: roundToDecimal(minSpeedometerTolerance),
-            maxSpeedometerTolerance: roundToDecimal(maxSpeedometerTolerance),
+            speedLoss: round(speedLoss),
+            speedUnderreporting: round(speedUnderreporting),
+            minSpeedometerTolerance: round(minSpeedometerTolerance),
+            maxSpeedometerTolerance: round(maxSpeedometerTolerance),
             kphLastSpeed: kphConversion(lastSpeedData),
             kphSpeedLoss: kphConversion(speedLoss),
             kphSpeedUnderreporting: kphConversion(speedUnderreporting),
@@ -93,11 +93,10 @@ export default function SpeedAtImpactResultsPage() {
                 </div>
             );
         }
-        let results = calculateSpeedAtImpact();
+        let results = calculateResults();
         return (
             <div>
                 <div className="grid grid-cols-2 gap-4 mb-4">
-                    {/* TODO: component these divs */}
                     <ResultElement title={"Last Speed Data Point"}
                                    values={[results.speedPoint, results.speedPoint, results.kphLastSpeed, results.kphLastSpeed]}/>
                     <ResultElement title={"Possible Braking Speed Loss"}

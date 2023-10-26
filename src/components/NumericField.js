@@ -12,13 +12,13 @@ const NumericField = ({ description, value, onChange, disabled }) => {
     };
 
     return (
-        <div className="grid grid-cols-2">
+        <div className={"grid grid-cols-2"}>
             <label className="pr-4 text-gray-700 text-sm font-bold">
                 {description}
             </label>
             <input
                 type="number"
-                className={`border rounded py-1 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-16 ${disabled ? 'bg-gray-200' : ''}`}
+                className={`border rounded py-1 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${disabled ? 'bg-gray-200' : ''}`}
                 value={value}
                 onChange={handleInputChange}
                 disabled={disabled}

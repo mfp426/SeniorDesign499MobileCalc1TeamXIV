@@ -4,7 +4,6 @@ import NumericField from "../../../../components/NumericField";
 import ToggleField from "../../../../components/ToggleField";
 
 // TODO: add input validation
-// TODO: make the page more responsive for larger screens
 const intFieldDescriptions = {
     lastSpeedData: "Last Speed Data Point",
     samplesPerSecond: "Samples per Second",
@@ -22,11 +21,11 @@ const toggleFieldDescriptions = {
 
 export default function SpeedAtImpact() {
     const [currFields, setCurrFields] = useState({
-        lastSpeedData: 0,
-        samplesPerSecond: 0,
-        dragFactor: 0,
-        slipPercentage: 0,
-        speedometerAccuracy: 0,
+        lastSpeedData: null,
+        samplesPerSecond: null,
+        dragFactor: null,
+        slipPercentage: null,
+        speedometerAccuracy: null,
         heavyOrAntiLock: false,
     });
 
@@ -37,9 +36,9 @@ export default function SpeedAtImpact() {
     }
 
     return (
-        <div>
+        <div className={"px-3"}>
            <h2 className="text-4xl page-header mt-3 mb-3">EDR Speed at Impact</h2>
-            <div className="flex flex-col items-center justify-center">
+            <div className="flex flex-col items-center gap-4">
                 {Object.keys(toggleFieldDescriptions).map((fieldName) => (
                     <ToggleField
                         description={toggleFieldDescriptions[fieldName]}
@@ -64,7 +63,7 @@ export default function SpeedAtImpact() {
                     />
                 ))}
                 {/* navigate to SpeedAtImpactResultsPage with currFields */}
-                <button className="btn btn-primary mt-4" onClick={() => navigate('/SpeedAtImpactResultsPage', { state: { fields: currFields } })}>Calculate Speed at Impact</button>
+                <button className="btn btn-primary mt-4" onClick={() => navigate('/SpeedAtImpactResultsPage', { state: { fields: currFields } })}>Calculate</button>
             </div>
         </div>
     );
