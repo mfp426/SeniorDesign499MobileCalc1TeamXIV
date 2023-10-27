@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import Header from "../../../../components/Header";
 
 const SpeedSlidingToStop = () => {
     const [speed, setSpeed] = useState();
@@ -12,8 +13,8 @@ const SpeedSlidingToStop = () => {
     };
 
     return (
-        <div>
-            <h1>Speed of vehicle sliding to stop</h1>
+        <div className={"container mb-5 center"}>
+            <Header text={"Speed of vehicle sliding to stop"}/>
             <div className='mb-1 mt-1'>
                 <label for = "distance" className='form-label'><h2> Skid (slide to stop) distance </h2></label>
                 <input type = "number" className='form-control' id = 'distanceInput' placeholder='Enter distance in feet' value = {skid_distance} onChange={(e) => setSkid_Distance(parseFloat(e.target.value))} required></input>

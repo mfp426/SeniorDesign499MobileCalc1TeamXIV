@@ -1,13 +1,14 @@
 import { useNavigate } from 'react-router-dom';
 import CategoryCard from "../components/CategoryCard";
+import Header from "../components/Header";
 
 function CalculatorPage(props) {
 
     const navigate = useNavigate();
 
     return (
-        <div className="container">
-            <h2 className="display-4 page-header mt-3 mb-3 d-flex ">Categories</h2>
+        <div className="container mb-5 center">
+            <Header text={"Categories"}/>
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
                 <CategoryCard
                     navigationItem={() => navigate('/ConversionPage')}

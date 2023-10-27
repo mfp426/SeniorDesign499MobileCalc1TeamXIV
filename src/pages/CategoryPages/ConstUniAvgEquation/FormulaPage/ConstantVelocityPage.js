@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import Header from "../../../../components/Header";
 
 const ConstantVelocity=()=>{
     const [velocity, setVelocity] = useState();
@@ -11,8 +12,9 @@ const ConstantVelocity=()=>{
     };
 
     return(
-        <div>
-            <h2> Constant Velocity</h2>
+        <div className={"container mb-5 center"}>
+            <Header text={"Constant Velocity"}/>
+
             <div className="mb-1 mt-1">
                 <label for="distanceInput" className="form-label"><h2>Distance traveled:</h2></label>
                 <input type="number" className="form-control" id="distanceInput" placeholder="Enter distance in feet"
@@ -29,7 +31,7 @@ const ConstantVelocity=()=>{
                 <div className="invalid-feedback fs-9">Please fill out this field.</div>
             </div>
 
-            <button type="submit" className="btn btn-primary mt-4" onClick={calculateVelocity}>Calculate</button>
+            <button className="btn btn-primary mt-4" onClick={calculateVelocity}>Calculate</button>
 
         <div>
             <h3>Calculated Constant Velocity:</h3>

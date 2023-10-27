@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Header from "../../../../components/Header";
 
 const SpeedToVelocityConverter = () => {
     // Define a state variable to store speed and velocity
@@ -13,8 +14,8 @@ const SpeedToVelocityConverter = () => {
     };
 
     return (
-        <div>
-            <h2>Speed to Velocity Converter</h2>
+        <div className={"container mb-5 center"}>
+            <Header text={"Speed to Velocity Converter"}/>
             <div className="mb-1 mt-1">
                 <label for="speedInput" className="form-label"><h2>Speed:</h2></label>
                 <input type="number" className="form-control" id="speedInput" placeholder="Enter speed in mph"
@@ -27,7 +28,7 @@ const SpeedToVelocityConverter = () => {
 
             </div>
 
-            <button type="submit" className="btn btn-primary mt-4" onClick={calculateVelocity}>Calculate Velocity</button>
+            <button className="btn btn-primary mt-4" onClick={calculateVelocity}>Calculate Velocity</button>
 
             <div>
                 <h3>Calculated Velocity:</h3>

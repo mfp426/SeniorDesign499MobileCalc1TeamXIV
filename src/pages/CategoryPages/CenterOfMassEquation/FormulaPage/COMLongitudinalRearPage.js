@@ -1,4 +1,5 @@
 import {useState} from "react";
+import Header from "../../../../components/Header";
 
 const COMLongitudinalRear=()=>{
     const [comdist, setCOMdist] = useState();
@@ -12,8 +13,8 @@ const COMLongitudinalRear=()=>{
     };
 
     return(
-        <div>
-            <h2> Distance in front of the Rear Axle of COM Location</h2>
+        <div className={"container mb-5 center"}>
+            <Header text={"Distance behind the Front Axle of COM Location"}/>
             <div className="mb-1 mt-1">
                 <label for="axleweightInput" className="form-label"><h2> Weight of front axle: </h2></label>
                 <input type="number" className="form-control" id="axleweightInput" placeholder="Enter weight in pounds"
@@ -39,7 +40,7 @@ const COMLongitudinalRear=()=>{
             </div>
 
 
-            <button type="submit" className="btn btn-primary mt-4" onClick={calculateDistance}>Calculate</button>
+            <button className="btn btn-primary mt-4" onClick={calculateDistance}>Calculate</button>
 
         <div>
             <h3>Calculated distance behind the Front Axle of COM Location:</h3>

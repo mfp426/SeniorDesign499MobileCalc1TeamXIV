@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Header from "../../../../components/Header";
 
 const SlidetoStopWithDragFctr = () =>{
     const [distance, setDistance] = useState();
@@ -9,8 +10,8 @@ const SlidetoStopWithDragFctr = () =>{
         setDistance(calculatedDistance)
     };
     return(
-        <div>
-            <h2> Slide to Stop Distance with known Distance and Drag Factor</h2>
+        <div className={"container mb-5 center"}>
+            <Header text={"Slide to Stop Distance with known Distance and Drag Factor"}/>
             <div className="mb-1 mt-1">
                 <label for="speedInput" className="form-label"><h2>Speed of Vehicle:</h2></label>
                 <input type="number" className="form-control" id="speedInput" placeholder="Enter speed in mph"
@@ -27,7 +28,7 @@ const SlidetoStopWithDragFctr = () =>{
                 <div className="invalid-feedback fs-9">Please fill out this field.</div>
             </div>
 
-            <button type="submit" className="btn btn-primary mt-4" onClick={calculateDistance}>Calculate</button>
+            <button className="btn btn-primary mt-4" onClick={calculateDistance}>Calculate</button>
 
         <div>
             <h3>Calculated Slide to Stop Distance:</h3>

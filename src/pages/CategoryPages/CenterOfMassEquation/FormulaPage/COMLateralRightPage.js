@@ -1,4 +1,5 @@
 import {useState} from "react";
+import Header from "../../../../components/Header";
 
 const COMLateralRight=()=>{
     const [comdist, setCOMdist] = useState();
@@ -12,8 +13,8 @@ const COMLateralRight=()=>{
     };
 
     return(
-        <div>
-            <h2> Distance of COM from the right side of vehicle</h2>
+        <div className={"container mb-5 center"}>
+            <Header text={"Distance of COM from the right side of vehicle"}/>
             <div className="mb-1 mt-1">
                 <label for="axleweightInput" className="form-label"><h2> Weight of front axle on right side: </h2></label>
                 <input type="number" className="form-control" id="axleweightInput" placeholder="Enter weight in pounds"
@@ -39,7 +40,7 @@ const COMLateralRight=()=>{
             </div>
 
 
-            <button type="submit" className="btn btn-primary mt-4" onClick={calculateDistance}>Calculate</button>
+            <button className="btn btn-primary mt-4" onClick={calculateDistance}>Calculate</button>
 
         <div>
             <h3>Calculated distance of COM from the right side of vehicle:</h3>

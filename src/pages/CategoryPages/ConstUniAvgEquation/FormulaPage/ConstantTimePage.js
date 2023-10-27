@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import Header from "../../../../components/Header";
 
 const ConstantTime=()=>{
     const [velocity, setVelocity] = useState();
@@ -11,9 +12,8 @@ const ConstantTime=()=>{
     };
 
     return(
-        <div>
-            <h2> Constant Time</h2>
-
+        <div className={"container mb-5 center"}>
+            <Header text={"Constant Time"}/>
             <div className="mb-1 mt-1">
                 <label for="distanceInput" className="form-label"><h2>Constant Distance:</h2></label>
                 <input type="number" className="form-control" id="distanceInput" placeholder="Enter distance in feet"
@@ -30,7 +30,7 @@ const ConstantTime=()=>{
             </div>
 
 
-            <button type="submit" className="btn btn-primary mt-4" onClick={calculateTime}>Calculate</button>
+            <button className="btn btn-primary mt-4" onClick={calculateTime}>Calculate</button>
 
         <div>
             <h3>Calculated Constant Time:</h3>
