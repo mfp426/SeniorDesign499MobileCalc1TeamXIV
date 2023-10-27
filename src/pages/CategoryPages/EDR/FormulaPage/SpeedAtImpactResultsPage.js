@@ -2,7 +2,6 @@ import React from 'react';
 import {useLocation, useNavigate} from 'react-router-dom';
 import {mphToFps, mphToKph, mphToMps, round} from "../../../../utils/conversions";
 
-// TODO: Consider aligning headers to the left as it was in previous application
 function ResultElement({ title, values }) {
     return (
         <div>
@@ -18,16 +17,18 @@ function ResultElement({ title, values }) {
     );
 }
 
-function SpeedResultElement({mins, maxes}) {
+function SpeedResultElement({speedData}) {
     return (
         <div>
             <div className={"grid grid-cols-2"}>
                 <h1 className="text-xl font-semibold">Min Speed</h1>
                 <h1 className="text-xl font-semibold">Max Speed</h1>
-                <p>{mins[0]} mph</p> <p>{maxes[0]} mph</p>
-                <p>{mins[1]} fps</p> <p>{maxes[1]} fps</p>
-                <p>{mins[2]} kph</p> <p>{maxes[2]} kph</p>
-                <p>{mins[3]} mps</p> <p>{maxes[3]} mps</p>
+                {speedData.map((speed, index) => (
+                    <React.Fragment key={index}>
+                        <p>{speed.min} {speed.unit}</p>
+                        <p>{speed.max} {speed.unit}</p>
+                    </React.Fragment>
+                ))}
             </div>
         </div>
     );
@@ -80,8 +81,12 @@ export default function SpeedAtImpactResultsPage() {
             kphSpeedUnderreporting: kphConversion(speedUnderreporting),
             kphMinSpeedometerTolerance: kphConversion(minSpeedometerTolerance),
             kphMaxSpeedometerTolerance: kphConversion(maxSpeedometerTolerance),
-            minSpeeds: [minSpeed, fpsMinSpeed, kphMinSpeed, mpsMinSpeed],
-            maxSpeeds: [maxSpeed, fpsMaxSpeed, kphMaxSpeed, mpsMaxSpeed],
+            speedData: [
+                { unit: "mph", min: minSpeed, max: maxSpeed },
+                { unit: "fps", min: fpsMinSpeed, max: fpsMaxSpeed },
+                { unit: "kph", min: kphMinSpeed, max: kphMaxSpeed },
+                { unit: "mps", min: mpsMinSpeed, max: mpsMaxSpeed }
+            ],
         };
     }
 
@@ -106,15 +111,17 @@ export default function SpeedAtImpactResultsPage() {
                     <ResultElement title={"Speedometer Tolerance Gain/Loss"}
                                    values={[results.minSpeedometerTolerance, results.maxSpeedometerTolerance, results.kphMinSpeedometerTolerance, results.kphMaxSpeedometerTolerance]}/>
                 </div>
-                <SpeedResultElement mins={results.minSpeeds} maxes={results.maxSpeeds}/>
+                <SpeedResultElement speedData={results.speedData}/>
             </div>
         );
     }
 
     return (
-        <div className="px-4 flex flex-col items-center">
-            {renderContent()}
-            <button className="btn btn-primary mt-4" onClick={() => navigate(-1)}>Back</button>
+        <div className={"container mb-5 center"}>
+            <div className="px-4 flex flex-col items-center">
+                {renderContent()}
+                <button className="btn btn-primary mt-4" onClick={() => navigate(-1)}>Back</button>
+            </div>
         </div>
     );
 }

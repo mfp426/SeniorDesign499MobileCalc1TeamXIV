@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {useNavigate} from 'react-router-dom';
 import NumericField from "../../../../components/NumericField";
 import ToggleField from "../../../../components/ToggleField";
+import Header from "../../../../components/Header";
 
 // TODO: add input validation
 const intFieldDescriptions = {
@@ -36,8 +37,8 @@ export default function SpeedAtImpact() {
     }
 
     return (
-        <div className={"px-3"}>
-           <h2 className="text-4xl page-header mt-3 mb-3">EDR Speed at Impact</h2>
+        <div className={"container mb-5 center"}>
+            <Header text={"EDR Speed at Impact"}/>
             <div className="flex flex-col items-center gap-4">
                 {Object.keys(toggleFieldDescriptions).map((fieldName) => (
                     <ToggleField
