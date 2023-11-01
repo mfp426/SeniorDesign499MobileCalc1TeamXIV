@@ -1,9 +1,9 @@
 import FormulaList from "../../../components/FormulaList";
 
-function EDRPage(props) {
+function EDRPage() {
 
     const navigationButtons = [
-        { route: "/SpeedAtImpactPage", title: "Speed at Impact" },
+        { route: "/EDR/SpeedAtImpact", title: "Speed at Impact" },
     ];
 
     return (

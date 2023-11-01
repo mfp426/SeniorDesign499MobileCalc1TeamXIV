@@ -34,7 +34,7 @@ function SpeedResultElement({speedData}) {
     );
 }
 
-export default function SpeedAtImpactResultsPage() {
+function SpeedAtImpactResultsPage() {
 
     const location = useLocation();
     const fields = location.state ? location.state.fields : null;
@@ -125,3 +125,4 @@ export default function SpeedAtImpactResultsPage() {
         </div>
     );
 }
+export default SpeedAtImpactResultsPage;

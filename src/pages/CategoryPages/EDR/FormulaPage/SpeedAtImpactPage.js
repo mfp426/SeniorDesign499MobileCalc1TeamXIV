@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import Formula from "../../../../components/Formula";
 import NumericField from "../../../../components/NumericField";
 import ToggleField from "../../../../components/ToggleField";
-import Header from "../../../../components/Header";
 
-// TODO: add input validation
 const intFieldDescriptions = {
     lastSpeedData: "Last Speed Data Point",
     samplesPerSecond: "Samples per Second",
@@ -14,13 +13,13 @@ const intFieldDescriptions = {
 
 const toggleIntFieldDescriptions = {
     slipPercentage: "Slip Percentage",
-}
+};
 
 const toggleFieldDescriptions = {
     heavyOrAntiLock: "Heavy or AntiLock",
 };
 
-export default function SpeedAtImpact() {
+function SpeedAtImpact() {
     const [currFields, setCurrFields] = useState({
         lastSpeedData: null,
         samplesPerSecond: null,
@@ -36,36 +35,43 @@ export default function SpeedAtImpact() {
         setCurrFields({ ...currFields, [fieldName]: newValue });
     }
 
+    const toggledNumericFields = Object.keys(toggleIntFieldDescriptions).map(fieldName => (
+        <NumericField
+            key={fieldName}
+            description={toggleIntFieldDescriptions[fieldName]}
+            value={currFields[fieldName]}
+            onChange={(newValue) => handleValueChange(fieldName, newValue)}
+            disabled={!currFields.heavyOrAntiLock}
+        />
+    ));
+
+    // Create the numeric fields for the "Speed at Impact" formula
+    const numericFields = Object.keys(intFieldDescriptions).map(fieldName => (
+        <NumericField
+            key={fieldName}
+            description={intFieldDescriptions[fieldName]}
+            value={currFields[fieldName]}
+            onChange={(newValue) => handleValueChange(fieldName, newValue)}
+        />
+    ));
+
+    const toggleFields = Object.keys(toggleFieldDescriptions).map(fieldName => (
+        <ToggleField
+            key={fieldName}
+            description={toggleFieldDescriptions[fieldName]}
+            value={currFields[fieldName]}
+            onChange={(newValue) => handleValueChange(fieldName, newValue)}
+        />
+    ));
+
+    // Render the Formula component with the formula name and numeric fields
     return (
-        <div className={"container mb-5 center"}>
-            <Header text={"EDR Speed at Impact"}/>
-            <div className="flex flex-col items-center gap-4">
-                {Object.keys(toggleFieldDescriptions).map((fieldName) => (
-                    <ToggleField
-                        description={toggleFieldDescriptions[fieldName]}
-                        onChange={(newValue) => handleValueChange(fieldName, newValue)}
-                    />
-                ))}
-                {Object.keys(toggleIntFieldDescriptions).map((fieldName) => (
-                    <NumericField
-                        key={fieldName}
-                        description={toggleIntFieldDescriptions[fieldName]}
-                        value={currFields[fieldName]}
-                        onChange={(newValue) => handleValueChange(fieldName, newValue)}
-                        disabled={!currFields.heavyOrAntiLock}
-                    />
-                ))}
-                {Object.keys(intFieldDescriptions).map((fieldName) => (
-                    <NumericField
-                        key={fieldName}
-                        description={intFieldDescriptions[fieldName]}
-                        value={currFields[fieldName]}
-                        onChange={(newValue) => handleValueChange(fieldName, newValue)}
-                    />
-                ))}
-                {/* navigate to SpeedAtImpactResultsPage with currFields */}
-                <button className="btn btn-primary mt-4" onClick={() => navigate('/SpeedAtImpactResultsPage', { state: { fields: currFields } })}>Calculate</button>
-            </div>
-        </div>
+        <Formula
+            formulaName="Speed at Impact"
+            toggleFields={toggleFields}
+            numericFields={[...toggledNumericFields, ...numericFields]}
+            onCalculate={() => navigate("/EDR/SpeedAtImpact/Results", { state: {fields: currFields }})}
+        />
     );
 }
+export default SpeedAtImpact;

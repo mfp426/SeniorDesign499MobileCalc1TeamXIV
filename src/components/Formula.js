@@ -1,15 +1,25 @@
-// TODO: create formula component with properties for fields and routing
+import React from "react";
 import NumericField from "./NumericField";
 import ToggleField from "./ToggleField";
+import Header from "./Header";
 
-function Formula() {
+function Formula({ formulaName = "Formula", numericFields = [], toggleFields = [], onCalculate }) {
     return (
         <div className={"container mb-5 center"}>
-            <h2 className="text-4xl page-header mt-3 mb-3">Formula Name</h2>
+            <Header text={formulaName}/>
             <div className="flex flex-col items-center gap-4">
+                {/* Render Toggle Fields */}
+                {toggleFields.map((field, index) => (
+                    <div key={index}>{field}</div>
+                ))}
+
+                {/* Render Numeric Fields */}
+                {numericFields.map((field, index) => (
+                    <div key={index}>{field}</div>
+                ))}
+                <button className="btn btn-primary mt-4" onClick={onCalculate}>Calculate</button>
             </div>
         </div>
     );
 }
-
 export default Formula;

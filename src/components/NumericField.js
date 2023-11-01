@@ -1,7 +1,6 @@
 import React from 'react';
 
-// TODO: add input validation
-const NumericField = ({ description, value, onChange, disabled }) => {
+const NumericField = ({ description, onChange, disabled, placeholderText}) => {
     const handleInputChange = (e) => {
         if (!disabled) {
             const newValue = parseFloat(e.target.value);
@@ -19,13 +18,12 @@ const NumericField = ({ description, value, onChange, disabled }) => {
             <input
                 type="number"
                 className={`border rounded py-1 px-2 leading-tight focus:outline-none focus:shadow-outline ${disabled ? 'bg-gray-200' : ''}`}
-                value={value}
                 onChange={handleInputChange}
                 disabled={disabled}
+                placeholder={placeholderText}
             />
         </div>
     );
 };
-
 export default NumericField;
 
