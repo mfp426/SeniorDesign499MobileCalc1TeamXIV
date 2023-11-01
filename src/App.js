@@ -11,7 +11,7 @@ import HomePage from "./pages/HomePage";
 import ConversionPage from "./pages/CategoryPages/Conversion/ConversionPage";
 import KinEnergyEqvSpeedLGPage from "./pages/CategoryPages/KinEnergyEqvSpeedLG/KinEnergyEqvSpeedLGPage";
 import VelocityToSpeedConverter from "./pages/CategoryPages/Conversion/FormulaPage/VelocityToSpeedPage";
-import SpeedToVelocityPage from "./pages/CategoryPages/Conversion/FormulaPage/SpeedToVelocityPage";
+import SpeedAndVelocityPage from "./pages/CategoryPages/Conversion/FormulaPage/SpeedAndVelocityPage";
 import SpeedSlidingToStop from "./pages/CategoryPages/KinEnergyEqvSpeedLG/FormulaPage/SpeedSlidingToStopPage";
 import Footer from "./components/Footer.js";
 import VelocitySlidingToStop from "./pages/CategoryPages/KinEnergyEqvSpeedLG/FormulaPage/VelocitySlidingToStopPage";
@@ -52,9 +52,8 @@ function App() {
           <Route path = "/Calculator" element={<Calculator toggleState={toggleState}/>} />
           <Route path = "/HomePage" element={<HomePage toggleState={toggleState}/>} />
           {/* Conversion */}
-          <Route path = "/ConversionPage" element={<ConversionPage toggleState={toggleState}/>} />
-          <Route path = "/VelocityToSpeedPage" element={<VelocityToSpeedConverter toggleState= {toggleState} />}/>
-          <Route path = "/SpeedToVelocityPage" element={<SpeedToVelocityPage toggleState={toggleState}/>} />
+          <Route path = "/Conversions" element={<ConversionPage toggleState={toggleState}/>} />
+          <Route path = "/Conversions/SpeedAndVelocity" element={<SpeedAndVelocityPage toggleState={toggleState}/>} />
           {/*Kinematic Energy Equivalent */}
           <Route path = "/KinEnergyEqvSpeedLGPage" element={<KinEnergyEqvSpeedLGPage toggleState= {toggleState} />}/>
           <Route path = "/SpeedSlidingToStopPage" element = {<SpeedSlidingToStop toggleState={toggleState}/>}/>
