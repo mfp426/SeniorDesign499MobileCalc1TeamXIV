@@ -10,7 +10,6 @@ import Calculator from "./pages/CalculatorPage";
 import HomePage from "./pages/HomePage";
 import ConversionPage from "./pages/CategoryPages/Conversion/ConversionPage";
 import KinEnergyEqvSpeedLGPage from "./pages/CategoryPages/KinEnergyEqvSpeedLG/KinEnergyEqvSpeedLGPage";
-import VelocityToSpeedConverter from "./pages/CategoryPages/Conversion/FormulaPage/VelocityToSpeedPage";
 import SpeedAndVelocityPage from "./pages/CategoryPages/Conversion/FormulaPage/SpeedAndVelocityPage";
 import SpeedSlidingToStop from "./pages/CategoryPages/KinEnergyEqvSpeedLG/FormulaPage/SpeedSlidingToStopPage";
 import Footer from "./components/Footer.js";
