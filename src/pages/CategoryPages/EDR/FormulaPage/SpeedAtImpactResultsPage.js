@@ -5,7 +5,7 @@ import {mphToFps, mphToKph, mphToMps, round} from "../../../../utils/conversions
 function ResultElement({ title, values }) {
     return (
         <div>
-            <h1 className="text-xl font-semibold">{title}</h1>
+            <h3 className="text-sm font-semibold">{title}</h3>
             <div className="grid grid-cols-2">
                 <p>Min</p>
                 <p>Max</p>
@@ -21,8 +21,8 @@ function SpeedResultElement({speedData}) {
     return (
         <div>
             <div className={"grid grid-cols-2"}>
-                <h1 className="text-xl font-semibold">Min Speed</h1>
-                <h1 className="text-xl font-semibold">Max Speed</h1>
+                <h1 className="text-md font-semibold">Min Speed</h1>
+                <h1 className="text-md font-semibold">Max Speed</h1>
                 {speedData.map((speed, index) => (
                     <React.Fragment key={index}>
                         <p>{speed.min} {speed.unit}</p>
