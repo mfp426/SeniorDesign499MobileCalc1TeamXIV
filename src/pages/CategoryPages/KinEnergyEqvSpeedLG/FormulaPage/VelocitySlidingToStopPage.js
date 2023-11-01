@@ -27,7 +27,7 @@ const VelocitySlidingToStop = () => {
                 <div className="invalid-feedback fs-9">Please fill out this field.</div>
             </div>
             <br></br>
-            <button type = "submit" classname="btn btn-primary mt-4" onClick={calculateVelocity}>Calculate Velocity</button>
+            <button className="btn btn-primary mt-4" onClick={calculateVelocity}>Calculate Velocity</button>
             <div>
                 <h3>Calculated Velocity: </h3>
                 <p>{velocity}</p>
