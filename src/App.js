@@ -31,7 +31,7 @@ import COMLateralLeftPage from "./pages/CategoryPages/CenterOfMassEquation/Formu
 import COMLateralRightPage from "./pages/CategoryPages/CenterOfMassEquation/FormulaPage/COMLateralRightPage";
 import COMLongitudinalFrontPage from "./pages/CategoryPages/CenterOfMassEquation/FormulaPage/COMLongitudinalFrontPage";
 import COMLongitudinalRearPage from "./pages/CategoryPages/CenterOfMassEquation/FormulaPage/COMLongitudinalRearPage";
-
+import FormulaPage from "./pages/FormulaPage";
 
 
 
@@ -75,7 +75,7 @@ function App() {
           <Route path = "/COMLateralRightPage" element ={<COMLateralRightPage/>}/>
           <Route path = "/COMLongitudinalFrontPage" element ={<COMLongitudinalFrontPage/>}/>
           <Route path = "/COMLongitudinalRearPage" element ={<COMLongitudinalRearPage/>}/>
-
+          <Route path ="/FormulaPage" element ={<FormulaPage/>}/>
         </Routes>
         <Footer/>
       </Router>
