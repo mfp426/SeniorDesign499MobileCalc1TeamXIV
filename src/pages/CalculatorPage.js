@@ -1,61 +1,18 @@
-import { useNavigate } from 'react-router-dom';
-import CategoryCard from "../components/CategoryCard";
-import Header from "../components/Header";
+import React from "react";
+import FormulaList from "../components/FormulaList";
+
+const buttons = [
+    { route: "/Conversions", title: "Conversion" },
+    { route: "/KinEnergyEqvSpeedLGPage", title: "Kinetic Energy Equivalent Speed Loss/Gain" },
+    { route: "/GradeAndSuperElevationPage", title: "Grade and Superelevation" },
+    { route: "/EDR", title: "EDR" },
+    { route: "/ConstUniAvgEquationPage", title: "Constant, Uniform, or Average Kinematic Equations" },
+    { route: "/CenterOfMassEquationPage", title: "Center of Mass Equations" },
+]
 
 function CalculatorPage() {
-
-    const navigate = useNavigate();
-
     return (
-        <div className="container mb-5 center">
-            <Header text={"Categories"}/>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                <CategoryCard
-                    navigationItem={() => {
-                        navigate('/ConversionPage');
-                    }}
-                    imgSrc="https://picsum.photos/300/300"
-                    categoryName="Conversion"
-                />
-                <CategoryCard
-                    navigationItem={() => {
-                        navigate('/KinEnergyEqvSpeedLGPage');
-                    }}
-                    imgSrc="https://picsum.photos/300/300"
-                    categoryName="Kinetic Energy Equivalent Speed Loss/Gain"
-                />
-                <CategoryCard
-                    navigationItem={() => {
-                        navigate('/GradeAndSuperElevationPage');
-                    }}
-                    imgSrc="https://picsum.photos/300/300"
-                    categoryName="Grade and Superelevation"
-                />
-                <CategoryCard
-                    navigationItem={() => {
-                        navigate('/EDR');
-                    }}
-                    imgSrc={"https://picsum.photos/300/300"}
-                    categoryName={"EDR"}
-                />
-                <CategoryCard
-                    navigationItem={() => {
-                        navigate('/ConstUniAvgEquationPage');
-                    }}
-                    imgSrc={"https://picsum.photos/300/300"}
-                    categoryName={"Constant, Uniform, or Average Kinematic Equations"}
-                />
-
-                <CategoryCard
-                    navigationItem={() => {
-                        navigate('/CenterOfMassEquationPage');
-                    }}
-                    imgSrc={"https://picsum.photos/300/300"}
-                    categoryName={"Center of Mass Equations"}
-                />
-            </div>
-        </div>
-    )
+        <FormulaList categoryName={"Categories"} buttons={buttons} />
+    );
 }
-
 export default CalculatorPage;
