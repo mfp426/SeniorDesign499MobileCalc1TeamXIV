@@ -1,7 +1,10 @@
 import {
   BrowserRouter as Router,
   Routes,
-  Route
+  Route,
+  useParams,
+  useNavigate, 
+  Link
 } from "react-router-dom";
 import './App.css';
 import { useState } from 'react';
@@ -30,6 +33,71 @@ import COMLateralLeftPage from "./pages/CategoryPages/CenterOfMassEquation/Formu
 import COMLateralRightPage from "./pages/CategoryPages/CenterOfMassEquation/FormulaPage/COMLateralRightPage";
 import COMLongitudinalFrontPage from "./pages/CategoryPages/CenterOfMassEquation/FormulaPage/COMLongitudinalFrontPage";
 import COMLongitudinalRearPage from "./pages/CategoryPages/CenterOfMassEquation/FormulaPage/COMLongitudinalRearPage";
+
+//Search Mapping
+const searchMapping = {
+
+  //Category Mapping
+
+  "Conversion Category": "/ConversionPage",
+  "Kinetic Energy Equivalent Category": "/KinEnergyEqvSpeedLGPage",
+
+  //Formula Mapping
+  "Constant Velocity Formula": "/ConstantVelocityPage",
+  "Constant Time Formula": "/ConstantTimePage",
+  "Velocity To Speed Converter Formula": "/VelocityToSpeedConverter",
+  "Speed To Velocity Formula": "/SpeedToVelocityPage",
+
+
+  "SpeedSlidingToStop": "/SpeedSlidingToStop",
+  "VelocitySlidingToStop": "/VelocitySlidingToStop",
+  "GradeAndSuperElevationPage": "/GradeAndSuperElevationPage",
+  "PercentGradePage": "/PercentGradePage",
+  "PercentSuperelevationPage": "/PercentSuperelevationPage",
+  "EDRPage": "/EDRPage",
+  "SpeedAtImpactPage": "/SpeedAtImpactPage",
+  "ConstUniAvgEquationPage": "/ConstUniAvgEquationPage",
+  "ConstantDistancePage": "/ConstantDistancePage",
+  "SlidetoStopDistWithDragPage": "/SlidetoStopDistWithDragPage",
+  "SpeedAtImpactResultsPage": "/SpeedAtImpactResultsPage",
+  "CenterOfMassEquationPage": "/CenterOfMassEquationPage",
+  "COMLateralLeftPage": "/COMLateralLeftPage",
+  "COMLateralRightPage": "/COMLateralRightPage",
+  "COMLongitudinalFrontPage": "/COMLongitudinalFrontPage",
+  "COMLongitudinalRearPage": "/COMLongitudinalRearPage",
+};
+
+const SearchResults = () => {
+  const { query } = useParams();
+  const navigate = useNavigate();
+
+  const trimmedSearchTerm = query.trim().toLowerCase();
+
+  const matchingRoutes = Object.keys(searchMapping).filter((route) =>
+    route.toLowerCase().includes(trimmedSearchTerm)
+  );
+
+  return (
+    <div>
+      <h2>Search results for: {query}</h2>
+      <ul>
+        {matchingRoutes.map((routeName) => (
+          <li key={routeName}>
+            <Link to={searchMapping[routeName]}>{routeName}</Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+
+
+
+
+
+
+
 
 function App() {
 
@@ -76,9 +144,14 @@ function App() {
           <Route path = "/COMLateralRightPage" element ={<COMLateralRightPage/>}/>
           <Route path = "/COMLongitudinalFrontPage" element ={<COMLongitudinalFrontPage/>}/>
           <Route path = "/COMLongitudinalRearPage" element ={<COMLongitudinalRearPage/>}/>
+
+
+          <Route path="/search/:query" element={<SearchResults />} />
+
         </Routes>
         <Footer/>
       </Router>
+      <searchBar searchMapping={searchMapping} />
     </div>
   );
 }
