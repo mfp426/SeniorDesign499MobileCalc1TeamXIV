@@ -11,9 +11,9 @@ import HomePage from "./pages/HomePage";
 import ConversionPage from "./pages/CategoryPages/Conversion/ConversionPage";
 import KinEnergyEqvSpeedLGPage from "./pages/CategoryPages/KinEnergyEqvSpeedLG/KinEnergyEqvSpeedLGPage";
 import SpeedAndVelocityPage from "./pages/CategoryPages/Conversion/FormulaPage/SpeedAndVelocityPage";
-import SpeedSlidingToStop from "./pages/CategoryPages/KinEnergyEqvSpeedLG/FormulaPage/SpeedSlidingToStopPage";
+import SpeedVelocitySlidingToStop from "./pages/CategoryPages/KinEnergyEqvSpeedLG/FormulaPage/SpeedVelocitySlidingToStopPage";
+
 import Footer from "./components/Footer.js";
-import VelocitySlidingToStop from "./pages/CategoryPages/KinEnergyEqvSpeedLG/FormulaPage/VelocitySlidingToStopPage";
 import GradeAndSuperElevationPage from "./pages/CategoryPages/GradeAndSuperElevation/GradeAndSuperElevationPage";
 import PercentGradePage from "./pages/CategoryPages/GradeAndSuperElevation/FormulaPage/PercentGradePage";
 import PercentSuperelevationPage from "./pages/CategoryPages/GradeAndSuperElevation/FormulaPage/PercentSuperelevationPage";
@@ -55,8 +55,7 @@ function App() {
           <Route path = "/Conversions/SpeedAndVelocity" element={<SpeedAndVelocityPage toggleState={toggleState}/>} />
           {/*Kinematic Energy Equivalent */}
           <Route path = "/KinEnergyEqvSpeedLGPage" element={<KinEnergyEqvSpeedLGPage toggleState= {toggleState} />}/>
-          <Route path = "/SpeedSlidingToStopPage" element = {<SpeedSlidingToStop toggleState={toggleState}/>}/>
-          <Route path = "/VelocitySlidingtoStopPage" element = {<VelocitySlidingToStop toggleState = {toggleState}/>}/>
+          <Route path = "/SpeedVelocitySlidingToStopPage" element = {<SpeedVelocitySlidingToStop toggleState={toggleState}/>}/>
           {/* Grade and Super elevation */}
           <Route path = "/GradeAndSuperElevationPage" element={<GradeAndSuperElevationPage toggleState= {toggleState}/>}/>
           <Route path = "/PercentGradePage" element={<PercentGradePage toggleState={toggleState}/>}/>
