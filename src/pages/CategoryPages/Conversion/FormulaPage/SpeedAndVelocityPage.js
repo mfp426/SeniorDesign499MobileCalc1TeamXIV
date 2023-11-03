@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import NumericField from "../../../../components/NumericField";
 import ToggleField from "../../../../components/ToggleField";
 import Formula from "../../../../components/Formula";
 import { round } from "../../../../utils/conversions";
 
-const velFieldDescriptions = {
+const speedFieldDescriptions = {
     speed: { description: "Speed:", placeholderText: "mph" }
 };
 
-const speedFieldDescriptions = {
+const velFieldDescriptions= {
     velocity: { description: "Velocity:", placeholderText: "fps" }
 };
 
@@ -39,9 +39,7 @@ function SpeedAndVelocityConverter() {
     };
 
     const handleValueChange = (fieldName, newValue) => {
-        if (fieldName === "conversionType") {
-            result && setResult(0);
-        }
+        (fieldName === "conversionType" && result) && setResult(0);
         setFields({ ...fields, [fieldName]: newValue });
     };
 
@@ -66,7 +64,7 @@ function SpeedAndVelocityConverter() {
         />
     ));
 
-    const numericFields = fields.conversionType ? getNumericFields(velFieldDescriptions) : getNumericFields(speedFieldDescriptions);
+    const numericFields = fields.conversionType ? getNumericFields(speedFieldDescriptions) : getNumericFields(velFieldDescriptions);
 
     return (
         <div className={"flex flex-col items-center"}>
@@ -77,7 +75,7 @@ function SpeedAndVelocityConverter() {
                 onCalculate={calculate}
             />
             {result !== 0 && (
-                <p>{fields.conversionType ? "Velocity" : "Speed"}: {round(result)} {fields.conversionType ? 'mps' : 'mph'}</p>
+                <p>{fields.conversionType ? "Velocity" : "Speed"}: {round(result)} {fields.conversionType ? 'fps' : 'mph'}</p>
             )}
         </div>
     );
