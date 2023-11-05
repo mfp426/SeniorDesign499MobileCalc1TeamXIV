@@ -1,42 +1,45 @@
 import React, { useState } from "react";
-import Header from "../../../../components/Header";
+import Formula from "../../../../components/Formula";
+import NumericField from "../../../../components/NumericField";
+import {round} from "../../../../utils/conversions";
 
-const SlidetoStopWithDragFctr = () =>{
-    const [distance, setDistance] = useState();
-    const [coef, setCoef] = useState();
-    const [speed, setSpeed] = useState();
+const fieldDescriptions = {
+    speed: { description: "Speed of Vehicle", placeholderText: "Enter speed in mph" },
+    coefficient: { description: "Coefficient of Friction", placeholderText: "Enter the coefficient of friction" },
+}
+
+function SlidetoStopWithDragPage() {
+    const [fields, setFields] = useState({
+        speed: 0,
+        coefficient: 0,
+    });
+    const [distance, setDistance] = useState(0);
+
     const calculateDistance=()=>{
-        const calculatedDistance = (speed**2)/(30* coef);
+        const calculatedDistance = (fields.speed**2)/(30* fields.coefficient);
         setDistance(calculatedDistance)
     };
+
+    const numericFields = Object.keys(fieldDescriptions).map(fieldName => (
+        <NumericField
+            key={fieldName}
+            description={fieldDescriptions[fieldName].description}
+            value={fields[fieldName]}
+            onChange={(newValue) => setFields({...fields, [fieldName]: newValue})}
+            placeholderText={fieldDescriptions[fieldName].placeholderText}
+        />
+    ));
+
     return(
         <div className={"container mb-5 center"}>
-            <Header text={"Slide to Stop Distance with known Distance and Drag Factor"}/>
-            <div className="mb-1 mt-1">
-                <label for="speedInput" className="form-label"><h2>Speed of Vehicle:</h2></label>
-                <input type="number" className="form-control" id="speedInput" placeholder="Enter speed in mph"
-                   value={speed} onChange={(e) => setSpeed(parseFloat(e.target.value))} required />
-                <div className="valid-feedback">Valid.</div>
-                <div className="invalid-feedback fs-9">Please fill out this field.</div>
-            </div>
-
-            <div className="mb-1 mt-1">
-                <label for="coefInput" className="form-label"><h2>Coefficeint of Friction:</h2></label>
-                <input type="number" className="form-control" id="coefInput" placeholder="Enter the coefficient of friction"
-                        value={coef} onChange={(e) => setCoef(parseFloat(e.target.value))} required />
-                <div className="valid-feedback">Valid.</div>
-                <div className="invalid-feedback fs-9">Please fill out this field.</div>
-            </div>
-
-            <button className="btn btn-primary mt-4" onClick={calculateDistance}>Calculate</button>
-
-        <div>
-            <h3>Calculated Slide to Stop Distance:</h3>
-            <p>{distance} feet</p>
+            <Formula
+                formulaName={"Slide to Stop Distance with known Distance and Drag Factor"}
+                numericFields={numericFields}
+                onCalculate={calculateDistance}
+            />
+            {distance !== 0 && <p>Calculated Slide to Stop Distance: {round(distance)} feet</p>}
         </div>
-    </div>
-        
     );
 }
 
-export default SlidetoStopWithDragFctr;
+export default SlidetoStopWithDragPage;

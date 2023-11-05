@@ -1,45 +1,45 @@
 import {useState} from 'react';
-import Header from "../../../../components/Header";
+import Formula from "../../../../components/Formula";
+import NumericField from "../../../../components/NumericField";
+import {round} from "../../../../utils/conversions";
 
-const ConstantVelocity=()=>{
-    const [velocity, setVelocity] = useState();
-    const [time, setTime] = useState();
-    const [distance, setDistance] = useState();
+const fieldDescriptions = {
+    distance: { description: "Distance:", placeholderText: "Enter distance in feet" },
+    time: { description: "Time:", placeholderText: "Enter time in seconds" },
+}
+
+function ConstantVelocity() {
+    const [fields, setFields] = useState({
+        distance: 0,
+        time: 0,
+    });
+    const [velocity, setVelocity] = useState(0);
 
     const calculateVelocity = () =>{
-        const vel = distance / time;
+        const vel = fields.distance / fields.time;
         setVelocity(vel);
     };
 
+    const numericFields = Object.keys(fieldDescriptions).map(fieldName => (
+        <NumericField
+            key={fieldName}
+            description={fieldDescriptions[fieldName].description}
+            value={fields[fieldName]}
+            onChange={(newValue) => setFields({...fields, [fieldName]: newValue})}
+            placeholderText={fieldDescriptions[fieldName].placeholderText}
+        />
+    ));
+
     return(
         <div className={"container mb-5 center"}>
-            <Header text={"Constant Velocity"}/>
-
-            <div className="mb-1 mt-1">
-                <label for="distanceInput" className="form-label"><h2>Distance traveled:</h2></label>
-                <input type="number" className="form-control" id="distanceInput" placeholder="Enter distance in feet"
-                   value={distance} onChange={(e) => setDistance(parseFloat(e.target.value))} required />
-                <div className="valid-feedback">Valid.</div>
-                <div className="invalid-feedback fs-9">Please fill out this field.</div>
-            </div>
-
-            <div className="mb-1 mt-1">
-                <label for="timeInput" className="form-label"><h2>Time traveled:</h2></label>
-                <input type="number" className="form-control" id="timeInput" placeholder="Enter time in seconds"
-                        value={time} onChange={(e) => setTime(parseFloat(e.target.value))} required />
-                <div className="valid-feedback">Valid.</div>
-                <div className="invalid-feedback fs-9">Please fill out this field.</div>
-            </div>
-
-            <button className="btn btn-primary mt-4" onClick={calculateVelocity}>Calculate</button>
-
-        <div>
-            <h3>Calculated Constant Velocity:</h3>
-            <p>{velocity} fps</p>
+            <Formula
+                formulaName={"Constant Velocity"}
+                numericFields={numericFields}
+                onCalculate={calculateVelocity}
+            />
+            {velocity !== 0 && <p>Calculated Constant Velocity: {round(velocity)}</p>}
         </div>
-    </div>
-        
     );
-};
+}
 
 export default ConstantVelocity;

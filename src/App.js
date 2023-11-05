@@ -3,7 +3,6 @@ import {
   Routes,
   Route,
   useParams,
-  useNavigate, 
   Link
 } from "react-router-dom";
 import './App.css';
@@ -29,10 +28,8 @@ import ConstantTimePage from "./pages/CategoryPages/ConstUniAvgEquation/FormulaP
 import SlidetoStopDistWithDragPage from "./pages/CategoryPages/ConstUniAvgEquation/FormulaPage/SlidetoStopDistWithDragPage.js"
 import SpeedAtImpactResultsPage from "./pages/CategoryPages/EDR/FormulaPage/SpeedAtImpactResultsPage";
 import CenterOfMassEquationPage from "./pages/CategoryPages/CenterOfMassEquation/CenterOfMassEquationPage";
-import COMLateralLeftPage from "./pages/CategoryPages/CenterOfMassEquation/FormulaPage/COMLateralLeftPage";
-import COMLateralRightPage from "./pages/CategoryPages/CenterOfMassEquation/FormulaPage/COMLateralRightPage";
-import COMLongitudinalFrontPage from "./pages/CategoryPages/CenterOfMassEquation/FormulaPage/COMLongitudinalFrontPage";
-import COMLongitudinalRearPage from "./pages/CategoryPages/CenterOfMassEquation/FormulaPage/COMLongitudinalRearPage";
+import COMLateralPage from "./pages/CategoryPages/CenterOfMassEquation/FormulaPage/COMLateralPage";
+import COMLongitudinalPage from "./pages/CategoryPages/CenterOfMassEquation/FormulaPage/COMLongitudinalPage";
 
 //Search Mapping
 const searchMapping = {
@@ -61,15 +58,12 @@ const searchMapping = {
   "SlidetoStopDistWithDragPage": "/SlidetoStopDistWithDragPage",
   "SpeedAtImpactResultsPage": "/SpeedAtImpactResultsPage",
   "CenterOfMassEquationPage": "/CenterOfMassEquationPage",
-  "COMLateralLeftPage": "/COMLateralLeftPage",
-  "COMLateralRightPage": "/COMLateralRightPage",
-  "COMLongitudinalFrontPage": "/COMLongitudinalFrontPage",
-  "COMLongitudinalRearPage": "/COMLongitudinalRearPage",
+  "COMLateralPage": "/COMLateralPage",
+  "COMLongitudinalPage": "/COMLongitudinalPage",
 };
 
 const SearchResults = () => {
   const { query } = useParams();
-  const navigate = useNavigate();
 
   const trimmedSearchTerm = query.trim().toLowerCase();
 
@@ -140,10 +134,8 @@ function App() {
           <Route path = "/SlidetoStopDistWithDragPage" element ={<SlidetoStopDistWithDragPage/>}/>
           {/* Center of Mass Equations */}
           <Route path = "/CenterOfMassEquationPage" element ={<CenterOfMassEquationPage/>}/>
-          <Route path = "/COMLateralLeftPage" element ={<COMLateralLeftPage/>}/>
-          <Route path = "/COMLateralRightPage" element ={<COMLateralRightPage/>}/>
-          <Route path = "/COMLongitudinalFrontPage" element ={<COMLongitudinalFrontPage/>}/>
-          <Route path = "/COMLongitudinalRearPage" element ={<COMLongitudinalRearPage/>}/>
+          <Route path = "/COMLateralPage" element ={<COMLateralPage/>}/>
+          <Route path = "/COMLongitudinalPage" element ={<COMLongitudinalPage/>}/>
 
 
           <Route path="/search/:query" element={<SearchResults />} />

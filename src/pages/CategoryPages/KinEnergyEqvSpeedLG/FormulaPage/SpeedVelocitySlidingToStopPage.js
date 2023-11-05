@@ -71,14 +71,12 @@ function SpeedAndVelocityConverter() {
         />
     ));
 
-    const numericFields = fields.conversionType ? getNumericFields(skidDistanceVelocityFieldDescriptions) : getNumericFields(skidDistanceSpeedFieldDescriptions);
-
     return (
         <div className={"flex flex-col items-center"}>
             <Formula
                 formulaName={"Speed / Velocity of Vehicle Sliding to Stop"}
                 toggleFields={toggleFields}
-                numericFields={numericFields}
+                numericFields={fields.conversionType ? getNumericFields(skidDistanceVelocityFieldDescriptions) : getNumericFields(skidDistanceSpeedFieldDescriptions)}
                 onCalculate={calculate}
             />
 

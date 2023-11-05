@@ -13,21 +13,21 @@ const velFieldDescriptions= {
 };
 
 const toggleFieldDescriptions = {
-    conversionType: "Velocity to Speed / Speed to Velocity",
+    isVelocity: "Velocity to Speed / Speed to Velocity",
 };
 
-function SpeedAndVelocityConverter() {
+function SpeedAndVelocityPage() {
     const [fields, setFields] = useState({
         speed: 0,
         velocity: 0,
-        conversionType: false,
+        isVelocity: false,
     });
 
     const [result, setResult] = useState(0);
 
     const calculate = () => {
-        const { speed, velocity, conversionType } = fields;
-        if (conversionType) {
+        const { speed, velocity, isVelocity } = fields;
+        if (isVelocity) {
             // Assuming speed is in miles per hour (mph)
             const calculatedVelocity = speed * 1.466;
             setResult(calculatedVelocity);
@@ -39,7 +39,7 @@ function SpeedAndVelocityConverter() {
     };
 
     const handleValueChange = (fieldName, newValue) => {
-        (fieldName === "conversionType" && result) && setResult(0);
+        (fieldName === "isVelocity" && result) && setResult(0);
         setFields({ ...fields, [fieldName]: newValue });
     };
 
@@ -64,21 +64,19 @@ function SpeedAndVelocityConverter() {
         />
     ));
 
-    const numericFields = fields.conversionType ? getNumericFields(speedFieldDescriptions) : getNumericFields(velFieldDescriptions);
-
     return (
         <div className={"flex flex-col items-center"}>
             <Formula
                 formulaName={"Speed and Velocity Converter"}
                 toggleFields={toggleFields}
-                numericFields={numericFields}
+                numericFields={fields.isVelocity ? getNumericFields(speedFieldDescriptions) : getNumericFields(velFieldDescriptions)}
                 onCalculate={calculate}
             />
             {result !== 0 && (
-                <p>{fields.conversionType ? "Velocity" : "Speed"}: {round(result)} {fields.conversionType ? 'fps' : 'mph'}</p>
+                <p>{fields.isVelocity ? "Velocity" : "Speed"}: {round(result)} {fields.isVelocity ? 'fps' : 'mph'}</p>
             )}
         </div>
     );
 }
 
-export default SpeedAndVelocityConverter;
+export default SpeedAndVelocityPage;

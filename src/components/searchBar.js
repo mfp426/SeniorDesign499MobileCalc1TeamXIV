@@ -34,8 +34,7 @@ const SearchBar = () => {
   "Slide to Stop Dist with Drag Page": "/SlidetoStopDistWithDragPage",
   "Speed at Impact Results Page": "/SpeedAtImpactResultsPage",
   "Center of Mass Equation Page": "/CenterOfMassEquationPage",
-  "COM Lateral Left Page": "/COMLateralLeftPage",
-  "COM Lateral Right Page": "/COMLateralRightPage",
+  "COM Lateral Right Page": "/COMLateralPage",
   "COM Longitudinal Front Page": "/COMLongitudinalFrontPage",
   "COM Longitudinal Rear Page": "/COMLongitudinalRearPage",
 

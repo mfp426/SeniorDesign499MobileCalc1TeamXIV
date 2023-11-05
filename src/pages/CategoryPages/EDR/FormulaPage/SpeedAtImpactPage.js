@@ -19,39 +19,34 @@ const toggleFieldDescriptions = {
     heavyOrAntiLock: "Heavy or AntiLock",
 };
 
-function SpeedAtImpact() {
-    const [currFields, setCurrFields] = useState({
-        lastSpeedData: null,
-        samplesPerSecond: null,
-        dragFactor: null,
-        slipPercentage: null,
-        speedometerAccuracy: null,
+function SpeedAtImpactPage() {
+    const [fields, setFields] = useState({
+        lastSpeedData: 0,
+        samplesPerSecond: 0,
+        dragFactor: 0,
+        slipPercentage: 0,
+        speedometerAccuracy: 0,
         heavyOrAntiLock: false,
     });
 
     const navigate = useNavigate();
 
-    function handleValueChange(fieldName, newValue) {
-        setCurrFields({ ...currFields, [fieldName]: newValue });
-    }
-
     const toggledNumericFields = Object.keys(toggleIntFieldDescriptions).map(fieldName => (
         <NumericField
             key={fieldName}
             description={toggleIntFieldDescriptions[fieldName]}
-            value={currFields[fieldName]}
-            onChange={(newValue) => handleValueChange(fieldName, newValue)}
-            disabled={!currFields.heavyOrAntiLock}
+            value={fields[fieldName]}
+            onChange={(newValue) => setFields({ ...fields, [fieldName]: newValue })}
+            disabled={!fields.heavyOrAntiLock}
         />
     ));
 
-    // Create the numeric fields for the "Speed at Impact" formula
     const numericFields = Object.keys(intFieldDescriptions).map(fieldName => (
         <NumericField
             key={fieldName}
             description={intFieldDescriptions[fieldName]}
-            value={currFields[fieldName]}
-            onChange={(newValue) => handleValueChange(fieldName, newValue)}
+            value={fields[fieldName]}
+            onChange={(newValue) => setFields({ ...fields, [fieldName]: newValue })}
         />
     ));
 
@@ -59,8 +54,8 @@ function SpeedAtImpact() {
         <ToggleField
             key={fieldName}
             description={toggleFieldDescriptions[fieldName]}
-            value={currFields[fieldName]}
-            onChange={(newValue) => handleValueChange(fieldName, newValue)}
+            value={fields[fieldName]}
+            onChange={(newValue) => setFields({ ...fields, [fieldName]: newValue })}
         />
     ));
 
@@ -70,8 +65,8 @@ function SpeedAtImpact() {
             formulaName="Speed at Impact"
             toggleFields={toggleFields}
             numericFields={[...toggledNumericFields, ...numericFields]}
-            onCalculate={() => navigate("/EDR/SpeedAtImpact/Results", { state: {fields: currFields }})}
+            onCalculate={() => navigate("/EDR/SpeedAtImpact/Results", { state: {fields: fields }})}
         />
     );
 }
-export default SpeedAtImpact;
+export default SpeedAtImpactPage;

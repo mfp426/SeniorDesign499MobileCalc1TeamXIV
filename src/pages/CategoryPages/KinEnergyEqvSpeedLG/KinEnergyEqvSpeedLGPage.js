@@ -1,10 +1,10 @@
 import FormulaList from "../../../components/FormulaList";
 
-function KinEnergyEqvSpeedLG(props) {
+function KinEnergyEqvSpeedLG() {
 
     const navigationButtons = [
         { route: "/SpeedVelocitySlidingToStopPage", title: "Speed / Velocity Sliding to Stop" },
-        
+
         // Add more buttons as needed
     ];
     
