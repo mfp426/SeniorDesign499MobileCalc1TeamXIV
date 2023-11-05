@@ -21,11 +21,11 @@ const toggleFieldDescriptions = {
 
 function SpeedAtImpactPage() {
     const [fields, setFields] = useState({
-        lastSpeedData: 0,
-        samplesPerSecond: 0,
-        dragFactor: 0,
+        lastSpeedData: null,
+        samplesPerSecond: null,
+        dragFactor: null,
         slipPercentage: 0,
-        speedometerAccuracy: 0,
+        speedometerAccuracy: null,
         heavyOrAntiLock: false,
     });
 
@@ -59,13 +59,22 @@ function SpeedAtImpactPage() {
         />
     ));
 
+    const calculate = () => {
+        if (fields.lastSpeedData === null || fields.samplesPerSecond === null || fields.dragFactor === null || fields.speedometerAccuracy === null) {
+            alert("Please fill out all fields.");
+        }
+        else {
+            navigate("/EDR/SpeedAtImpact/Results", { state: {fields: fields }});
+        }
+    };
+
     // Render the Formula component with the formula name and numeric fields
     return (
         <Formula
             formulaName="Speed at Impact"
             toggleFields={toggleFields}
             numericFields={[...toggledNumericFields, ...numericFields]}
-            onCalculate={() => navigate("/EDR/SpeedAtImpact/Results", { state: {fields: fields }})}
+            onCalculate={calculate}
         />
     );
 }

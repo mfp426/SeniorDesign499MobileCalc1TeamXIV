@@ -13,33 +13,29 @@ const velFieldDescriptions= {
 };
 
 const toggleFieldDescriptions = {
-    isVelocity: "Velocity to Speed / Speed to Velocity",
+    isSpeed: "Velocity to Speed / Speed to Velocity",
 };
 
 function SpeedAndVelocityPage() {
     const [fields, setFields] = useState({
-        speed: 0,
-        velocity: 0,
-        isVelocity: false,
+        speed: null,
+        velocity: null,
+        isSpeed: false,
     });
 
-    const [result, setResult] = useState(0);
+    const [result, setResult] = useState(null);
 
     const calculate = () => {
-        const { speed, velocity, isVelocity } = fields;
-        if (isVelocity) {
-            // Assuming speed is in miles per hour (mph)
-            const calculatedVelocity = speed * 1.466;
-            setResult(calculatedVelocity);
-        } else {
-            // Assuming velocity is in feet per second (fps)
-            const calculatedSpeed = velocity / 1.466;
-            setResult(calculatedSpeed);
+        if ((!fields.isSpeed && fields.velocity === null) || (fields.isSpeed && fields.speed === null)) {
+            alert("Please fill out all fields.");
+        }
+        else {
+            fields.isSpeed ? setResult(fields.speed * 1.466) : setResult(fields.velocity / 1.466);
         }
     };
 
     const handleValueChange = (fieldName, newValue) => {
-        (fieldName === "isVelocity" && result) && setResult(0);
+        (fieldName === "isSpeed" && result) && setResult(null);
         setFields({ ...fields, [fieldName]: newValue });
     };
 
@@ -65,15 +61,15 @@ function SpeedAndVelocityPage() {
     ));
 
     return (
-        <div className={"flex flex-col items-center"}>
+        <div className={"container mb-5 center"}>
             <Formula
                 formulaName={"Speed and Velocity Converter"}
                 toggleFields={toggleFields}
-                numericFields={fields.isVelocity ? getNumericFields(speedFieldDescriptions) : getNumericFields(velFieldDescriptions)}
+                numericFields={fields.isSpeed ? getNumericFields(speedFieldDescriptions) : getNumericFields(velFieldDescriptions)}
                 onCalculate={calculate}
             />
-            {result !== 0 && (
-                <p>{fields.isVelocity ? "Velocity" : "Speed"}: {round(result)} {fields.isVelocity ? 'fps' : 'mph'}</p>
+            {result !== null && (
+                <p>{fields.isSpeed ? "Velocity" : "Speed"}: {round(result)} {fields.isSpeed ? 'fps' : 'mph'}</p>
             )}
         </div>
     );

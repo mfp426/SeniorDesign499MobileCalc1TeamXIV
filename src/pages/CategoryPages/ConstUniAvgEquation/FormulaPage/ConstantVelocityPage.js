@@ -10,14 +10,19 @@ const fieldDescriptions = {
 
 function ConstantVelocity() {
     const [fields, setFields] = useState({
-        distance: 0,
-        time: 0,
+        distance: null,
+        time: null,
     });
-    const [velocity, setVelocity] = useState(0);
+    const [velocity, setVelocity] = useState(null);
 
     const calculateVelocity = () =>{
-        const vel = fields.distance / fields.time;
-        setVelocity(vel);
+        if (fields.distance === null || fields.time === null) {
+            alert("Please fill out all fields.");
+        }
+        else {
+            const vel = fields.distance / fields.time;
+            setVelocity(vel);
+        }
     };
 
     const numericFields = Object.keys(fieldDescriptions).map(fieldName => (
@@ -37,7 +42,7 @@ function ConstantVelocity() {
                 numericFields={numericFields}
                 onCalculate={calculateVelocity}
             />
-            {velocity !== 0 && <p>Calculated Constant Velocity: {round(velocity)}</p>}
+            {velocity !== null && <p>Calculated Constant Velocity: {round(velocity)}</p>}
         </div>
     );
 }

@@ -10,14 +10,19 @@ const fieldDescriptions = {
 
 function SlidetoStopWithDragPage() {
     const [fields, setFields] = useState({
-        speed: 0,
-        coefficient: 0,
+        speed: null,
+        coefficient: null,
     });
-    const [distance, setDistance] = useState(0);
+    const [distance, setDistance] = useState(null);
 
     const calculateDistance=()=>{
-        const calculatedDistance = (fields.speed**2)/(30* fields.coefficient);
-        setDistance(calculatedDistance)
+        if (fields.speed === null || fields.coefficient === null) {
+            alert("Please fill out all fields.");
+        }
+        else {
+            const calculatedDistance = (fields.speed ** 2) / (30 * fields.coefficient);
+            setDistance(calculatedDistance)
+        }
     };
 
     const numericFields = Object.keys(fieldDescriptions).map(fieldName => (
@@ -37,7 +42,7 @@ function SlidetoStopWithDragPage() {
                 numericFields={numericFields}
                 onCalculate={calculateDistance}
             />
-            {distance !== 0 && <p>Calculated Slide to Stop Distance: {round(distance)} feet</p>}
+            {distance !== null && <p>Calculated Slide to Stop Distance: {round(distance)} feet</p>}
         </div>
     );
 }

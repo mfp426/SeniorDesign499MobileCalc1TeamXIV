@@ -11,14 +11,19 @@ const fieldDescriptions = {
 function PercentSuperelevationPage() {
 
     const [fields, setFields] = useState({
-        rise: 0,
-        run: 0,
+        rise: null,
+        run: null,
     });
 
-    const [superelevation, setSuperelevation] = useState(0);
+    const [superelevation, setSuperelevation] = useState(null);
     const superelevationPercent = () => {
-        const Superelevation = fields.rise/fields.run;
-        setSuperelevation(Superelevation);
+        if (fields.rise === null || fields.run === null) {
+            alert("Please fill out all fields.");
+        }
+        else {
+            const Superelevation = fields.rise / fields.run;
+            setSuperelevation(Superelevation);
+        }
     };
 
     const numericFields = Object.keys(fieldDescriptions).map(fieldName => (
@@ -38,7 +43,7 @@ function PercentSuperelevationPage() {
                 numericFields={numericFields}
                 onCalculate={superelevationPercent}
             />
-            {superelevation !== 0 && <p>Calculated percent of superelevation: {round(superelevation)}</p>}
+            {superelevation !== null && <p>Calculated percent of superelevation: {round(superelevation)}</p>}
         </div>
     );
 }

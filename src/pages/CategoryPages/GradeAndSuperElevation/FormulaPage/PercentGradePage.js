@@ -10,14 +10,20 @@ const fieldDescriptions = {
 
 function PercentGradePage() {
     const [fields, setFields] = useState({
-        rise: 0,
-        run: 0,
+        rise: null,
+        run: null,
     });
 
-    const [grade, setGrade] = useState(0);
+    const [grade, setGrade] = useState(null);
+
     const gradePercent = () => {
-        const calculatedGrade = fields.rise/fields.run;
-        setGrade(calculatedGrade);
+        if (fields.rise === null || fields.run === null) {
+            alert("Please fill out all fields.");
+        }
+        else {
+            const calculatedGrade = fields.rise / fields.run;
+            setGrade(calculatedGrade);
+        }
     };
 
     const numericFields = Object.keys(fieldDescriptions).map(fieldName => (
@@ -37,7 +43,7 @@ function PercentGradePage() {
                 numericFields={numericFields}
                 onCalculate={gradePercent}
             />
-            {grade !== 0 && (
+            {grade !== null && (
                 <p>Calculated Grade: {round(grade)}</p>
             )}
         </div>

@@ -21,18 +21,23 @@ const rearFieldDescriptions = {
 }
 
 function COMLongitudinalPage() {
-    const [comdist, setCOMdist] = useState(0);
+    const [comdist, setCOMdist] = useState(null);
 
     const [fields, setFields] = useState({
-        axle_weight: 0,
-        wheelbase_width: 0,
-        weight: 0,
+        axle_weight: null,
+        wheelbase_width: null,
+        weight: null,
         isRear: false,
     });
 
     const calculateDistance=()=>{
-        const dist = fields.axle_weight* fields.wheelbase_width/ fields.weight;
-        setCOMdist(dist);
+        if (fields.axle_weight === null || fields.wheelbase_width === null || fields.weight === null) {
+            alert("Please fill out all fields.");
+        }
+        else {
+            const dist = fields.axle_weight * fields.wheelbase_width / fields.weight;
+            setCOMdist(dist);
+        }
     };
 
     const getNumericFields = (fieldDescriptions) => {
@@ -64,7 +69,7 @@ function COMLongitudinalPage() {
                 numericFields={fields.isRear ? getNumericFields(rearFieldDescriptions) : getNumericFields(frontFieldDescriptions)}
                 onCalculate={calculateDistance}
             />
-            {comdist !== 0 && (
+            {comdist !== null && (
                 <p>Calculated Distance behind the {fields.isRear ? "Rear" : "Front"} Axle of COM Location: {round(comdist)}</p>
             )}
         </div>

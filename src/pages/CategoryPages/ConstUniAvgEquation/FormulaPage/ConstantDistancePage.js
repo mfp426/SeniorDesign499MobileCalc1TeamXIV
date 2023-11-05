@@ -9,15 +9,20 @@ const fieldDescriptions = {
 
 function ConstantDistancePage() {
     const [fields, setFields] = useState({
-        velocity: 0,
-        time: 0,
+        velocity: null,
+        time: null,
     });
 
-    const [distance, setDistance] = useState(0);
+    const [distance, setDistance] = useState(null);
 
     const calculateDistance = () =>{
-        const dist = fields.velocity * fields.time;
-        setDistance(dist);
+        if (fields.velocity === null || fields.time === null) {
+            alert("Please fill out all fields.");
+        }
+        else {
+            const dist = fields.velocity * fields.time;
+            setDistance(dist);
+        }
     };
 
     const numericFields = Object.keys(fieldDescriptions).map(fieldName => (
@@ -37,7 +42,7 @@ function ConstantDistancePage() {
                 numericFields={numericFields}
                 onCalculate={calculateDistance}
             />
-            {distance !== 0 && <p>Calculated Constant Distance: {distance}</p>}
+            {distance !== null && <p>Calculated Constant Distance: {distance}</p>}
         </div>
     );
 }

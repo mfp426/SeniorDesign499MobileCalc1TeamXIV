@@ -21,17 +21,22 @@ const toggleFieldDescriptions = {
 }
 
 function COMLateralPage() {
-    const [comdist, setCOMdist] = useState(0);
+    const [comdist, setCOMdist] = useState(null);
     const [fields, setFields] = useState({
-        axle_weight: 0,
-        track_width: 0,
-        weight: 0,
+        axle_weight: null,
+        track_width: null,
+        weight: null,
         isRight: false,
     });
 
     const calculateDistance=()=>{
-        const dist = fields.axle_weight* fields.track_width/ fields.weight;
-        setCOMdist(dist);
+        if (fields.axle_weight === null || fields.track_width === null || fields.weight === null) {
+            alert("Please fill out all fields.");
+        }
+        else {
+            const dist = fields.axle_weight * fields.track_width / fields.weight;
+            setCOMdist(dist);
+        }
     };
 
     const getNumericFields = (fieldDescriptions) => {
@@ -63,7 +68,7 @@ function COMLateralPage() {
                 numericFields={fields.isRight ? getNumericFields(rightFieldDescriptions) : getNumericFields(leftFieldDescriptions)}
                 onCalculate={calculateDistance}
             />
-            {comdist !== 0 && <p>Calculated distance of COM from the {fields.isRight ? "right" : "left"} side of vehicle: {round(comdist)}</p>}
+            {comdist !== null && <p>Calculated distance of COM from the {fields.isRight ? "right" : "left"} side of vehicle: {round(comdist)}</p>}
         </div>
     );
 } 

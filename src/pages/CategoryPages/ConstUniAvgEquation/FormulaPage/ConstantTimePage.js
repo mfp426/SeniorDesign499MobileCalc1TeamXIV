@@ -9,15 +9,20 @@ const fieldDescriptions = {
 }
 function ConstantTimePage() {
     const [fields, setFields] = useState({
-        distance: 0,
-        velocity: 0,
+        distance: null,
+        velocity: null,
     });
 
-    const [time, setTime] = useState(0);
+    const [time, setTime] = useState(null);
 
     const calculateTime = () =>{
-        const c_time = fields.distance / fields.velocity;
-        setTime(c_time);
+        if (fields.distance === null || fields.velocity === null) {
+            alert("Please fill out all fields.");
+        }
+        else {
+            const c_time = fields.distance / fields.velocity;
+            setTime(c_time);
+        }
     };
 
     const numericFields = Object.keys(fieldDescriptions).map(fieldName => (
@@ -37,7 +42,7 @@ function ConstantTimePage() {
                 numericFields={numericFields}
                 onCalculate={calculateTime}
             />
-            {time !== 0 && <p>Calculated Constant Time: {round(time)}</p>}
+            {time !== null && <p>Calculated Constant Time: {round(time)}</p>}
         </div>
     );
 }
