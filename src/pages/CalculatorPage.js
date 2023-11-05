@@ -1,5 +1,5 @@
 import React from "react";
-import FormulaList from "../components/FormulaList";
+import ButtonGrid from "../components/ButtonGrid";
 
 const buttons = [
     { route: "/Conversions", title: "Conversion" },
@@ -12,7 +12,7 @@ const buttons = [
 
 function CalculatorPage() {
     return (
-        <FormulaList categoryName={"Categories"} buttons={buttons} />
+        <ButtonGrid categoryName={"Categories"} buttons={buttons} />
     );
 }
 export default CalculatorPage;

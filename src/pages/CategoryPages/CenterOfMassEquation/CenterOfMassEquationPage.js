@@ -1,4 +1,4 @@
-import FormulaList from "../../../components/FormulaList";
+import ButtonGrid from "../../../components/ButtonGrid";
 
 
 function CenterOfMassEquation() {
@@ -9,7 +9,7 @@ function CenterOfMassEquation() {
     ];
 
     return(
-        <FormulaList categoryName={"Center of Mass Equations"} buttons={navigationButtons} />
+        <ButtonGrid categoryName={"Center of Mass Equations"} buttons={navigationButtons} />
     )
 }
 

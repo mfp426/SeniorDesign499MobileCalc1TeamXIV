@@ -1,4 +1,4 @@
-import FormulaList from "../../../components/FormulaList";
+import ButtonGrid from "../../../components/ButtonGrid";
 
 function EDRPage() {
 
@@ -7,7 +7,7 @@ function EDRPage() {
     ];
 
     return (
-        <FormulaList categoryName={"EDR"} buttons={navigationButtons} />
+        <ButtonGrid categoryName={"EDR"} buttons={navigationButtons} />
     );
 }
 

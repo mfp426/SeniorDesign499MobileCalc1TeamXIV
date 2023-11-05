@@ -1,7 +1,7 @@
-import FormulaList from "../../../components/FormulaList";
+import ButtonGrid from "../../../components/ButtonGrid";
 
 
-function ConstUniAvgEquation(props) {
+function ConstUniAvgEquation() {
 
     const navigationButtons = [
         { route: "/ConstantVelocityPage", title: "Constant Velocity" },
@@ -12,7 +12,7 @@ function ConstUniAvgEquation(props) {
     ];
 
     return(
-        <FormulaList categoryName={"Constant, Uniform, or Average Kinematic Equations"} buttons={navigationButtons} />
+        <ButtonGrid categoryName={"Constant, Uniform, or Average Kinematic Equations"} buttons={navigationButtons} />
     )
 }
 

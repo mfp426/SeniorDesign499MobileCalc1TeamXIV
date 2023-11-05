@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "./Header";
 
-const FormulaList = ({ categoryName, buttons }) => {
+const ButtonGrid = ({ categoryName, buttons }) => {
     const navigate = useNavigate();
 
     return (
@@ -25,4 +25,4 @@ const FormulaList = ({ categoryName, buttons }) => {
     );
 };
 
-export default FormulaList;
+export default ButtonGrid;

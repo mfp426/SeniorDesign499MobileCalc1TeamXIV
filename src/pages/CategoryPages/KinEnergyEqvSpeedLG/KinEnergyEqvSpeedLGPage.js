@@ -1,4 +1,4 @@
-import FormulaList from "../../../components/FormulaList";
+import ButtonGrid from "../../../components/ButtonGrid";
 
 function KinEnergyEqvSpeedLG() {
 
@@ -9,7 +9,7 @@ function KinEnergyEqvSpeedLG() {
     ];
     
     return (
-        <FormulaList categoryName={"Kinetic Energy Equivalent"} buttons = {navigationButtons} />
+        <ButtonGrid categoryName={"Kinetic Energy Equivalent"} buttons = {navigationButtons} />
     )
 }
 
