@@ -1,19 +1,19 @@
 import {useState} from "react";
 import Formula from "../../../../components/Formula";
-import NumericField from "../../../../components/NumericField";
-import {round} from "../../../../utils/conversions";
+import {round} from "../../../../utils/Conversions";
 import ToggleField from "../../../../components/ToggleField";
+import {getNumericFields} from "../../../../utils/FieldCreator";
 
 const rightFieldDescriptions = {
-    axle_weight: { name: "Weight of front axle on right side", placeholder: "Enter weight in pounds" },
-    track_width: { name: "Track Width", placeholder: "Enter track width in inches" },
-    weight: { name: "Total weight of the vehicle", placeholder: "Enter weight in pounds" },
+    axleWeight: { description: "Weight of front axle on right side", placeholderText: "Enter weight in pounds" },
+    trackWidth: { description: "Track Width", placeholderText: "Enter track width in inches" },
+    weight: { description: "Total weight of the vehicle", placeholderText: "Enter weight in pounds" },
 }
 
 const leftFieldDescriptions = {
-    axle_weight: { name: "Weight of front axle on left side", placeholder: "Enter weight in pounds" },
-    track_width: { name: "Track Width", placeholder: "Enter track width in inches" },
-    weight: { name: "Total weight of the vehicle", placeholder: "Enter weight in pounds" },
+    axleWeight: { description: "Weight of front axle on left side", placeholderText: "Enter weight in pounds" },
+    trackWidth: { description: "Track Width", placeholderText: "Enter track width in inches" },
+    weight: { description: "Total weight of the vehicle", placeholderText: "Enter weight in pounds" },
 }
 
 const toggleFieldDescriptions = {
@@ -23,32 +23,24 @@ const toggleFieldDescriptions = {
 function COMLateralPage() {
     const [comdist, setCOMdist] = useState(null);
     const [fields, setFields] = useState({
-        axle_weight: null,
-        track_width: null,
+        axleWeight: null,
+        trackWidth: null,
         weight: null,
         isRight: false,
     });
 
     const calculateDistance=()=>{
-        if (fields.axle_weight === null || fields.track_width === null || fields.weight === null) {
+        if (fields.axleWeight === null || fields.trackWidth === null || fields.weight === null) {
             alert("Please fill out all fields.");
         }
         else {
-            const dist = fields.axle_weight * fields.track_width / fields.weight;
+            const dist = fields.axleWeight * fields.trackWidth / fields.weight;
             setCOMdist(dist);
         }
     };
 
-    const getNumericFields = (fieldDescriptions) => {
-        return Object.keys(fieldDescriptions).map(fieldName => (
-            <NumericField
-                key={fieldName}
-                description={fieldDescriptions[fieldName].name}
-                value={fields[fieldName]}
-                onChange={(newValue) => setFields({ ...fields, [fieldName]: newValue })}
-                placeholderText={fieldDescriptions[fieldName].placeholder}
-            />
-        ));
+    const handleValueChange = (fieldName, newValue) => {
+        setFields(prevFields => ({...prevFields, [fieldName]: newValue}));
     }
 
     const toggleFields = Object.keys(toggleFieldDescriptions).map(fieldName => (
@@ -65,7 +57,7 @@ function COMLateralPage() {
             <Formula
                 formulaName={"Distance of COM from the left/right side of vehicle"}
                 toggleFields={toggleFields}
-                numericFields={fields.isRight ? getNumericFields(rightFieldDescriptions) : getNumericFields(leftFieldDescriptions)}
+                numericFields={fields.isRight ? getNumericFields(fields, rightFieldDescriptions, handleValueChange) : getNumericFields(fields, leftFieldDescriptions, handleValueChange)}
                 onCalculate={calculateDistance}
             />
             {comdist !== null && <p>Calculated distance of COM from the {fields.isRight ? "right" : "left"} side of vehicle: {round(comdist)}</p>}

@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import Formula from "../../../../components/Formula";
 import NumericField from "../../../../components/NumericField";
-import {round} from "../../../../utils/conversions";
+import {round} from "../../../../utils/Conversions";
 
 const fieldDescriptions = {
     distance: { description: "Distance:", placeholderText: "Enter distance in feet" },

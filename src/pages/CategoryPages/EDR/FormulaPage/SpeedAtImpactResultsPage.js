@@ -1,6 +1,6 @@
 import React from 'react';
 import {useLocation, useNavigate} from 'react-router-dom';
-import {mphToFps, mphToKph, mphToMps, round} from "../../../../utils/conversions";
+import {mphToFps, mphToKph, mphToMps, round} from "../../../../utils/Conversions";
 
 function ResultElement({ title, values }) {
     return (

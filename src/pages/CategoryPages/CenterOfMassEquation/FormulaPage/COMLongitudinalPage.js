@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import Formula from "../../../../components/Formula";
-import NumericField from "../../../../components/NumericField";
 import ToggleField from "../../../../components/ToggleField";
-import {round} from "../../../../utils/conversions";
+import {round} from "../../../../utils/Conversions";
+import {getNumericFields} from "../../../../utils/FieldCreator";
 
 const toggleFieldDescriptions = {
     isRear: "Front / Rear",
@@ -40,17 +40,9 @@ function COMLongitudinalPage() {
         }
     };
 
-    const getNumericFields = (fieldDescriptions) => {
-        return Object.keys(fieldDescriptions).map(fieldName => (
-            <NumericField
-                key={fieldName}
-                description={fieldDescriptions[fieldName].description}
-                value={fields[fieldName]}
-                onChange={(newValue) => setFields({ ...fields, [fieldName]: newValue })}
-                placeholderText={fieldDescriptions[fieldName].placeholderText}
-            />
-        ));
-    };
+    const handleValueChange = (fieldName, newValue) => {
+        setFields({...fields, [fieldName]: newValue});
+    }
 
     const toggleFields = Object.keys(toggleFieldDescriptions).map(fieldName => (
         <ToggleField
@@ -66,7 +58,7 @@ function COMLongitudinalPage() {
             <Formula
                 formulaName={"Distance behind the Front/Rear Axle of COM Location"}
                 toggleFields={toggleFields}
-                numericFields={fields.isRear ? getNumericFields(rearFieldDescriptions) : getNumericFields(frontFieldDescriptions)}
+                numericFields={fields.isRear ? getNumericFields(fields, rearFieldDescriptions, handleValueChange) : getNumericFields(fields, frontFieldDescriptions, handleValueChange)}
                 onCalculate={calculateDistance}
             />
             {comdist !== null && (

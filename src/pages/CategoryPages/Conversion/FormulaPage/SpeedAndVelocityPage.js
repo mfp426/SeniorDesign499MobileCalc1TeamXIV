@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import NumericField from "../../../../components/NumericField";
 import ToggleField from "../../../../components/ToggleField";
 import Formula from "../../../../components/Formula";
-import { round } from "../../../../utils/conversions";
+import { round } from "../../../../utils/Conversions";
+import {getNumericFields} from "../../../../utils/FieldCreator";
 
 const speedFieldDescriptions = {
     speed: { description: "Speed:", placeholderText: "mph" }
@@ -39,18 +39,6 @@ function SpeedAndVelocityPage() {
         setFields({ ...fields, [fieldName]: newValue });
     };
 
-    const getNumericFields = (fieldDescriptions) => {
-        return Object.keys(fieldDescriptions).map(fieldName => (
-            <NumericField
-                key={fieldName}
-                description={fieldDescriptions[fieldName].description}
-                value={fields[fieldName]}
-                onChange={(newValue) => handleValueChange(fieldName, newValue)}
-                placeholderText={fieldDescriptions[fieldName].placeholderText}
-            />
-        ));
-    };
-
     const toggleFields = Object.keys(toggleFieldDescriptions).map(fieldName => (
         <ToggleField
             key={fieldName}
@@ -60,12 +48,13 @@ function SpeedAndVelocityPage() {
         />
     ));
 
+
     return (
         <div className={"container mb-5 center"}>
             <Formula
                 formulaName={"Speed and Velocity Converter"}
                 toggleFields={toggleFields}
-                numericFields={fields.isSpeed ? getNumericFields(speedFieldDescriptions) : getNumericFields(velFieldDescriptions)}
+                numericFields={fields.isSpeed ? getNumericFields(fields, speedFieldDescriptions, handleValueChange) : getNumericFields(fields, velFieldDescriptions, handleValueChange)}
                 onCalculate={calculate}
             />
             {result !== null && (
