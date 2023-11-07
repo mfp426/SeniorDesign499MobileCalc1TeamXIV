@@ -3,20 +3,29 @@ import Autosuggest from 'react-autosuggest';
 import { Link, useNavigate } from 'react-router-dom';
 
 
-const SearchBarCategory = () => {
+const SearchBarFormula = () => {
   const [value, setValue] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const navigate = useNavigate();
 
   const searchKeywords = {
     
-    //Categroy Keywords
-    "Conversion Category": "/Conversions",
-    "Kinetic Energy Equivalent Category": "/KinEnergyEqvSpeedLGPage",
-    "Grade and Super Elevation Category": "/GradeAndSuperElevationPage",
-    "EDR Category": "/EDR",
-    "Constant Uni-Avg Equation Category": "/ConstUniAvgEquationPage",
-    "Center of Mass Equation Category": "/CenterOfMassEquationPage",
+    
+
+
+
+    //Formula Keywords
+    "Speed/Velocity Converter Formula": "/Conversions/SpeedAndVelocity",
+    "Speed/Velocity Sliding to Stop Formula": "/SpeedVelocitySlidingToStopPage",
+    "Percent Grade Formula": "/PercentGradePage",
+    "Percent Superelevation Formula": "/PercentSuperelevationPage",
+    "EDR Speed at Impact Formula": "/EDR/SpeedAtImpact",
+    "Constant Velocity Formula": "/ConstantVelocityPage",
+    "Constant Time Formula": "/ConstantTimePage",
+    "Constant Distance Formula": "/ConstantDistancePage",
+    "Slide to Stop Dist with Drag Formula": "/SlidetoStopDistWithDragPage",
+    "COM Longitudinal Fromula": "/COMLongitudinalPage",
+    "COM Lateral Formula": "/COMLateralPage",
 
 
 
@@ -58,6 +67,7 @@ const SearchBarCategory = () => {
 
   return (
     <div className="input-group"> {/* Use Bootstrap's input-group for styling */}
+   
     <Autosuggest
       suggestions={suggestions}
       onSuggestionsFetchRequested={onSuggestionsFetchRequested}
@@ -79,4 +89,4 @@ const SearchBarCategory = () => {
   );
 };
 
-export default SearchBarCategory;
+export default SearchBarFormula;
