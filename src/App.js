@@ -56,7 +56,7 @@ function App() {
       <Router>
         <NavBar />
         <Routes>
-          <Route path="/" element={<HomePage toggleState={toggleState} />} />
+          <Route path="/" element={<Calculator toggleState={toggleState} />} />
           {/* Main Pages*/}
           <Route path="/Calculator" element={<Calculator toggleState={toggleState} />} />
           <Route path="/HomePage" element={<HomePage toggleState={toggleState} />} />
