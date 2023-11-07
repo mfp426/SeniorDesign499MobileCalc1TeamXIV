@@ -2,19 +2,16 @@ import React, { useState } from 'react';
 import Autosuggest from 'react-autosuggest';
 import { Link, useNavigate } from 'react-router-dom';
 
-
+// Define a functional component for a search bar with formula suggestions
 const SearchBarFormula = () => {
+  // Initialize state variables for input value and suggestions
   const [value, setValue] = useState('');
   const [suggestions, setSuggestions] = useState([]);
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // React Router's navigation hook
 
+  // Define a mapping of formula keywords to their corresponding routes
   const searchKeywords = {
-    
-    
-
-
-
-    //Formula Keywords
+    // Formula Keywords
     "Speed/Velocity Converter Formula": "/Conversions/SpeedAndVelocity",
     "Speed/Velocity Sliding to Stop Formula": "/SpeedVelocitySlidingToStopPage",
     "Percent Grade Formula": "/PercentGradePage",
@@ -24,38 +21,31 @@ const SearchBarFormula = () => {
     "Constant Time Formula": "/ConstantTimePage",
     "Constant Distance Formula": "/ConstantDistancePage",
     "Slide to Stop Dist with Drag Formula": "/SlidetoStopDistWithDragPage",
-    "COM Longitudinal Fromula": "/COMLongitudinalPage",
+    "COM Longitudinal Formula": "/COMLongitudinalPage",
     "COM Lateral Formula": "/COMLateralPage",
-
-
-
-    
-    
-    
- 
-
-
   };
 
-  // Autosuggest will call this function every time you need to update suggestions
+  // This function is called to update suggestions when input changes
   const onSuggestionsFetchRequested = ({ value }) => {
     const inputValue = value.trim().toLowerCase();
+    // Filter keywords based on input value
     const matchingRoutes = Object.keys(searchKeywords).filter((route) =>
       route.toLowerCase().includes(inputValue)
     );
     setSuggestions(matchingRoutes);
   };
 
-  // Autosuggest will call this function every time you need to clear suggestions
+  // This function is called to clear suggestions
   const onSuggestionsClearRequested = () => {
     setSuggestions([]);
   };
 
-  // When a suggestion is selected, navigate to the corresponding route from the searchKeywords
+  // When a suggestion is selected, navigate to the corresponding route
   const onSuggestionSelected = (event, { suggestionValue }) => {
     navigate(searchKeywords[suggestionValue]);
   };
 
+  // Input properties for Autosuggest component
   const inputProps = {
     className: 'form-control',
     placeholder: 'Search',
@@ -67,26 +57,22 @@ const SearchBarFormula = () => {
 
   return (
     <div className="input-group"> {/* Use Bootstrap's input-group for styling */}
-   
-    <Autosuggest
-      suggestions={suggestions}
-      onSuggestionsFetchRequested={onSuggestionsFetchRequested}
-      onSuggestionsClearRequested={onSuggestionsClearRequested}
-      onSuggestionSelected={onSuggestionSelected}
-      getSuggestionValue={(suggestion) => suggestion}
-      renderSuggestion={(suggestion) => (
-        <Link to={searchKeywords[suggestion]} className="suggestion">
-          {suggestion}
-        </Link>
-      )}
-      inputProps={inputProps}
-    />
-    <div className="input-group-append">
-    
-      </div>
+      <Autosuggest
+        suggestions={suggestions}
+        onSuggestionsFetchRequested={onSuggestionsFetchRequested}
+        onSuggestionsClearRequested={onSuggestionsClearRequested}
+        onSuggestionSelected={onSuggestionSelected}
+        getSuggestionValue={(suggestion) => suggestion}
+        renderSuggestion={(suggestion) => (
+          <Link to={searchKeywords[suggestion]} className="suggestion">
+            {suggestion}
+          </Link>
+        )}
+        inputProps={inputProps}
+      />
+      
     </div>
-    
   );
 };
 
-export default SearchBarFormula;
+export default SearchBarFormula; // Export the SearchBarFormula component

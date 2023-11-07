@@ -60,6 +60,7 @@ const SearchBar = () => {
   // When a suggestion is selected, navigate to the corresponding route from the searchKeywords
   const onSuggestionSelected = (event, { suggestionValue }) => {
     navigate(searchKeywords[suggestionValue]);
+    setValue(''); // Reset the search bar value after selection a suggestion
   };
 
   const inputProps = {
