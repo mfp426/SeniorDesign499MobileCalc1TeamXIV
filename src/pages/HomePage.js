@@ -1,6 +1,6 @@
 
 
-function LoginPage(props){
+function HomePage(props){
     return(
         <h2>Welcome to home</h2>
     );
@@ -97,4 +97,4 @@ function LoginPage(props){
 //     );
 // }
 
-export default LoginPage;
+export default HomePage;

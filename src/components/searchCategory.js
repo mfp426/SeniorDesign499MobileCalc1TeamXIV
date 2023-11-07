@@ -22,7 +22,7 @@ const SearchBar = () => {
 
     //Formula Keywords
     "Speed/Velocity Converter Formula": "/Conversions/SpeedAndVelocity",
-    "Speed/Velocity Sliding to Stop Formula": "/SpeedVelocitySlidingToStopPage",
+    "Speed/Velocity Sliding to Stop Formula": "/SpeedSlidingToStopPage",
     "Percent Grade Formula": "/PercentGradePage",
     "Percent Superelevation Formula": "/PercentSuperelevationPage",
     "EDR Speed at Impact Formula": "/EDR/SpeedAtImpact",
@@ -36,9 +36,7 @@ const SearchBar = () => {
 
 
     
-    
-    
- 
+  
 
 
   };
@@ -63,7 +61,6 @@ const SearchBar = () => {
   };
 
   const inputProps = {
-    className: 'form-control',
     placeholder: 'Search',
     value,
     onChange: (e, { newValue }) => {
@@ -72,7 +69,6 @@ const SearchBar = () => {
   };
 
   return (
-    <div className="input-group"> {/* Use Bootstrap's input-group for styling */}
     <Autosuggest
       suggestions={suggestions}
       onSuggestionsFetchRequested={onSuggestionsFetchRequested}
@@ -86,11 +82,6 @@ const SearchBar = () => {
       )}
       inputProps={inputProps}
     />
-    <div className="input-group-append">
-    
-      </div>
-    </div>
-    
   );
 };
 
