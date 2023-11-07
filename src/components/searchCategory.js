@@ -46,7 +46,7 @@ const SearchBarCategory = () => {
     // Input properties for Autosuggest component
     const inputProps = {
         className: 'form-control',
-        placeholder: 'Search',
+        placeholder: 'Search Category',
         value,
         onChange: (e, { newValue }) => {
             setValue(newValue);

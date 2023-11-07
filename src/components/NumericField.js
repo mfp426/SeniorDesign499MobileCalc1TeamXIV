@@ -1,6 +1,8 @@
 import React from 'react';
 
-const NumericField = ({ description, onChange, disabled, placeholderText}) => {
+// Define a functional component for a numeric input field
+const NumericField = ({ description, onChange, disabled, placeholderText }) => {
+    // Function to handle input change
     const handleInputChange = (e) => {
         if (!disabled) {
             const newValue = parseFloat(e.target.value);
@@ -13,17 +15,17 @@ const NumericField = ({ description, onChange, disabled, placeholderText}) => {
     return (
         <div className="w-100">
             <label className="form-label">
-                {description}
+                {description} {/* Display the provided description */}
             </label>
             <input
                 type="number"
                 className={`form-control ${disabled ? 'bg-gray-200' : ''}`}
                 onChange={handleInputChange}
                 disabled={disabled}
-                placeholder={placeholderText}
+                placeholder={placeholderText} // Display the provided placeholder text
             />
         </div>
     );
 };
-export default NumericField;
 
+export default NumericField; // Export the NumericField component

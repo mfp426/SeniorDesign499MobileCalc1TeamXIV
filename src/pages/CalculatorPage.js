@@ -1,6 +1,7 @@
 import React from "react";
 import ButtonGrid from "../components/ButtonGrid";
 
+// Define an array of buttons with their corresponding routes and titles
 const buttons = [
     { route: "/Conversions", title: "Conversion" },
     { route: "/KinEnergyEqvSpeedLGPage", title: "Kinetic Energy Equivalent Speed Loss/Gain" },
@@ -10,9 +11,11 @@ const buttons = [
     { route: "/CenterOfMassEquationPage", title: "Center of Mass Equations" },
 ]
 
+// Define a functional component for the CalculatorPage
 function CalculatorPage() {
     return (
         <ButtonGrid categoryName={"Categories"} buttons={buttons} />
     );
 }
-export default CalculatorPage;
+
+export default CalculatorPage; // Export the CalculatorPage component
