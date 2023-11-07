@@ -9,35 +9,34 @@ const SearchBar = () => {
   const navigate = useNavigate();
 
   const searchKeywords = {
+    
+    //Categroy Keywords
+    "Conversion Category": "/Conversions",
+    "Kinetic Energy Equivalent Category": "/KinEnergyEqvSpeedLGPage",
+    "Grade and Super Elevation Category": "/GradeAndSuperElevationPage",
+    "EDR Category": "/EDR",
+    "Constant Uni-Avg Equation Category": "/ConstUniAvgEquationPage",
+    "Center of Mass Equation Category": "/CenterOfMassEquationPage",
+
+
+
+    //Formula Keywords
+    "Speed/Velocity Converter Formula": "/Conversions/SpeedAndVelocity",
+    "Speed/Velocity Sliding to Stop Formula": "/SpeedSlidingToStopPage",
+    "Percent Grade Formula": "/PercentGradePage",
+    "Percent Superelevation Formula": "/PercentSuperelevationPage",
+    "EDR Speed at Impact Formula": "/EDR/SpeedAtImpact",
     "Constant Velocity Formula": "/ConstantVelocityPage",
+    "Constant Time Formula": "/ConstantTimePage",
+    "Constant Distance Formula": "/ConstantDistancePage",
+    "Slide to Stop Dist with Drag Formula": "/SlidetoStopDistWithDragPage",
+    "COM Longitudinal Fromula": "/COMLongitudinalPage",
+    "COM Lateral Formula": "/COMLateralPage",
+
+
+
+    
   
-  "Constant Time Formula": "/ConstantTimePage",
-  "Conversion Category": "/ConversionPage",
-  "Kinetic Energy Equivalent Category": "/KinEnergyEqvSpeedLGPage",
-  "Velocity To Speed Converter Formula": "/VelocityToSpeedConverter",
-
-
-  "Velocity to Speed Formula": "/VelocityToSpeedPage",
-  "Kinetic Energy Equivalent Page": "/KinEnergyEqvSpeedLGPage",
-  "Speed Sliding to Stop Page": "/SpeedSlidingToStopPage",
-  "Velocity Sliding to Stop Page": "/VelocitySlidingtoStopPage",
-  "Speed to Velocity Page": "/SpeedToVelocityPage",
-  "Grade and Super Elevation Page": "/GradeAndSuperElevationPage",
-  "Percent Grade Page": "/PercentGradePage",
-  "Percent Superelevation Page": "/PercentSuperelevationPage",
-  "EDR Page": "/EDRPage",
-  "Speed at Impact Page": "/SpeedAtImpactPage",
-  "Constant Distance Page": "/ConstantDistancePage",
-  "Constant Uni-Avg Equation Page": "/ConstUniAvgEquationPage",
-  "Constant Velocity Page": "/ConstantVelocityPage",
-  "Constant Time Page": "/ConstantTimePage",
-  "Slide to Stop Dist with Drag Page": "/SlidetoStopDistWithDragPage",
-  "Speed at Impact Results Page": "/SpeedAtImpactResultsPage",
-  "Center of Mass Equation Page": "/CenterOfMassEquationPage",
-  "COM Lateral Right Page": "/COMLateralPage",
-  "COM Longitudinal Front Page": "/COMLongitudinalFrontPage",
-  "COM Longitudinal Rear Page": "/COMLongitudinalRearPage",
-
 
 
   };

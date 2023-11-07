@@ -34,32 +34,32 @@ import COMLongitudinalPage from "./pages/CategoryPages/CenterOfMassEquation/Form
 //Search Mapping
 const searchMapping = {
 
-  //Category Mapping
+  // //Category Mapping
 
-  "Conversion Category": "/ConversionPage",
-  "Kinetic Energy Equivalent Category": "/KinEnergyEqvSpeedLGPage",
+  // "Conversion Category": "/ConversionPage",
+  // "Kinetic Energy Equivalent Category": "/KinEnergyEqvSpeedLGPage",
 
-  //Formula Mapping
-  "Constant Velocity Formula": "/ConstantVelocityPage",
-  "Constant Time Formula": "/ConstantTimePage",
-  "Velocity To Speed Converter Formula": "/VelocityToSpeedConverter",
-  "Speed To Velocity Formula": "/SpeedToVelocityPage",
+  // //Formula Mapping
+  // "Constant Velocity Formula": "/ConstantVelocityPage",
+  // "Constant Time Formula": "/ConstantTimePage",
+  // "Velocity To Speed Converter Formula": "/VelocityToSpeedConverter",
+  // "Speed To Velocity Formula": "/SpeedToVelocityPage",
 
 
-  "SpeedSlidingToStop": "/SpeedSlidingToStop",
-  "VelocitySlidingToStop": "/VelocitySlidingToStop",
-  "GradeAndSuperElevationPage": "/GradeAndSuperElevationPage",
-  "PercentGradePage": "/PercentGradePage",
-  "PercentSuperelevationPage": "/PercentSuperelevationPage",
-  "EDRPage": "/EDRPage",
-  "SpeedAtImpactPage": "/SpeedAtImpactPage",
-  "ConstUniAvgEquationPage": "/ConstUniAvgEquationPage",
-  "ConstantDistancePage": "/ConstantDistancePage",
-  "SlidetoStopDistWithDragPage": "/SlidetoStopDistWithDragPage",
-  "SpeedAtImpactResultsPage": "/SpeedAtImpactResultsPage",
-  "CenterOfMassEquationPage": "/CenterOfMassEquationPage",
-  "COMLateralPage": "/COMLateralPage",
-  "COMLongitudinalPage": "/COMLongitudinalPage",
+  // "SpeedSlidingToStop": "/SpeedSlidingToStop",
+  // "VelocitySlidingToStop": "/VelocitySlidingToStop",
+  // "GradeAndSuperElevationPage": "/GradeAndSuperElevationPage",
+  // "PercentGradePage": "/PercentGradePage",
+  // "PercentSuperelevationPage": "/PercentSuperelevationPage",
+  // "EDRPage": "/EDRPage",
+  // "SpeedAtImpactPage": "/SpeedAtImpactPage",
+  // "ConstUniAvgEquationPage": "/ConstUniAvgEquationPage",
+  // "ConstantDistancePage": "/ConstantDistancePage",
+  // "SlidetoStopDistWithDragPage": "/SlidetoStopDistWithDragPage",
+  // "SpeedAtImpactResultsPage": "/SpeedAtImpactResultsPage",
+  // "CenterOfMassEquationPage": "/CenterOfMassEquationPage",
+  // "COMLateralPage": "/COMLateralPage",
+  // "COMLongitudinalPage": "/COMLongitudinalPage",
 };
 
 const SearchResults = () => {
