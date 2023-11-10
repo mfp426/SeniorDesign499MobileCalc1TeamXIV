@@ -31,6 +31,7 @@ import SpeedAtImpactResultsPage from "./pages/CategoryPages/EDR/FormulaPage/Spee
 import CenterOfMassEquationPage from "./pages/CategoryPages/CenterOfMassEquation/CenterOfMassEquationPage";
 import COMLateralPage from "./pages/CategoryPages/CenterOfMassEquation/FormulaPage/COMLateralPage";
 import COMLongitudinalPage from "./pages/CategoryPages/CenterOfMassEquation/FormulaPage/COMLongitudinalPage";
+import RadiusCalculationPage from "./pages/CategoryPages/RadiusCalculation/RadiusCalculationPage.js";
 
 
 
@@ -86,6 +87,9 @@ function App() {
           <Route path="/CenterOfMassEquationPage" element={<CenterOfMassEquationPage />} />
           <Route path="/COMLateralPage" element={<COMLateralPage />} />
           <Route path="/COMLongitudinalPage" element={<COMLongitudinalPage />} />
+
+          {/*Radius Calculation*/}
+          <Route path="/RadiusCalculationPage" element={<RadiusCalculationPage />} />
 
         </Routes>
         <Footer />
