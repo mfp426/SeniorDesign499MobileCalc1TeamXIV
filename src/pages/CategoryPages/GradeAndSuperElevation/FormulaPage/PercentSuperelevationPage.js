@@ -1,46 +1,51 @@
 import {useState} from 'react';
+import Formula from "../../../../components/Formula";
+import NumericField from "../../../../components/NumericField";
+import {round} from "../../../../utils/Conversions";
 
-const PercentSuperelevation=()=>{
-    const [rise, setRise] = useState();
-    const [run, setRun] = useState();
-    const [superelevation, setSuperelevation] = useState();
+const fieldDescriptions = {
+    rise: { description: "Rise:", placeholderText: "Enter rise in feet" },
+    run: { description: "Run:", placeholderText: "Enter run in feet" },
+}
+
+function PercentSuperelevationPage() {
+
+    const [fields, setFields] = useState({
+        rise: null,
+        run: null,
+    });
+
+    const [superelevation, setSuperelevation] = useState(null);
     const superelevationPercent = () => {
-        const Superelevation = rise/run;
-        setSuperelevation(Superelevation);
+        if (fields.rise === null || fields.run === null) {
+            alert("Please fill out all fields.");
+        }
+        else {
+            const Superelevation = fields.rise / fields.run;
+            setSuperelevation(Superelevation);
+        }
     };
+
+    const numericFields = Object.keys(fieldDescriptions).map(fieldName => (
+        <NumericField
+            key={fieldName}
+            description={fieldDescriptions[fieldName].description}
+            value={fields[fieldName]}
+            onChange={(newValue) => setFields({...fields, [fieldName]: newValue})}
+            placeholderText={fieldDescriptions[fieldName].placeholderText}
+        />
+    ));
 
     return (
         <div>
-        <h2>Percent of Superelevation</h2>
-        <div className="mb-1 mt-1">
-            <label for="riseInput" className="form-label"><h2>Rise:</h2></label>
-            <input type="number" className="form-control" id="riseInput" placeholder="Enter rise in feet"
-                   value={rise} onChange={(e) => setRise(parseFloat(e.target.value))} required />
-            <div className="valid-feedback">Valid.</div>
-            <div className="invalid-feedback fs-9">Please fill out this field.</div>
+            <Formula
+                formulaName={"Percent of Superelevation"}
+                numericFields={numericFields}
+                onCalculate={superelevationPercent}
+            />
+            {superelevation !== null && <p>Calculated percent of superelevation: {round(superelevation)}</p>}
         </div>
-
-        <div className="mb-1 mt-1">
-            <label for="runInput" className="form-label"><h2>Run:</h2></label>
-            <input type="number" className="form-control" id="runInput" placeholder="Enter run in feet"
-                   value={run} onChange={(e) => setRun(parseFloat(e.target.value))} required />
-            <div className="valid-feedback">Valid.</div>
-            <div className="invalid-feedback fs-9">Please fill out this field.</div>
-        </div>
-
-        <div>
-
-        </div>
-
-        <button type="submit" className="btn btn-primary mt-4" onClick={superelevationPercent}>Calculate</button>
-
-        <div>
-            <h3>Calculated percent of superelevation:</h3>
-            <p>{superelevation}%</p>
-        </div>
-    </div>
-
     );
-};
+}
 
-export default PercentSuperelevation;
+export default PercentSuperelevationPage;

@@ -1,11 +1,11 @@
 import React from 'react';
 import {useLocation, useNavigate} from 'react-router-dom';
-import {mphToFps, mphToKph, mphToMps, round} from "../../../../utils/conversions";
+import {mphToFps, mphToKph, mphToMps, round} from "../../../../utils/Conversions";
 
 function ResultElement({ title, values }) {
     return (
         <div>
-            <h1 className="text-xl font-semibold">{title}</h1>
+            <h3 className="text-sm font-semibold">{title}</h3>
             <div className="grid grid-cols-2">
                 <p>Min</p>
                 <p>Max</p>
@@ -21,8 +21,8 @@ function SpeedResultElement({speedData}) {
     return (
         <div>
             <div className={"grid grid-cols-2"}>
-                <h1 className="text-xl font-semibold">Min Speed</h1>
-                <h1 className="text-xl font-semibold">Max Speed</h1>
+                <h1 className="text-md font-semibold">Min Speed</h1>
+                <h1 className="text-md font-semibold">Max Speed</h1>
                 {speedData.map((speed, index) => (
                     <React.Fragment key={index}>
                         <p>{speed.min} {speed.unit}</p>
@@ -34,7 +34,7 @@ function SpeedResultElement({speedData}) {
     );
 }
 
-export default function SpeedAtImpactResultsPage() {
+function SpeedAtImpactResultsPage() {
 
     const location = useLocation();
     const fields = location.state ? location.state.fields : null;
@@ -125,3 +125,4 @@ export default function SpeedAtImpactResultsPage() {
         </div>
     );
 }
+export default SpeedAtImpactResultsPage;

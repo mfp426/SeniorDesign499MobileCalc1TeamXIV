@@ -1,20 +1,22 @@
 import {
   BrowserRouter as Router,
   Routes,
-  Route
+  Route,
 } from "react-router-dom";
 import './App.css';
+
 import { useState } from 'react';
+
 import NavBar from './components/Navbar.js';
 import Calculator from "./pages/CalculatorPage";
 import HomePage from "./pages/HomePage";
+import SearchPage from "./pages/SearchPage.js";
 import ConversionPage from "./pages/CategoryPages/Conversion/ConversionPage";
 import KinEnergyEqvSpeedLGPage from "./pages/CategoryPages/KinEnergyEqvSpeedLG/KinEnergyEqvSpeedLGPage";
-import VelocityToSpeedConverter from "./pages/CategoryPages/Conversion/FormulaPage/VelocityToSpeedPage";
-import SpeedToVelocityPage from "./pages/CategoryPages/Conversion/FormulaPage/SpeedToVelocityPage";
-import SpeedSlidingToStop from "./pages/CategoryPages/KinEnergyEqvSpeedLG/FormulaPage/SpeedSlidingToStopPage";
+import SpeedAndVelocityPage from "./pages/CategoryPages/Conversion/FormulaPage/SpeedAndVelocityPage";
+import SpeedVelocitySlidingToStop from "./pages/CategoryPages/KinEnergyEqvSpeedLG/FormulaPage/SpeedVelocitySlidingToStopPage";
+
 import Footer from "./components/Footer.js";
-import VelocitySlidingToStop from "./pages/CategoryPages/KinEnergyEqvSpeedLG/FormulaPage/VelocitySlidingToStopPage";
 import GradeAndSuperElevationPage from "./pages/CategoryPages/GradeAndSuperElevation/GradeAndSuperElevationPage";
 import PercentGradePage from "./pages/CategoryPages/GradeAndSuperElevation/FormulaPage/PercentGradePage";
 import PercentSuperelevationPage from "./pages/CategoryPages/GradeAndSuperElevation/FormulaPage/PercentSuperelevationPage";
@@ -27,19 +29,24 @@ import ConstantTimePage from "./pages/CategoryPages/ConstUniAvgEquation/FormulaP
 import SlidetoStopDistWithDragPage from "./pages/CategoryPages/ConstUniAvgEquation/FormulaPage/SlidetoStopDistWithDragPage.js"
 import SpeedAtImpactResultsPage from "./pages/CategoryPages/EDR/FormulaPage/SpeedAtImpactResultsPage";
 import CenterOfMassEquationPage from "./pages/CategoryPages/CenterOfMassEquation/CenterOfMassEquationPage";
-import COMLateralLeftPage from "./pages/CategoryPages/CenterOfMassEquation/FormulaPage/COMLateralLeftPage";
-import COMLateralRightPage from "./pages/CategoryPages/CenterOfMassEquation/FormulaPage/COMLateralRightPage";
-import COMLongitudinalFrontPage from "./pages/CategoryPages/CenterOfMassEquation/FormulaPage/COMLongitudinalFrontPage";
-import COMLongitudinalRearPage from "./pages/CategoryPages/CenterOfMassEquation/FormulaPage/COMLongitudinalRearPage";
+import COMLateralPage from "./pages/CategoryPages/CenterOfMassEquation/FormulaPage/COMLateralPage";
+import COMLongitudinalPage from "./pages/CategoryPages/CenterOfMassEquation/FormulaPage/COMLongitudinalPage";
+import RadiusCalculationPage from "./pages/CategoryPages/RadiusCalculation/RadiusCalculationPage.js";
+
+
+
+
+
+
 
 
 
 
 function App() {
 
-    const [toggle, setToggle] = useState(true);
+  const [toggle, setToggle] = useState(true);
 
-    const toggleState = () => setToggle(!toggle);
+  const toggleState = () => setToggle(!toggle);
 
 
 
@@ -50,34 +57,42 @@ function App() {
       <Router>
         <NavBar />
         <Routes>
-          <Route path="/" element={<HomePage toggleState={toggleState}/>} />
-          <Route path = "/Calculator" element={<Calculator toggleState={toggleState}/>} />
-          <Route path = "/HomePage" element={<HomePage toggleState={toggleState}/>} />
-          <Route path = "/ConversionPage" element={<ConversionPage toggleState={toggleState}/>} />
-          <Route path = "/VelocityToSpeedPage" element={<VelocityToSpeedConverter toggleState= {toggleState} />}/>
-          <Route path = "/KinEnergyEqvSpeedLGPage" element={<KinEnergyEqvSpeedLGPage toggleState= {toggleState} />}/>
-          <Route path = "/SpeedSlidingToStopPage" element = {<SpeedSlidingToStop toggleState={toggleState}/>}/>
-          <Route path = "/VelocitySlidingtoStopPage" element = {<VelocitySlidingToStop toggleState = {toggleState}/>}/>
-          <Route path = "/SpeedToVelocityPage" element={<SpeedToVelocityPage toggleState={toggleState}/>} />
-          <Route path = "/GradeAndSuperElevationPage" element={<GradeAndSuperElevationPage toggleState= {toggleState}/>}/>
-          <Route path = "/PercentGradePage" element={<PercentGradePage toggleState={toggleState}/>}/>
-          <Route path = "/PercentSuperelevationPage" element={<PercentSuperelevationPage toggleState={toggleState}/>}/>
-          <Route path = "/EDRPage" element={<EDRPage toggleState={toggleState}/>}/>
-          <Route path = "/SpeedAtImpactPage" element={<SpeedAtImpactPage/>}/>
-          <Route path = "/ConstantDistancePage" element={<ConstantDistancePage/>}/>
-          <Route path = "/ConstUniAvgEquationPage" element={<ConstUniAvgEquationPage/>}/>
-          <Route path = "/ConstantVelocityPage" element = {<ConstantVelocityPage/>}/>
-          <Route path = "/ConstantTimePage" element = {<ConstantTimePage/>}/>
-          <Route path = "/SlidetoStopDistWithDragPage" element ={<SlidetoStopDistWithDragPage/>}/>
-          <Route path ="/SpeedAtImpactResultsPage" element={<SpeedAtImpactResultsPage/>} />
-          <Route path = "/CenterOfMassEquationPage" element ={<CenterOfMassEquationPage/>}/>
-          <Route path = "/COMLateralLeftPage" element ={<COMLateralLeftPage/>}/>
-          <Route path = "/COMLateralRightPage" element ={<COMLateralRightPage/>}/>
-          <Route path = "/COMLongitudinalFrontPage" element ={<COMLongitudinalFrontPage/>}/>
-          <Route path = "/COMLongitudinalRearPage" element ={<COMLongitudinalRearPage/>}/>
+          <Route path="/" element={<Calculator toggleState={toggleState} />} />
+          {/* Main Pages*/}
+          <Route path="/Calculator" element={<Calculator toggleState={toggleState} />} />
+          <Route path="/HomePage" element={<HomePage toggleState={toggleState} />} />
+          <Route path="/SearchPage" element={<SearchPage toggleState={toggleState} />} />
+
+          {/* Conversion */}
+          <Route path="/Conversions" element={<ConversionPage toggleState={toggleState} />} />
+          <Route path="/Conversions/SpeedAndVelocity" element={<SpeedAndVelocityPage toggleState={toggleState} />} />
+          {/*Kinematic Energy Equivalent */}
+          <Route path="/KinEnergyEqvSpeedLGPage" element={<KinEnergyEqvSpeedLGPage toggleState={toggleState} />} />
+          <Route path="/SpeedVelocitySlidingToStopPage" element={<SpeedVelocitySlidingToStop toggleState={toggleState} />} />
+          {/* Grade and Super elevation */}
+          <Route path="/GradeAndSuperElevationPage" element={<GradeAndSuperElevationPage toggleState={toggleState} />} />
+          <Route path="/PercentGradePage" element={<PercentGradePage toggleState={toggleState} />} />
+          <Route path="/PercentSuperelevationPage" element={<PercentSuperelevationPage toggleState={toggleState} />} />
+          {/* EDR */}
+          <Route path="/EDR" element={<EDRPage toggleState={toggleState} />} />
+          <Route path="/EDR/SpeedAtImpact" element={<SpeedAtImpactPage />} />
+          <Route path="/EDR/SpeedAtImpact/Results" element={<SpeedAtImpactResultsPage />} />
+          {/* Constant Uniform Acceleration Equations */}
+          <Route path="/ConstUniAvgEquationPage" element={<ConstUniAvgEquationPage />} />
+          <Route path="/ConstantVelocityPage" element={<ConstantVelocityPage />} />
+          <Route path="/ConstantTimePage" element={<ConstantTimePage />} />
+          <Route path="/ConstantDistancePage" element={<ConstantDistancePage />} />
+          <Route path="/SlidetoStopDistWithDragPage" element={<SlidetoStopDistWithDragPage />} />
+          {/* Center of Mass Equations */}
+          <Route path="/CenterOfMassEquationPage" element={<CenterOfMassEquationPage />} />
+          <Route path="/COMLateralPage" element={<COMLateralPage />} />
+          <Route path="/COMLongitudinalPage" element={<COMLongitudinalPage />} />
+
+          {/*Radius Calculation*/}
+          <Route path="/RadiusCalculationPage" element={<RadiusCalculationPage />} />
 
         </Routes>
-        <Footer/>
+        <Footer />
       </Router>
     </div>
   );

@@ -1,6 +1,6 @@
-import FormulaList from "../../../components/FormulaList";
+import ButtonGrid from "../../../components/ButtonGrid";
 
-function GradeAndSuperElevation(props){
+function GradeAndSuperElevation() {
 
     const navigationButtons = [
         { route: "/PercentGradePage", title: "Percent Grade" },
@@ -10,7 +10,7 @@ function GradeAndSuperElevation(props){
 
 
     return (
-        <FormulaList categoryName={"Grade and Superelevation"} buttons={navigationButtons} />
+        <ButtonGrid categoryName={"Grade and Superelevation"} buttons={navigationButtons} />
     )
 }
 

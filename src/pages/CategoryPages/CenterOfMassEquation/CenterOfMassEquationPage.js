@@ -1,19 +1,17 @@
-import FormulaList from "../../../components/FormulaList";
+import ButtonGrid from "../../../components/ButtonGrid";
 
-
-function CenterOfMassEquation(props) {
-
+// Define a functional component for the CenterOfMassEquation
+function CenterOfMassEquation() {
+    // Define an array of navigation buttons with their corresponding routes and titles
     const navigationButtons = [
-        { route: "/COMLongitudinalFrontPage", title: "Distance behind the Front Axle of COM Location" },
-        { route: "/COMLongitudinalRearPage", title: "Distance behind the Rear Axle of COM Location" },
-        { route: "/COMLateralLeftPage", title: "Distance of COM from the left side of vehicle" },
-        { route: "/COMLateralRightPage", title: "Distance of COM from the right side of vehicle" },
-        // Add more buttons as needed
+        { route: "/COMLongitudinalPage", title: "Distance behind the Front/Rear Axle of COM Location" },
+        { route: "/COMLateralPage", title: "Distance of COM from the left/right side of vehicle" },
     ];
 
-    return(
-        <FormulaList categoryName={"Center of Mass Equations"} buttons={navigationButtons} />
+    return (
+        <ButtonGrid categoryName={"Center of Mass Equations"} buttons={navigationButtons} />
+        // Render the ButtonGrid component with the category name and navigation buttons
     )
 }
 
-export default CenterOfMassEquation;
+export default CenterOfMassEquation; // Export the CenterOfMassEquation component

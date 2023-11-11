@@ -1,13 +1,13 @@
-import FormulaList from "../../../components/FormulaList";
+import ButtonGrid from "../../../components/ButtonGrid";
 
-function EDRPage(props) {
+function EDRPage() {
 
     const navigationButtons = [
-        { route: "/SpeedAtImpactPage", title: "Speed at Impact" },
+        { route: "/EDR/SpeedAtImpact", title: "Speed at Impact" },
     ];
 
     return (
-        <FormulaList categoryName={"EDR"} buttons={navigationButtons} />
+        <ButtonGrid categoryName={"EDR"} buttons={navigationButtons} />
     );
 }
 

@@ -1,68 +1,31 @@
-
-
 import {
-  Link
+  Link 
 } from "react-router-dom";
+import React from "react";
+import SearchBar from './searchBar'; // Import the SearchBar component
 
-
+// Define a functional component for the navigation bar
 function NavBar(props) {
-
-  const data = localStorage.getItem("allUsers");
-  const user= JSON.parse(data) || '[]';
-
-  if(user === '[]' ){
-    return (
-      <nav className="navbar  navbar-expand navbar-light bg-light ">
-          <div className="container-fluid ">
-            <ul className="nav navbar-nav ">
-            {/* <li className="nav-item">
-                <Link to ="/LoginPage" className="nav-link">Log in</Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/AccountPage" className="nav-link">Account</Link>
-              </li>
-
-              <li className="nav-item">
-                <Link to ="/SignupPage" className="nav-link">Sign up</Link>
-              </li> */}
-              <li className="nav-item">
-                <Link to ="/HomePage" className="nav-link">Home</Link>
-              </li>
-              <li className="nav-item">
-                <Link to ="/Calculator" className="nav-link">Calculator</Link>
-              </li>
-            </ul>
-
-
-          </div>
-        </nav>
-    );
-  }
-  else{
-    return (
-      <nav className="navbar  navbar-expand navbar-light bg-light ">
-          <div className="container-fluid ">
-            <ul className="nav navbar-nav ">
-            <li className="nav-item">
-                <Link to ="/HomePage" className="nav-link">Home</Link>
-              </li>
-            {/* <li className="nav-item">
-                <Link to ="/LoginPage" className="nav-link">Log in</Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/AccountPage" className="nav-link">Account</Link>
-              </li>
-
-              <li className="nav-item">
-                <Link to ="/SignupPage" className="nav-link">Sign up</Link>
-              </li> */}
-              <li className="nav-item">
-                <Link to ="/Calculator" className="nav-link">Calculator</Link>
-              </li>
-            </ul>
-          </div>
-        </nav>
-    );
-  }
+  return (
+    <nav className="navbar  navbar-expand navbar-light bg-light ">
+      <div className="container-fluid ">
+        <ul className="nav navbar-nav ">
+          
+          <li className="nav-item">
+            <Link to ="/Calculator" className="nav-link">Calculator</Link>
+          </li>
+          <li className="nav-item">
+            <Link to ="SearchPage" className="nav-link">Search</Link>
+          </li>
+        
+          <li className="nav-item">
+        <SearchBar /> {/* Render the SearchBar component within the navigation bar */}
+        </li>
+        </ul>
+        
+      </div>
+    </nav>
+  );
 }
-export default NavBar;
+
+export default NavBar; // Export the NavBar component

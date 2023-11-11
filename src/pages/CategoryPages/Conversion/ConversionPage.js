@@ -1,16 +1,14 @@
-import FormulaList from "../../../components/FormulaList";
+import ButtonGrid from "../../../components/ButtonGrid";
 
 
-function Conversion(props) {
+function Conversion() {
 
     const navigationButtons = [
-        { route: "/SpeedToVelocityPage", title: "Speed to Velocity" },
-        { route: "/VelocityToSpeedPage", title: "Velocity to Speed" },
-        // Add more buttons as needed
+        { route: "/Conversions/SpeedAndVelocity", title: "Speed and Velocity" },
     ];
 
     return(
-        <FormulaList categoryName={"Conversion"} buttons={navigationButtons} />
+        <ButtonGrid categoryName={"Conversion"} buttons={navigationButtons} />
     )
 }
 

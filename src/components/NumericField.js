@@ -1,7 +1,8 @@
 import React from 'react';
 
-// TODO: add input validation
-const NumericField = ({ description, value, onChange, disabled }) => {
+// Define a functional component for a numeric input field
+const NumericField = ({ description, onChange, disabled, placeholderText }) => {
+    // Function to handle input change
     const handleInputChange = (e) => {
         if (!disabled) {
             const newValue = parseFloat(e.target.value);
@@ -12,20 +13,19 @@ const NumericField = ({ description, value, onChange, disabled }) => {
     };
 
     return (
-        <div className={"grid grid-cols-2"}>
-            <label className="pr-4 text-gray-700 text-sm font-bold">
-                {description}
+        <div className="w-100">
+            <label className="form-label">
+                {description} {/* Display the provided description */}
             </label>
             <input
                 type="number"
-                className={`border rounded py-1 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${disabled ? 'bg-gray-200' : ''}`}
-                value={value}
+                className={`form-control ${disabled ? 'bg-gray-200' : ''}`}
                 onChange={handleInputChange}
                 disabled={disabled}
+                placeholder={placeholderText} // Display the provided placeholder text
             />
         </div>
     );
 };
 
-export default NumericField;
-
+export default NumericField; // Export the NumericField component

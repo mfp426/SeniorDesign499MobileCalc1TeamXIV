@@ -1,43 +1,53 @@
-import {useState} from 'react';
+import { useState } from 'react';
+import Formula from "../../../../components/Formula";
+import NumericField from "../../../../components/NumericField";
 
-const ConstantDistance=()=>{
-    const [velocity, setVelocity] = useState();
-    const [time, setTime] = useState();
-    const [distance, setDistance] = useState();
+// Field descriptions for the numeric input fields
+const fieldDescriptions = {
+    velocity: { description: "The velocity of the object in feet per second.", placeholderText: "Enter velocity in fps" },
+    time: { description: "The time traveled in seconds.", placeholderText: "Enter time in seconds" },
+}
 
-    const calculateDistance = () =>{
-        const dist = velocity * time;
-        setDistance(dist);
+// Define a functional component for ConstantDistancePage
+function ConstantDistancePage() {
+    // State for input fields and calculated distance
+    const [fields, setFields] = useState({
+        velocity: null,
+        time: null,
+    });
+    const [distance, setDistance] = useState(null);
+
+    // Function to calculate the constant distance
+    const calculateDistance = () => {
+        if (fields.velocity === null || fields.time === null) {
+            alert("Please fill out all fields.");
+        } else {
+            const dist = fields.velocity * fields.time;
+            setDistance(dist);
+        }
     };
 
-    return(
-        <div>
-            <h2> Constant Distance</h2>
-            <div className="mb-1 mt-1">
-                <label for="velocityInput" className="form-label"><h2> Velocity:</h2></label>
-                <input type="number" className="form-control" id="velocityInput" placeholder="Enter velocity in fps"
-                   value={velocity} onChange={(e) => setVelocity(parseFloat(e.target.value))} required />
-                <div className="valid-feedback">Valid.</div>
-                <div className="invalid-feedback fs-9">Please fill out this field.</div>
-            </div>
+    // Create numeric input fields based on fieldDescriptions
+    const numericFields = Object.keys(fieldDescriptions).map(fieldName => (
+        <NumericField
+            key={fieldName}
+            description={fieldDescriptions[fieldName].description}
+            value={fields[fieldName]}
+            onChange={(newValue) => setFields({ ...fields, [fieldName]: newValue })}
+            placeholderText={fieldDescriptions[fieldName].placeholderText}
+        />
+    ));
 
-            <div className="mb-1 mt-1">
-                <label for="timeInput" className="form-label"><h2>Time traveled:</h2></label>
-                <input type="number" className="form-control" id="timeInput" placeholder="Enter time in seconds"
-                        value={time} onChange={(e) => setTime(parseFloat(e.target.value))} required />
-                <div className="valid-feedback">Valid.</div>
-                <div className="invalid-feedback fs-9">Please fill out this field.</div>
-            </div>
-
-            <button type="submit" className="btn btn-primary mt-4" onClick={calculateDistance}>Calculate</button>
-
-        <div>
-            <h3>Calculated Constant Distance:</h3>
-            <p>{distance} feet</p>
+    return (
+        <div className={"container mb-5 center"}>
+            <Formula
+                formulaName={"Constant Distance"}
+                numericFields={numericFields}
+                onCalculate={calculateDistance}
+            />
+            {distance !== null && <p>Calculated Constant Distance: {distance}</p>}
         </div>
-    </div>
-        
     );
-};
+}
 
-export default ConstantDistance;
+export default ConstantDistancePage;
