@@ -1,15 +1,20 @@
 import React from "react";
 import Header from "./Header";
 
-function Formula({ formulaName = "Formula", numericFields = [], toggleFields = [], onCalculate }) {
+function Formula({ formulaName = "Formula", extraInfo = "info" ,numericFields = [], toggleFields = [], onCalculate }) {
     return (
         <div className={"container mb-5 center"}>
             <Header text={formulaName}/>
             <div className="flex flex-col gap-4">
+
                 {/* Render Toggle Fields */}
                 {toggleFields.map((field, index) => (
                     <div key={index}>{field}</div>
                 ))}
+
+                {/* For use when constants or extra info need to be displayed */}
+                <div>{extraInfo} </div>
+
                 {/* Render Numeric Fields */}
                 {numericFields.map((field, index) => (
                     <div key={index}>{field}</div>

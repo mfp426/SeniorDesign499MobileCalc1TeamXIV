@@ -9,7 +9,9 @@ const buttons = [
     { route: "/EDR", title: "EDR" },
     { route: "/ConstUniAvgEquationPage", title: "Constant, Uniform, or Average Kinematic Equations" },
     { route: "/CenterOfMassEquationPage", title: "Center of Mass Equations" },
-    { route: "/RadiusCalculationPage", title: "Radius Calculation"}
+    { route: "/RadiusCalculationPage", title: "Radius Calculation"},
+    { route: "/KinEnrgWorkPage", title: "Kinetic Energy and Work"},
+    { route: "/AcceDeceRatePage", title: "Acceleration / Deceleration Rate"}
 ]
 
 // Define a functional component for the CalculatorPage
