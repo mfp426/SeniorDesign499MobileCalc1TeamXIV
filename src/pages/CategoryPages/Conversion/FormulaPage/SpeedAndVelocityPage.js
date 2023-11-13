@@ -13,7 +13,7 @@ const velFieldDescriptions= {
 };
 
 const toggleFieldDescriptions = {
-    isSpeed: "Velocity to Speed / Speed to Velocity",
+    isSpeed: "Velocity (fps) to Speed (mph) / Speed (mph) to Velocity (fps)",
 };
 
 function SpeedAndVelocityPage() {
@@ -52,7 +52,7 @@ function SpeedAndVelocityPage() {
     return (
         <div className={"container mb-5 center"}>
             <Formula
-                formulaName={"Speed and Velocity Converter"}
+                formulaName={"Speed (mph) and Velocity (fps) Converter"}
                 toggleFields={toggleFields}
                 numericFields={fields.isSpeed ? getNumericFields(fields, speedFieldDescriptions, handleValueChange) : getNumericFields(fields, velFieldDescriptions, handleValueChange)}
                 onCalculate={calculate}
