@@ -25,15 +25,6 @@ function SpeedAndVelocityPage() {
 
     const [result, setResult] = useState(null);
 
-    const calculate = () => {
-        if ((!fields.isSpeed && fields.velocity === null) || (fields.isSpeed && fields.speed === null)) {
-            alert("Please fill out all fields.");
-        }
-        else {
-            fields.isSpeed ? setResult(fields.speed * 1.466) : setResult(fields.velocity / 1.466);
-        }
-    };
-
     const handleValueChange = (fieldName, newValue) => {
         (fieldName === "isSpeed" && result) && setResult(null);
         setFields({ ...fields, [fieldName]: newValue });
@@ -53,8 +44,12 @@ function SpeedAndVelocityPage() {
             <Formula
                 formulaName={"Speed (mph) and Velocity (fps) Converter"}
                 toggleFields={toggleFields}
-                numericFields={fields.isSpeed ? getNumericFields(fields, speedFieldDescriptions, handleValueChange) : getNumericFields(fields, velFieldDescriptions, handleValueChange)}
-                onCalculate={calculate}
+                numericFields={
+                    fields.isSpeed ? getNumericFields(fields, speedFieldDescriptions, handleValueChange) : getNumericFields(fields, velFieldDescriptions, handleValueChange)
+                }
+                onCalculate={() => {
+                    fields.isSpeed ? setResult(fields.speed * 1.466) : setResult(fields.velocity / 1.466);
+                }}
             />
             {result !== null && (
                 <p>{fields.isSpeed ? "Velocity" : "Speed"}: {round(result)} {fields.isSpeed ? 'fps' : 'mph'}</p>
