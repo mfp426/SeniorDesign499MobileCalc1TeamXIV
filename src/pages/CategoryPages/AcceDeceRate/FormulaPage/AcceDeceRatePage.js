@@ -3,6 +3,7 @@ import ToggleField from "../../../../components/ToggleField";
 import Formula from "../../../../components/Formula";
 import { round } from "../../../../utils/Conversions";
 import {getNumericFields} from "../../../../utils/FieldCreator";
+import {FORCE_OF_GRAVITY} from "../../../../utils/Constants";
 
 const accelerationFieldDescriptions = {
     coef: { description: "Coefficient of friction", placeholderText: "Enter the friction coefficient" },
@@ -34,7 +35,7 @@ function AcceDeceRate() {
             alert("Please fill out all fields.");
         }
         else {
-            fields.isAcceleration ? setResult( 32.2*fields.coef) : setResult(32.2*fields.coef);
+            fields.isAcceleration ? setResult( FORCE_OF_GRAVITY*fields.coef) : setResult(FORCE_OF_GRAVITY*fields.coef);
         }
     };
 
