@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Header from "./Header";
 
 // Define a functional component for a grid of buttons
 const ButtonGrid = ({ categoryName, buttons }) => {
@@ -9,7 +8,7 @@ const ButtonGrid = ({ categoryName, buttons }) => {
     return (
         <div className="container mb-5 center">
             <div className="box justify-content-center">
-                <Header text={categoryName}/> {/* Render a Header component with the category name */}
+                <h2 className="text-xl page-header mt-3 mb-3">{categoryName}</h2>
                 <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-4">
                     {buttons.map((button, index) => (
                         <button

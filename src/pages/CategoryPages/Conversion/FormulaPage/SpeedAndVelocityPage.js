@@ -5,11 +5,11 @@ import { round } from "../../../../utils/Conversions";
 import {getNumericFields} from "../../../../utils/FieldCreator";
 
 const speedFieldDescriptions = {
-    speed: { description: "Speed:", placeholderText: "mph" }
+    speed: { description: "Speed:", placeholderText: "mph", fieldMin: 0 }
 };
 
 const velFieldDescriptions= {
-    velocity: { description: "Velocity:", placeholderText: "fps" }
+    velocity: { description: "Velocity:", placeholderText: "fps", fieldMin: 0 }
 };
 
 const toggleFieldDescriptions = {
@@ -47,7 +47,6 @@ function SpeedAndVelocityPage() {
             onChange={(newValue) => handleValueChange(fieldName, newValue)}
         />
     ));
-
 
     return (
         <div className={"container mb-5 center"}>

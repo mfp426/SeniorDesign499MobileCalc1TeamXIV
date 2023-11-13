@@ -9,6 +9,9 @@ export const getNumericFields = (fields, fieldDescriptions, handleValueChange) =
             value={fields[fieldName]}
             onChange={(newValue) => handleValueChange(fieldName, newValue)}
             placeholderText={fieldDescriptions[fieldName].placeholderText}
+            fieldMin={fieldDescriptions[fieldName].fieldMin}
+            fieldMax={fieldDescriptions[fieldName].fieldMax}
+            alertMessage={fieldDescriptions[fieldName].alertMessage}
         />
     ));
 };

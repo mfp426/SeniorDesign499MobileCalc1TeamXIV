@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Define a functional component for a numeric input field
-const NumericField = ({ description, onChange, disabled, placeholderText }) => {
+const NumericField = ({ description, onChange, disabled, placeholderText, fieldMin=-Infinity, fieldMax=Infinity }) => {
     // Function to handle input change
     const handleInputChange = (e) => {
         if (!disabled) {
@@ -23,6 +23,9 @@ const NumericField = ({ description, onChange, disabled, placeholderText }) => {
                 onChange={handleInputChange}
                 disabled={disabled}
                 placeholder={placeholderText} // Display the provided placeholder text
+                min={fieldMin}
+                max={fieldMax}
+                required={true}
             />
         </div>
     );
