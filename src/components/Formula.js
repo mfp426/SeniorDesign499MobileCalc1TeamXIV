@@ -20,7 +20,7 @@ function Formula({ formulaName = "Formula", extraInfo = "" ,numericFields = [], 
                         ))}
 
                         {/* For use when constants or extra info need to be displayed */}
-                        <div>{extraInfo} </div>
+                        <div>{extraInfo}</div>
 
                         {/* Render Numeric Fields */}
                         {numericFields.map((field, index) => (

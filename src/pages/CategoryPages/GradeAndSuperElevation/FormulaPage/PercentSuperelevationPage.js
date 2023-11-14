@@ -16,32 +16,23 @@ function PercentSuperelevationPage() {
     });
 
     const [superelevation, setSuperelevation] = useState(null);
-    const superelevationPercent = () => {
-        if (fields.rise === null || fields.run === null) {
-            alert("Please fill out all fields.");
-        }
-        else {
-            const Superelevation = fields.rise / fields.run;
-            setSuperelevation(Superelevation);
-        }
-    };
-
-    const numericFields = Object.keys(fieldDescriptions).map(fieldName => (
-        <NumericField
-            key={fieldName}
-            description={fieldDescriptions[fieldName].description}
-            value={fields[fieldName]}
-            onChange={(newValue) => setFields({...fields, [fieldName]: newValue})}
-            placeholderText={fieldDescriptions[fieldName].placeholderText}
-        />
-    ));
 
     return (
-        <div>
+        <div className={"container mb-5 center"}>
             <Formula
                 formulaName={"Percent of Superelevation"}
-                numericFields={numericFields}
-                onCalculate={superelevationPercent}
+                numericFields={
+                    Object.keys(fieldDescriptions).map(fieldName => (
+                        <NumericField
+                            key={fieldName}
+                            description={fieldDescriptions[fieldName].description}
+                            value={fields[fieldName]}
+                            onChange={(newValue) => setFields({...fields, [fieldName]: newValue})}
+                            placeholderText={fieldDescriptions[fieldName].placeholderText}
+                        />
+                    ))
+                }
+                onCalculate={() => {setSuperelevation(fields.rise / fields.run)}}
             />
             {superelevation !== null && <p>Calculated percent of superelevation: {round(superelevation)}</p>}
         </div>

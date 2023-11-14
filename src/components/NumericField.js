@@ -1,7 +1,9 @@
 import React from 'react';
 
 // Define a functional component for a numeric input field
-const NumericField = ({ description, onChange, disabled, placeholderText, fieldMin=-Infinity, fieldMax=Infinity }) => {
+//
+const NumericField = ({ description, onChange, disabled, placeholderText, fieldMin=0, fieldMax=Infinity }) => {
+
     // Function to handle input change
     const handleInputChange = (e) => {
         if (!disabled) {
@@ -19,6 +21,7 @@ const NumericField = ({ description, onChange, disabled, placeholderText, fieldM
             </label>
             <input
                 type="number"
+                step="any"
                 className={`form-control ${disabled ? 'bg-gray-200' : ''}`}
                 onChange={handleInputChange}
                 disabled={disabled}

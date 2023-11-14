@@ -1,6 +1,6 @@
 import React from 'react';
 import {useLocation, useNavigate} from 'react-router-dom';
-import {mphToFps, mphToKph, mphToMps, round} from "../../../../utils/Conversions";
+import {fpsToMph, mphToFps, mphToKph, mphToMps, round} from "../../../../utils/Conversions";
 import {FORCE_OF_GRAVITY} from "../../../../utils/Constants";
 
 function ResultElement({ title, values }) {
@@ -50,7 +50,7 @@ function SpeedAtImpactResultsPage() {
             speedometerAccuracy,
         } = fields;
 
-        const dragFactorConversion = (dragFactor * FORCE_OF_GRAVITY) / 1.466;
+        const dragFactorConversion = fpsToMph(dragFactor * FORCE_OF_GRAVITY);
         const slipPercentageFactor = slipPercentage / 100;
         const speedometerAccuracyFactor = speedometerAccuracy / 100;
 

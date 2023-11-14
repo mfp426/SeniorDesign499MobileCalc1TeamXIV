@@ -31,29 +31,21 @@ function RadiusCalculation() {
         }
     };
 
-    // Function to handle changes in numeric fields
-    const handleValueChange = (fieldName, newValue) => {
-        setFields((prevFields) => ({ ...prevFields, [fieldName]: newValue }));
-    }
-
-
-    const numericFields = Object.keys(fieldDescriptions).map(fieldName => (
-        <NumericField
-            key={fieldName}
-            description={fieldDescriptions[fieldName].description}
-            value={fields[fieldName]}
-            onChange={(newValue) => setFields({ ...fields, [fieldName]: newValue })}
-            placeholderText={fieldDescriptions[fieldName].placeholderText}
-        />
-    ));
-    
-
     return (
         <div className={"container mb-5 center"}>
             <Formula
                 formulaName={"Radius with known chord and middle ordinate"}
-              
-                numericFields={numericFields}
+                numericFields={
+                    Object.keys(fieldDescriptions).map(fieldName => (
+                        <NumericField
+                            key={fieldName}
+                            description={fieldDescriptions[fieldName].description}
+                            value={fields[fieldName]}
+                            onChange={(newValue) => setFields({ ...fields, [fieldName]: newValue })}
+                            placeholderText={fieldDescriptions[fieldName].placeholderText}
+                        />
+                    ))
+                }
                 onCalculate={calculateRadius}
             />
             {radius !== null && <p>Calculated radius with known chord and middle ordinate: {round(radius)} feet</p>}

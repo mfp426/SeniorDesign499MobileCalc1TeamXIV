@@ -10,40 +10,31 @@ const fieldDescriptions = {
 
 // Define a functional component for ConstantDistancePage
 function ConstantDistancePage() {
+
     // State for input fields and calculated distance
     const [fields, setFields] = useState({
         velocity: null,
         time: null,
     });
+
     const [distance, setDistance] = useState(null);
-
-    // Function to calculate the constant distance
-    const calculateDistance = () => {
-        if (fields.velocity === null || fields.time === null) {
-            alert("Please fill out all fields.");
-        } else {
-            const dist = fields.velocity * fields.time;
-            setDistance(dist);
-        }
-    };
-
-    // Create numeric input fields based on fieldDescriptions
-    const numericFields = Object.keys(fieldDescriptions).map(fieldName => (
-        <NumericField
-            key={fieldName}
-            description={fieldDescriptions[fieldName].description}
-            value={fields[fieldName]}
-            onChange={(newValue) => setFields({ ...fields, [fieldName]: newValue })}
-            placeholderText={fieldDescriptions[fieldName].placeholderText}
-        />
-    ));
 
     return (
         <div className={"container mb-5 center"}>
             <Formula
                 formulaName={"Constant Distance"}
-                numericFields={numericFields}
-                onCalculate={calculateDistance}
+                numericFields={
+                    Object.keys(fieldDescriptions).map(fieldName => (
+                        <NumericField
+                            key={fieldName}
+                            description={fieldDescriptions[fieldName].description}
+                            value={fields[fieldName]}
+                            onChange={(newValue) => setFields({ ...fields, [fieldName]: newValue })}
+                            placeholderText={fieldDescriptions[fieldName].placeholderText}
+                        />
+                    ))
+                }
+                onCalculate={() => {setDistance(fields.velocity * fields.time)}}
             />
             {distance !== null && <p>Calculated Constant Distance: {distance}</p>}
         </div>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ToggleField from "../../../../components/ToggleField";
 import Formula from "../../../../components/Formula";
-import { round } from "../../../../utils/Conversions";
+import {fpsToMph, mphToFps, round} from "../../../../utils/Conversions";
 import {getNumericFields} from "../../../../utils/FieldCreator";
 
 const speedFieldDescriptions = {
@@ -48,7 +48,7 @@ function SpeedAndVelocityPage() {
                     fields.isSpeed ? getNumericFields(fields, speedFieldDescriptions, handleValueChange) : getNumericFields(fields, velFieldDescriptions, handleValueChange)
                 }
                 onCalculate={() => {
-                    fields.isSpeed ? setResult(fields.speed * 1.466) : setResult(fields.velocity / 1.466);
+                    fields.isSpeed ? setResult(mphToFps(fields.speed)) : setResult(fpsToMph(fields.velocity));
                 }}
             />
             {result !== null && (
