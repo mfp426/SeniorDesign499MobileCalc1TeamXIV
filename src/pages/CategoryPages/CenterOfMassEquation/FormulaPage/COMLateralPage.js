@@ -33,38 +33,30 @@ function COMLateralPage() {
         isRight: false,
     });
 
-    // Function to calculate the distance of the COM
-    const calculateDistance = () => {
-        if (fields.axleWeight === null || fields.trackWidth === null || fields.weight === null) {
-            alert("Please fill out all fields.");
-        } else {
-            const dist = fields.axleWeight * fields.trackWidth / fields.weight;
-            setCOMdist(dist);
-        }
-    };
-
-    // Function to handle changes in numeric fields
+    // TODO: do we need this?
     const handleValueChange = (fieldName, newValue) => {
         setFields((prevFields) => ({ ...prevFields, [fieldName]: newValue }));
     }
-
-    // Create toggle fields based on toggleFieldDescriptions
-    const toggleFields = Object.keys(toggleFieldDescriptions).map(fieldName => (
-        <ToggleField
-            key={fieldName}
-            description={toggleFieldDescriptions[fieldName]}
-            value={fields[fieldName]}
-            onChange={(newValue) => setFields({ ...fields, [fieldName]: newValue })}
-        />
-    ));
 
     return (
         <div className={"container mb-5 center"}>
             <Formula
                 formulaName={"Distance of COM from the left/right side of vehicle"}
-                toggleFields={toggleFields}
-                numericFields={fields.isRight ? getNumericFields(fields, rightFieldDescriptions, handleValueChange) : getNumericFields(fields, leftFieldDescriptions, handleValueChange)}
-                onCalculate={calculateDistance}
+                toggleFields={
+                    Object.keys(toggleFieldDescriptions).map(fieldName => (
+                        <ToggleField
+                            key={fieldName}
+                            description={toggleFieldDescriptions[fieldName]}
+                            value={fields[fieldName]}
+                            onChange={(newValue) => setFields({ ...fields, [fieldName]: newValue })}
+                        />
+                    ))
+                }
+                numericFields={
+                    fields.isRight ? getNumericFields(fields, rightFieldDescriptions, handleValueChange) :
+                                     getNumericFields(fields, leftFieldDescriptions, handleValueChange)
+                }
+                onCalculate={() => {setCOMdist(fields.axleWeight * fields.trackWidth / fields.weight)}}
             />
             {comdist !== null && <p>Calculated distance of COM from the {fields.isRight ? "right" : "left"} side of vehicle: {round(comdist)}</p>}
         </div>

@@ -9,6 +9,7 @@ const fieldDescriptions = {
 }
 
 function PercentGradePage() {
+
     const [fields, setFields] = useState({
         rise: null,
         run: null,
@@ -16,32 +17,22 @@ function PercentGradePage() {
 
     const [grade, setGrade] = useState(null);
 
-    const gradePercent = () => {
-        if (fields.rise === null || fields.run === null) {
-            alert("Please fill out all fields.");
-        }
-        else {
-            const calculatedGrade = fields.rise / fields.run;
-            setGrade(calculatedGrade);
-        }
-    };
-
-    const numericFields = Object.keys(fieldDescriptions).map(fieldName => (
-        <NumericField
-            key={fieldName}
-            description={fieldDescriptions[fieldName].description}
-            value={fields[fieldName]}
-            onChange={(newValue) => setFields({...fields, [fieldName]: newValue})}
-            placeholderText={fieldDescriptions[fieldName].placeholderText}
-        />
-    ));
-
     return (
         <div className={"container mb-5 center"}>
             <Formula
                 formulaName={"Percent Grade"}
-                numericFields={numericFields}
-                onCalculate={gradePercent}
+                numericFields={
+                    Object.keys(fieldDescriptions).map(fieldName => (
+                        <NumericField
+                            key={fieldName}
+                            description={fieldDescriptions[fieldName].description}
+                            value={fields[fieldName]}
+                            onChange={(newValue) => setFields({...fields, [fieldName]: newValue})}
+                            placeholderText={fieldDescriptions[fieldName].placeholderText}
+                        />
+                    ))
+                }
+                onCalculate={() => {setGrade(fields.rise / fields.run)}}
             />
             {grade !== null && (
                 <p>Calculated Grade: {round(grade)}</p>

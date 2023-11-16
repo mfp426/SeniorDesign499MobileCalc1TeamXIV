@@ -32,8 +32,8 @@ import CenterOfMassEquationPage from "./pages/CategoryPages/CenterOfMassEquation
 import COMLateralPage from "./pages/CategoryPages/CenterOfMassEquation/FormulaPage/COMLateralPage";
 import COMLongitudinalPage from "./pages/CategoryPages/CenterOfMassEquation/FormulaPage/COMLongitudinalPage";
 import RadiusCalculationPage from "./pages/CategoryPages/RadiusCalculation/RadiusCalculationPage.js";
-import KinEnrgWorkPage from "./pages/CategoryPages/KinEnrgWork/KinEnrgWorkPage.js";
-import SpeedAndVelOffKEPage from "./pages/CategoryPages/KinEnrgWork/FormulaPage/SpeedAndVelOffKEPage";
+// import KinEnrgWorkPage from "./pages/CategoryPages/KinEnrgWork/KinEnrgWorkPage.js";
+// import SpeedAndVelOffKEPage from "./pages/CategoryPages/KinEnrgWork/FormulaPage/SpeedAndVelOffKEPage";
 import AcceDeceRatePage from "./pages/CategoryPages/AcceDeceRate/FormulaPage/AcceDeceRatePage.js";
 
 
@@ -91,8 +91,8 @@ function App() {
           <Route path="/COMLongitudinalPage" element={<COMLongitudinalPage />} />
 
           {/* Kinetic Energy and Work */}
-          <Route path="/KinEnrgWorkPage" element={<KinEnrgWorkPage />} />
-          <Route path="/SpeedAndVelOffKEPage" element={<SpeedAndVelOffKEPage />} />
+          {/* <Route path="/KinEnrgWorkPage" element={<KinEnrgWorkPage />} /> */}
+          {/* <Route path="/SpeedAndVelOffKEPage" element={<SpeedAndVelOffKEPage />} /> *}
 
           {/*Radius Calculation*/}
           <Route path="/RadiusCalculationPage" element={<RadiusCalculationPage />} />

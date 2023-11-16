@@ -25,6 +25,7 @@ const rearFieldDescriptions = {
 
 // Define a functional component for COMLongitudinalPage
 function COMLongitudinalPage() {
+
     const [comdist, setCOMdist] = useState(null);
 
     const [fields, setFields] = useState({
@@ -34,38 +35,31 @@ function COMLongitudinalPage() {
         isRear: false,
     });
 
-    // Function to calculate the distance behind the axle of COM
-    const calculateDistance = () => {
-        if (fields.axle_weight === null || fields.wheelbase_width === null || fields.weight === null) {
-            alert("Please fill out all fields.");
-        } else {
-            const dist = fields.axle_weight * fields.wheelbase_width / fields.weight;
-            setCOMdist(dist);
-        }
-    };
-
-    // Function to handle changes in numeric fields
+    // TODO: do we need this?
     const handleValueChange = (fieldName, newValue) => {
         setFields({ ...fields, [fieldName]: newValue });
     }
-
-    // Create toggle fields based on toggleFieldDescriptions
-    const toggleFields = Object.keys(toggleFieldDescriptions).map(fieldName => (
-        <ToggleField
-            key={fieldName}
-            description={toggleFieldDescriptions[fieldName]}
-            value={fields[fieldName]}
-            onChange={(newValue) => setFields({ ...fields, [fieldName]: newValue })}
-        />
-    ));
 
     return (
         <div className={"container mb-5 center"}>
             <Formula
                 formulaName={"Distance behind the Front/Rear Axle of COM Location"}
-                toggleFields={toggleFields}
-                numericFields={fields.isRear ? getNumericFields(fields, rearFieldDescriptions, handleValueChange) : getNumericFields(fields, frontFieldDescriptions, handleValueChange)}
-                onCalculate={calculateDistance}
+                toggleFields={
+                    Object.keys(toggleFieldDescriptions).map(fieldName => (
+                        <ToggleField
+                            key={fieldName}
+                            description={toggleFieldDescriptions[fieldName]}
+                            value={fields[fieldName]}
+                            onChange={(newValue) => setFields({ ...fields, [fieldName]: newValue })}
+                        />
+                    ))
+                }
+                numericFields={
+                    fields.isRear ?
+                        getNumericFields(fields, rearFieldDescriptions, handleValueChange) :
+                        getNumericFields(fields, frontFieldDescriptions, handleValueChange)
+                }
+                onCalculate={() => {setCOMdist(fields.axle_weight * fields.wheelbase_width / fields.weight)}}
             />
             {comdist !== null && (
                 <p>Calculated Distance behind the {fields.isRear ? "Rear" : "Front"} Axle of COM Location: {round(comdist)}</p>
