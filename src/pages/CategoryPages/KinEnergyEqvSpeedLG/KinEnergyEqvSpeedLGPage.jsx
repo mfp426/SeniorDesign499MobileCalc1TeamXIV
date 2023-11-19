@@ -3,9 +3,7 @@ import ButtonGrid from "../../../components/ButtonGrid";
 function KinEnergyEqvSpeedLG() {
 
     const navigationButtons = [
-        { route: "/SpeedVelocitySlidingToStopPage", title: "Speed / Velocity Sliding to Stop" },
-
-        // Add more buttons as needed
+        { route: "/SpeedVelocitySlidingToStopPage", title: "Minimum Speed / Velocity Slide to Stop" },
     ];
     
     return (

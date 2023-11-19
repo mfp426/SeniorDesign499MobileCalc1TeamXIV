@@ -1,61 +1,85 @@
-import { useState } from 'react';
+import { useState } from "react";
 import ToggleField from "../../../../components/ToggleField";
 import Formula from "../../../../components/Formula";
-import {fpsToMph, mphToFps, round} from "../../../../utils/Conversions";
-import {getNumericFields} from "../../../../utils/FieldCreator.jsx";
+import { fpsToMph, mphToFps, round } from "../../../../utils/Conversions";
+import NumericField from "../../../../components/NumericField.jsx";
 
-const speedFieldDescriptions = {
-    speed: { description: "Speed:", placeholderText: "mph", fieldMin: 0 }
+const numericFieldMapping = {
+    speed: { description: "Speed:", placeholderText: "mph" },
+    velocity: { description: "Velocity:", placeholderText: "fps" },
 };
 
-const velFieldDescriptions= {
-    velocity: { description: "Velocity:", placeholderText: "fps", fieldMin: 0 }
-};
-
-const toggleFieldDescriptions = {
-    isSpeed: "Velocity (fps) to Speed (mph) / Speed (mph) to Velocity (fps)",
+const toggleFieldMapping = {
+    isSpeed: "Velocity to Speed / Speed to Velocity",
 };
 
 function SpeedAndVelocityPage() {
-
     const [fields, setFields] = useState({
-        speed: null,
-        velocity: null,
+        input: null,
         isSpeed: false,
     });
 
     const [result, setResult] = useState(null);
 
     const handleValueChange = (fieldName, newValue) => {
-        (fieldName === "isSpeed" && result) && setResult(null);
         setFields({ ...fields, [fieldName]: newValue });
     };
 
-    const toggleFields = Object.keys(toggleFieldDescriptions).map(fieldName => (
+    // on toggle, set the value of the field to the other field's value and recalculate the result
+    const handleToggle = (fieldName, newValue) => {
+        if (result) {
+            fields.isSpeed
+                ? setResult(fpsToMph(fields.input))
+                : setResult(mphToFps(fields.input));
+        }
+        setFields({ ...fields, [fieldName]: newValue });
+    };
+
+    const toggleFields = Object.keys(toggleFieldMapping).map((fieldName) => (
         <ToggleField
             key={fieldName}
-            description={toggleFieldDescriptions[fieldName]}
-            value={fields[fieldName]}
-            onChange={(newValue) => handleValueChange(fieldName, newValue)}
+            description={toggleFieldMapping[fieldName]}
+            onChange={(newValue) => handleToggle(fieldName, newValue)}
         />
     ));
 
-    // TODO: make the calculated value update on toggle
+    const fieldType = fields.isSpeed ? "speed" : "velocity";
+
+    // create a numeric field (as a map) for the given field type
+    const numericFields = Object.keys(numericFieldMapping).map(
+        (fieldName) =>
+            fieldName === fieldType && (
+                <NumericField
+                    key={fieldName}
+                    description={numericFieldMapping[fieldName].description}
+                    placeholderText={
+                        numericFieldMapping[fieldName].placeholderText
+                    }
+                    onChange={(newValue) =>
+                        handleValueChange("input", newValue)
+                    }
+                    currValue={fields.input}
+                />
+            ),
+    );
 
     return (
         <div className={"container mb-5 center"}>
             <Formula
                 formulaName={"Speed (mph) and Velocity (fps) Converter"}
                 toggleFields={toggleFields}
-                numericFields={
-                    fields.isSpeed ? getNumericFields(fields, speedFieldDescriptions, handleValueChange) : getNumericFields(fields, velFieldDescriptions, handleValueChange)
-                }
+                numericFields={numericFields}
                 onCalculate={() => {
-                    fields.isSpeed ? setResult(mphToFps(fields.speed)) : setResult(fpsToMph(fields.velocity));
+                    fields.isSpeed
+                        ? setResult(mphToFps(fields.input))
+                        : setResult(fpsToMph(fields.input));
                 }}
             />
             {result !== null && (
-                <p>{fields.isSpeed ? "Velocity" : "Speed"}: {round(result)} {fields.isSpeed ? 'fps' : 'mph'}</p>
+                <p>
+                    {fields.isSpeed ? "Velocity" : "Speed"}: {round(result)}{" "}
+                    {fields.isSpeed ? "fps" : "mph"}
+                </p>
             )}
         </div>
     );

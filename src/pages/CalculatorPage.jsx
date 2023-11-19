@@ -9,6 +9,7 @@ const buttons = [
     { route: "/ConstUniAvgEquationPage", title: "Constant, Uniform, or Average Kinematic Equations" },
     { route: "/CenterOfMassEquationPage", title: "Center of Mass Equations" },
     { route: "/RadiusCalculationPage", title: "Radius Calculation"},
+    { route: "/AcceDeceRatePage", title: "Acceleration / Deceleration rate when Acceleration / Deceleration factor is known"}
 ]
 
 // Define a functional component for the CalculatorPage

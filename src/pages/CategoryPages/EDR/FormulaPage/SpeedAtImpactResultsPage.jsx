@@ -5,22 +5,20 @@ import {FORCE_OF_GRAVITY} from "../../../../utils/Constants";
 
 function ResultElement({title, values}) {
     return (
-        <div>
+        <>
             <h3 className="text-sm font-semibold">{title}</h3>
             <div className="grid grid-cols-2">
-                <p>Min</p>
-                <p>Max</p>
                 {values.map((value, index) => (
                     <p key={index} className="text-sm">{value} {index % 2 === 0 ? 'mph' : 'kph'}</p>
                 ))}
             </div>
-        </div>
+        </>
     );
 }
 
-function SpeedResultElement(speedData) {
+function SpeedResultElement({speedData}) {
     return (
-        <div>
+        <>
             <div className={"grid grid-cols-2"}>
                 <h1 className="text-md font-semibold">Min Speed</h1>
                 <h1 className="text-md font-semibold">Max Speed</h1>
@@ -31,7 +29,7 @@ function SpeedResultElement(speedData) {
                     </React.Fragment>
                 ))}
             </div>
-        </div>
+        </>
     );
 }
 
@@ -94,15 +92,20 @@ function SpeedAtImpactResultsPage() {
     function renderContent() {
         if (!fields) {
             return (
-                <div>
+                <>
                     <h1>No Data Available</h1>
-                </div>
+                </>
             );
         }
         let results = calculateResults();
         return (
             <div>
                 <div className="grid grid-cols-2 gap-4 mb-4">
+                    <div></div>
+                    <div className={"grid grid-cols-2"}>
+                        <h2 className="text-sm font-semibold">Min</h2>
+                        <h2 className="text-sm font-semibold">Max</h2>
+                    </div>
                     <ResultElement title={"Last Speed Data Point"}
                                    values={[results.speedPoint, results.speedPoint, results.kphLastSpeed, results.kphLastSpeed]}/>
                     <ResultElement title={"Possible Braking Speed Loss"}

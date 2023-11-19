@@ -62,12 +62,10 @@ function AcceDeceRate() {
             <Formula
                 formulaName={"Acceleration / Deceleration rate when Acceleration / Deceleration factor is known"}
                 toggleFields={toggleFields}
-                
                 numericFields={fields.isAcceleration ? getNumericFields(fields, accelerationFieldDescriptions, handleValueChange) : getNumericFields(fields, decelarationFieldDescriptions, handleValueChange)}
-                
                 onCalculate={calculate}
-                extraInfo="Force of gravity : 32.2 fps^2"
             />
+            <p>Force of gravity: 32.2 fps^2</p>
 
             {result !== null && (
                 <p>{fields.isAcceleration ? "Deceleration rate" : "Acceleration rate"}: {round(result)} {fields.isAcceleration ? 'fps^2' : 'fps^2'}</p>

@@ -23,13 +23,12 @@ function ConstantTimePage() {
     return (
         <div className={"container mb-5 center"}>
             <Formula
-                formulaName={"Constant Time"}
+                formulaName={"Constant Time (s)"}
                 numericFields={
                     Object.keys(fieldDescriptions).map(fieldName => (
                         <NumericField
                             key={fieldName}
                             description={fieldDescriptions[fieldName].description}
-                            value={fields[fieldName]}
                             onChange={(newValue) => setFields({ ...fields, [fieldName]: newValue })}
                             placeholderText={fieldDescriptions[fieldName].placeholderText}
                         />
@@ -37,7 +36,7 @@ function ConstantTimePage() {
                 }
                 onCalculate={() => {setTime(fields.distance / fields.velocity)}}
             />
-            {time !== null && <p>Calculated Constant Time: {round(time)}</p>}
+            {time !== null && <p>Constant Time: {round(time)}s</p>}
         </div>
     );
 }

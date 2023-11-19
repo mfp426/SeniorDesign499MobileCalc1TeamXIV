@@ -4,8 +4,8 @@ import ButtonGrid from "../../../components/ButtonGrid";
 function CenterOfMassEquation() {
     // Define an array of navigation buttons with their corresponding routes and titles
     const navigationButtons = [
-        { route: "/COMLongitudinalPage", title: "Distance behind the Front/Rear Axle of COM Location" },
-        { route: "/COMLateralPage", title: "Distance of COM from the left/right side of vehicle" },
+        { route: "/COMLongitudinalPage", title: "Longitudinal CoM (in)" },
+        { route: "/COMLateralPage", title: "Lateral CoM (in)" },
     ];
 
     return (

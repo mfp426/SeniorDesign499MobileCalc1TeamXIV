@@ -13,16 +13,16 @@ const SearchBarFormula = () => {
   const searchKeywords = {
     // Formula Keywords
     "Speed/Velocity Converter Formula": "/Conversions/SpeedAndVelocity",
-    "Speed/Velocity Sliding to Stop Formula": "/SpeedVelocitySlidingToStopPage",
+    "Minimum Speed / Velocity Slide to Stop": "/SpeedVelocitySlidingToStopPage",
     "Percent Grade Formula": "/PercentGradePage",
     "Percent Superelevation Formula": "/PercentSuperelevationPage",
-    "EDR Speed at Impact Formula": "/EDR/SpeedAtImpact",
-    "Constant Velocity Formula": "/ConstantVelocityPage",
-    "Constant Time Formula": "/ConstantTimePage",
-    "Constant Distance Formula": "/ConstantDistancePage",
+    "Adjusted Speed at Impact": "/EDR/SpeedAtImpact",
+    "Constnat Velocity (fps)": "/ConstantVelocityPage",
+    "Constant Time (s) Formula": "/ConstantTimePage",
+    "Constant Distance (ft) Formula": "/ConstantDistancePage",
     "Slide to Stop Dist with Drag Formula": "/SlidetoStopDistWithDragPage",
-    "COM Longitudinal Formula": "/COMLongitudinalPage",
-    "COM Lateral Formula": "/COMLateralPage",
+    "CoM Longitudinal Formula": "/COMLongitudinalPage",
+    "CoM Lateral Formula": "/COMLateralPage",
   };
 
   // This function is called to update suggestions when input changes
