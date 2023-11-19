@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import NumericField from "../../../../components/NumericField";
 import Formula from "../../../../components/Formula";
 import { round } from "../../../../utils/Conversions";

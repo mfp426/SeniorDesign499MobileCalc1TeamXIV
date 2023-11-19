@@ -1,7 +1,5 @@
-import React from 'react';
-
 // Define a functional component for a toggle (checkbox) input field
-const ToggleField = ({ description, onChange }) => {
+const ToggleField = ({description, onChange}) => {
     // Function to handle toggle (checkbox) changes
     const handleToggle = (e) => {
         const newValue = e.target.checked;

@@ -3,7 +3,7 @@ import {useLocation, useNavigate} from 'react-router-dom';
 import {fpsToMph, mphToFps, mphToKph, mphToMps, round} from "../../../../utils/Conversions";
 import {FORCE_OF_GRAVITY} from "../../../../utils/Constants";
 
-function ResultElement({ title, values }) {
+function ResultElement({title, values}) {
     return (
         <div>
             <h3 className="text-sm font-semibold">{title}</h3>
@@ -18,7 +18,7 @@ function ResultElement({ title, values }) {
     );
 }
 
-function SpeedResultElement({speedData}) {
+function SpeedResultElement(speedData) {
     return (
         <div>
             <div className={"grid grid-cols-2"}>

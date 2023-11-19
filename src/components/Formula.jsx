@@ -1,6 +1,4 @@
-import React from "react";
-
-function Formula({ formulaName = "Formula", extraInfo = "" ,numericFields = [], toggleFields = [], onCalculate }) {
+function Formula({formulaName = "Formula", extraInfo = "" ,numericFields = [], toggleFields = [], onCalculate}) {
 
     // needed to prevent page refresh on form submission
     const handleSubmit = (event) => {

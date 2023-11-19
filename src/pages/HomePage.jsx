@@ -1,6 +1,4 @@
-
-
-function HomePage(props){
+function HomePage(){
     return(
         <h2>Welcome to home</h2>
     );

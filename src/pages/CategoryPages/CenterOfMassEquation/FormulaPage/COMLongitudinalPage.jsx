@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Formula from "../../../../components/Formula";
 import ToggleField from "../../../../components/ToggleField";
 import { round } from "../../../../utils/Conversions";
-import { getNumericFields } from "../../../../utils/FieldCreator";
+import { getNumericFields } from "../../../../utils/FieldCreator.jsx";
 
 // Toggle field description
 const toggleFieldDescriptions = {

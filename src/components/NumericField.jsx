@@ -1,8 +1,6 @@
-import React from 'react';
-
 // Define a functional component for a numeric input field
 //
-const NumericField = ({ description, onChange, disabled, placeholderText, fieldMin=0, fieldMax=Infinity }) => {
+const NumericField = ({description, onChange, disabled, placeholderText, fieldMin=0, fieldMax=Infinity}) => {
 
     // Function to handle input change
     const handleInputChange = (e) => {

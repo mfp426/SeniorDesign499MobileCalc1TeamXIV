@@ -2,7 +2,7 @@ import { useState } from "react";
 import Formula from "../../../../components/Formula";
 import { round } from "../../../../utils/Conversions";
 import ToggleField from "../../../../components/ToggleField";
-import { getNumericFields } from "../../../../utils/FieldCreator";
+import { getNumericFields } from "../../../../utils/FieldCreator.jsx";
 
 // Field descriptions for the right side
 const rightFieldDescriptions = {

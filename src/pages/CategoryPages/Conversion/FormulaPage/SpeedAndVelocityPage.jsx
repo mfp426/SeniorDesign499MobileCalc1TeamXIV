@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import ToggleField from "../../../../components/ToggleField";
 import Formula from "../../../../components/Formula";
 import {fpsToMph, mphToFps, round} from "../../../../utils/Conversions";
-import {getNumericFields} from "../../../../utils/FieldCreator";
+import {getNumericFields} from "../../../../utils/FieldCreator.jsx";
 
 const speedFieldDescriptions = {
     speed: { description: "Speed:", placeholderText: "mph", fieldMin: 0 }
@@ -17,6 +17,7 @@ const toggleFieldDescriptions = {
 };
 
 function SpeedAndVelocityPage() {
+
     const [fields, setFields] = useState({
         speed: null,
         velocity: null,
@@ -38,6 +39,8 @@ function SpeedAndVelocityPage() {
             onChange={(newValue) => handleValueChange(fieldName, newValue)}
         />
     ));
+
+    // TODO: make the calculated value update on toggle
 
     return (
         <div className={"container mb-5 center"}>

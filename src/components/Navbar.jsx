@@ -1,11 +1,10 @@
 import {
   Link 
 } from "react-router-dom";
-import React from "react";
 import SearchBar from './searchBar'; // Import the SearchBar component
 
 // Define a functional component for the navigation bar
-function NavBar(props) {
+function NavBar() {
   return (
     <nav className="navbar  navbar-expand navbar-light bg-light ">
       <div className="container-fluid ">

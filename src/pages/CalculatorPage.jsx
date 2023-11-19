@@ -1,4 +1,3 @@
-import React from "react";
 import ButtonGrid from "../components/ButtonGrid";
 
 // Define an array of buttons with their corresponding routes and titles
@@ -10,8 +9,6 @@ const buttons = [
     { route: "/ConstUniAvgEquationPage", title: "Constant, Uniform, or Average Kinematic Equations" },
     { route: "/CenterOfMassEquationPage", title: "Center of Mass Equations" },
     { route: "/RadiusCalculationPage", title: "Radius Calculation"},
-    { route: "/KinEnrgWorkPage", title: "Kinetic Energy and Work"},
-    { route: "/AcceDeceRatePage", title: "Acceleration / Deceleration Rate"}
 ]
 
 // Define a functional component for the CalculatorPage

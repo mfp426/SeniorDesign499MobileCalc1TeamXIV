@@ -1,10 +1,9 @@
-import React from "react";
 import { Container, Row, Col } from 'react-bootstrap';
 import SearchBarCategory from '../components/searchCategory'; // Import the SearchBarCategory component
 import SearchBarFormula from '../components/searchFormula'; // Import the SearchBarFormula component
 
 // Define a functional component for the SearchPage
-function SearchPage(props){
+function SearchPage() {
     return(
         <Container>
         <Row className="my-4">

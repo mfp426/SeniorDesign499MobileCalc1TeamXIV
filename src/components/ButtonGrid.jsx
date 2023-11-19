@@ -1,8 +1,7 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 
 // Define a functional component for a grid of buttons
-const ButtonGrid = ({ categoryName, buttons }) => {
+const ButtonGrid = ({categoryName, buttons}) => {
     const navigate = useNavigate();
 
     return (

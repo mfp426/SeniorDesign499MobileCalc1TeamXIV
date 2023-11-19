@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import ToggleField from "../../../../components/ToggleField";
 import Formula from "../../../../components/Formula";
 import { round } from "../../../../utils/Conversions";
-import {getNumericFields} from "../../../../utils/FieldCreator";
+import {getNumericFields} from "../../../../utils/FieldCreator.jsx";
 import {FORCE_OF_GRAVITY} from "../../../../utils/Constants";
 
 const accelerationFieldDescriptions = {
