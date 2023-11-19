@@ -4,9 +4,9 @@ import ButtonGrid from "../../../components/ButtonGrid";
 function ConstUniAvgEquation() {
     // Define an array of navigation buttons with their corresponding routes and titles
     const navigationButtons = [
-        { route: "/ConstantVelocityPage", title: "Constant Velocity" },
-        { route: "/ConstantTimePage", title: "Constant Time" },
-        { route: "/ConstantDistancePage", title: "Constant Distance" },
+        { route: "/ConstantVelocityPage", title: "Constant Velocity (fps)" },
+        { route: "/ConstantTimePage", title: "Constant Time (s)" },
+        { route: "/ConstantDistancePage", title: "Constant Distance (ft)" },
         { route: "/SlidetoStopDistWithDragPage", title: "Slide to Stop Distance (known distance and drag factor)" },
         // Add more buttons as needed
     ];

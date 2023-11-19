@@ -8,7 +8,7 @@ const intFieldDescriptions = {
     slipPercentage: {description: "Slip Percentage", isToggled: true },
     lastSpeedData: { description: "Last Speed Data Point" },
     samplesPerSecond: { description: "Samples per Second" },
-    dragFactor: { description: "Drag Factor / Slowing Rate" },
+    dragFactor: { description: "Drag Factor / Slowing Rate", fieldMin: 0.01, fieldMax: 1.5 },
     speedometerAccuracy: { description: "Speedometer Accuracy" },
 };
 
@@ -32,13 +32,12 @@ function SpeedAtImpactPage() {
     // Render the Formula component with the formula name and numeric fields
     return (
         <Formula
-            formulaName="Speed at Impact"
+            formulaName="Adjusted Speed At Impact"
             toggleFields={
                 Object.keys(toggleFieldDescriptions).map(fieldName => (
                     <ToggleField
                         key={fieldName}
                         description={toggleFieldDescriptions[fieldName]}
-                        value={fields[fieldName]}
                         onChange={(newValue) => setFields({ ...fields, [fieldName]: newValue })}
                     />
                 ))
@@ -48,9 +47,10 @@ function SpeedAtImpactPage() {
                     <NumericField
                         key={fieldName}
                         description={intFieldDescriptions[fieldName].description}
-                        value={fields[fieldName]}
                         onChange={(newValue) => setFields({ ...fields, [fieldName]: newValue })}
                         disabled={intFieldDescriptions[fieldName].isToggled ? !fields.heavyOrAntiLock : false}
+                        fieldMin={intFieldDescriptions[fieldName].fieldMin}
+                        fieldMax={intFieldDescriptions[fieldName].fieldMax}
                     />
                 ))
             }

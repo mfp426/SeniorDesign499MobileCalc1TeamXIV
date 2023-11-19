@@ -21,13 +21,12 @@ function SpeedAndVelocityConverter() {
     return (
         <div className={"container mb-5 center"}>
             <Formula
-                formulaName={"Speed / Velocity of Vehicle Sliding to Stop"}
+                formulaName={"Minimum Speed / Velocity Slide to Stop"}
                 numericFields = {
                     Object.keys(fieldDescriptions).map(fieldName => (
                         <NumericField
                             key={fieldName}
                             description={fieldDescriptions[fieldName].description}
-                            value={fields[fieldName]}
                             onChange={(newValue) => setFields({...fields, [fieldName]: newValue})}
                             placeholderText={fieldDescriptions[fieldName].placeholderText}
                             fieldMax={fieldDescriptions[fieldName].fieldMax}

@@ -20,16 +20,16 @@ const SearchBar = () => {
     "Center of Mass Equation Category": "/CenterOfMassEquationPage",
     // Formula Keywords
     "Speed/Velocity Converter Formula": "/Conversions/SpeedAndVelocity",
-    "Speed/Velocity Sliding to Stop Formula": "/SpeedVelocitySlidingToStopPage",
+    "Minimum Speed / Velocity Slide to Stop Formula": "/SpeedVelocitySlidingToStopPage",
     "Percent Grade Formula": "/PercentGradePage",
     "Percent Superelevation Formula": "/PercentSuperelevationPage",
-    "EDR Speed at Impact Formula": "/EDR/SpeedAtImpact",
-    "Constant Velocity Formula": "/ConstantVelocityPage",
-    "Constant Time Formula": "/ConstantTimePage",
-    "Constant Distance Formula": "/ConstantDistancePage",
+    "Adjusted Speed at Impact": "/EDR/SpeedAtImpact",
+    "Constant Velocity (fps) Formula": "/ConstantVelocityPage",
+    "Constant Time (s) Formula": "/ConstantTimePage",
+    "Constant Distance (ft) Formula": "/ConstantDistancePage",
     "Slide to Stop Dist with Drag Formula": "/SlidetoStopDistWithDragPage",
-    "COM Longitudinal Formula": "/COMLongitudinalPage",
-    "COM Lateral Formula": "/COMLateralPage",
+    "Longitudinal CoM Formula": "/COMLongitudinalPage",
+    "Lateral CoM Formula": "/COMLateralPage",
   };
 
   // Autosuggest will call this function every time you need to update suggestions

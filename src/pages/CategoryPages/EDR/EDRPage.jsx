@@ -3,7 +3,7 @@ import ButtonGrid from "../../../components/ButtonGrid";
 function EDRPage() {
 
     const navigationButtons = [
-        { route: "/EDR/SpeedAtImpact", title: "Speed at Impact" },
+        { route: "/EDR/SpeedAtImpact", title: "Adjusted Speed at Impact" },
     ];
 
     return (

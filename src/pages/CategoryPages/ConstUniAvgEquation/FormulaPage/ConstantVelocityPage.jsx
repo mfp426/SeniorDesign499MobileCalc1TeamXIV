@@ -23,13 +23,12 @@ function ConstantVelocity() {
     return (
         <div className={"container mb-5 center"}>
             <Formula
-                formulaName={"Constant Velocity"}
+                formulaName={"Constant Velocity (fps)"}
                 numericFields={
                     Object.keys(fieldDescriptions).map(fieldName => (
                         <NumericField
                             key={fieldName}
                             description={fieldDescriptions[fieldName].description}
-                            value={fields[fieldName]}
                             onChange={(newValue) => setFields({ ...fields, [fieldName]: newValue })}
                             placeholderText={fieldDescriptions[fieldName].placeholderText}
                         />
@@ -37,7 +36,7 @@ function ConstantVelocity() {
                 }
                 onCalculate={() => {setVelocity(fields.distance / fields.time)}}
             />
-            {velocity !== null && <p>Calculated Constant Velocity: {round(velocity)}</p>}
+            {velocity !== null && <p>Constant Velocity: {round(velocity)} fps</p>}
         </div>
     );
 }

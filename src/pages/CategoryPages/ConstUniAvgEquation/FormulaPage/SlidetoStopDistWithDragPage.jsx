@@ -29,7 +29,6 @@ function SlidetoStopWithDragPage() {
                         <NumericField
                             key={fieldName}
                             description={fieldDescriptions[fieldName].description}
-                            value={fields[fieldName]}
                             onChange={(newValue) => setFields({ ...fields, [fieldName]: newValue })}
                             placeholderText={fieldDescriptions[fieldName].placeholderText}
                         />
