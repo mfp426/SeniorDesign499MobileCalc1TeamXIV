@@ -5,7 +5,7 @@ function KinEnergyAndWork() {
 
     const navigationButtons = [
         { route: "/KinEnergyCalPage", title: "Kinetic Energy Calculation" },
-        { route: "/KinEnergyAndWork/WorkCalPage", title: "Work Calculation" },
+        { route: "/WorkCalPage", title: "Work Calculation" },
         { route: "/Conversions/SpeedAndVelocity", title: "Speed / Velocity based on Kinetic Energy" },
     ];
 

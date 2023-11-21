@@ -89,7 +89,7 @@ function App() {
                     <Route path={"/KinEnergyWithWeightSpdOrVelPage"} element={<KinEnergyWithWeightSpdOrVelPage />} />
                     <Route path={"/WorkCalPage"} element={<WorkCalPage />} />
                     <Route path={"/WorkWithWeightAndDistPage"} element={<WorkWithWeightAndDistPage />} />
-                    <Route path={"/WorkWithForceAndDistPage"} element={<WorkWithForceAndDistPage />} />
+                    <Route path={"/WorkWithForceAndDistPage"} element={<WorkWithForceAndDistPage />} /> 
 
                 </Routes>
             </Router>

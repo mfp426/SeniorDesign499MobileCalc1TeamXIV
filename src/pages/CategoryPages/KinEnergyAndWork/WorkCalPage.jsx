@@ -10,7 +10,7 @@ function WorkCal() {
     ];
 
     return(
-        <ButtonGrid categoryName={"Kinetic Energy Calculations"} buttons={navigationButtons} />
+        <ButtonGrid categoryName={"Work Calculations"} buttons={navigationButtons} />
     )
 }
 

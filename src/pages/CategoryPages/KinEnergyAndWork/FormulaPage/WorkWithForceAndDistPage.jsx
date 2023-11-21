@@ -3,18 +3,15 @@ import ToggleField from "../../../../components/ToggleField.jsx";
 import Formula from "../../../../components/Formula.jsx";
 import { round } from "../../../../utils/Conversions.js";
 import NumericField from "../../../../components/NumericField.jsx";
-import { getNumericFields } from "../../../../utils/FieldCreator.jsx";
+//import { getNumericFields } from "../../../../utils/FieldCreator.jsx";
 
 
-const fdFieldDescription = {
+
+
+const intfieldDescription = {
     force: { description: "Force to move the object:", placeholderText: "pounds" },
     distance: { description: "Distance the object displaced:", placeholderText: "feet" },
-};
-
-const fdaFieldDescription = {
-    force: { description: "Force to move the object:", placeholderText: "pounds" },
-    distance: { description: "Distance the object displaced:", placeholderText: "feet" },
-    angle: { description: "Angle between the force and the direction of displacement :", placeholderText: "degrees" }
+    angle: { description: "Angle between the force and the direction of displacement :", placeholderText: "degrees", isToggled: true }
 };
 
 const toggleFieldDescriptions= {
@@ -35,9 +32,9 @@ function WorkWithForceAndDist() {
     //     setFields({ ...fields, [fieldName]: newValue });
     // };
 
-    const handleValueChange = (fieldName, newValue) => {
-        setFields((prevFields) => ({ ...prevFields, [fieldName]: newValue }));
-    };
+    // const handleValueChange = (fieldName, newValue) => {
+    //     setFields((prevFields) => ({ ...prevFields, [fieldName]: newValue }));
+    // };
 
     // on toggle, set the value of the field to the other field's value and recalculate the result
     // const handleToggle = (fieldName, newValue) => {
@@ -61,32 +58,28 @@ function WorkWithForceAndDist() {
                     ),
                 )}
                 numericFields={
-                    fields.withAngle
-                        ? getNumericFields(
-                              fields,
-                              fdFieldDescription,
-                              handleValueChange,
-                          )
-                        : getNumericFields(
-                              fields,
-                              fdaFieldDescription,
-                              handleValueChange,
-                          )
+                    Object.keys(intfieldDescription).map(fieldName => (
+                        <NumericField
+                            key={fieldName}
+                            description={intfieldDescription[fieldName].description}
+                            onChange={(newValue) => setFields({ ...fields, [fieldName]: newValue })}
+                            disabled={intfieldDescription[fieldName].isToggled ? fields.withAngle : false}
+
+                        />
+                    ))
                 }
                 onCalculate={() => {
-                    if( fields.withAngle === true){
-                        setWork((fields.force*fields.distance* Math.cos(fields.angle)));
-                    }
-                    else{
-                        setWork((fields.weight * ((fields.velocity)**2))/30);
-                    }
+                    !fields.withAngle 
+                    ? setWork((fields.force*fields.distance* Math.cos(fields.angle)))
+                    : setWork(fields.force * fields.distance);
+        
 
                     // fields.isSpeed
                     //     ? setKE((fields.weight * ((fields.sORvInput)**2))/64.4)
                     //     : setKE((fields.weight * ((fields.sORvInput)**2))/30);
                 }}
             />
-            {ke !== null && (
+            {work !== null && (
                 <p>
                     Work: {round(work)} ft-lbs
                 </p>
