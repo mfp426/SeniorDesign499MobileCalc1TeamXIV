@@ -24,6 +24,14 @@ import COMLateralPage from "./pages/CategoryPages/CenterOfMassEquation/FormulaPa
 import COMLongitudinalPage from "./pages/CategoryPages/CenterOfMassEquation/FormulaPage/COMLongitudinalPage";
 import RadiusCalculationPage from "./pages/CategoryPages/RadiusCalculation/RadiusCalculationPage";
 import AcceDeceRatePage from "./pages/CategoryPages/AcceDeceRate/FormulaPage/AcceDeceRatePage.jsx";
+import KinEnergyAndWorkPage from "./pages/CategoryPages/KinEnergyAndWork/KinEnergyAndWorkPage.jsx";
+import KinEnergyCalPage from "./pages/CategoryPages/KinEnergyAndWork/KinEnergyCalPage.jsx";
+import KinEnergyWithMassVelPage from "./pages/CategoryPages/KinEnergyAndWork/FormulaPage/KinEnergyWithMassVelPage.jsx";
+import KinEnergyWithWeightSpdOrVelPage from "./pages/CategoryPages/KinEnergyAndWork/FormulaPage/KinEnergyWithWeightSpdOrVelPage.jsx";
+import WorkCalPage from "./pages/CategoryPages/KinEnergyAndWork/WorkCalPage.jsx";
+import WorkWithForceAndDistPage from "./pages/CategoryPages/KinEnergyAndWork/FormulaPage/WorkWithForceAndDistPage.jsx";
+import WorkWithWeightAndDistPage from "./pages/CategoryPages/KinEnergyAndWork/FormulaPage/WorkWithWeightAndDistPage.jsx";
+
 
 function App() {
 
@@ -73,6 +81,15 @@ function App() {
                     <Route path="/RadiusCalculationPage" element={<RadiusCalculationPage />} />
 
                     <Route path={"/AcceDeceRatePage"} element={<AcceDeceRatePage />} />
+
+                    {/*Kinetic Energy and Work*/}
+                    <Route path={"/KinEnergyAndWorkPage"} element={<KinEnergyAndWorkPage />} />
+                    <Route path={"/KinEnergyCalPage"} element={<KinEnergyCalPage />} />
+                    <Route path={"/KinEnergyWithMassVelPage"} element={<KinEnergyWithMassVelPage />} />
+                    <Route path={"/KinEnergyWithWeightSpdOrVelPage"} element={<KinEnergyWithWeightSpdOrVelPage />} />
+                    <Route path={"/WorkCalPage"} element={<WorkCalPage />} />
+                    <Route path={"/WorkWithWeightAndDistPage"} element={<WorkWithWeightAndDistPage />} />
+                    <Route path={"/WorkWithForceAndDistPage"} element={<WorkWithForceAndDistPage />} />
 
                 </Routes>
             </Router>
