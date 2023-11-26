@@ -3,8 +3,6 @@ import ToggleField from "../../../../components/ToggleField.jsx";
 import Formula from "../../../../components/Formula.jsx";
 import { round } from "../../../../utils/Conversions.js";
 import NumericField from "../../../../components/NumericField.jsx";
-//import { getNumericFields } from "../../../../utils/FieldCreator.jsx";
-
 
 
 
@@ -28,19 +26,6 @@ function WorkWithForceAndDist() {
 
     const [work, setWork] = useState(null);
 
-    // const handleValueChange = (fieldName, newValue) => {
-    //     setFields({ ...fields, [fieldName]: newValue });
-    // };
-
-    // const handleValueChange = (fieldName, newValue) => {
-    //     setFields((prevFields) => ({ ...prevFields, [fieldName]: newValue }));
-    // };
-
-    // on toggle, set the value of the field to the other field's value and recalculate the result
-    // const handleToggle = (fieldName, newValue) => {
-
-    //     setFields({ ...fields, [fieldName]: newValue });
-    // };
 
     return (
         <div className={"container mb-5 center"}>
@@ -73,10 +58,6 @@ function WorkWithForceAndDist() {
                     ? setWork((fields.force*fields.distance* Math.cos(fields.angle)))
                     : setWork(fields.force * fields.distance);
         
-
-                    // fields.isSpeed
-                    //     ? setKE((fields.weight * ((fields.sORvInput)**2))/64.4)
-                    //     : setKE((fields.weight * ((fields.sORvInput)**2))/30);
                 }}
             />
             {work !== null && (
