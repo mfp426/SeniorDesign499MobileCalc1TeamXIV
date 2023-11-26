@@ -31,6 +31,7 @@ import KinEnergyWithWeightSpdOrVelPage from "./pages/CategoryPages/KinEnergyAndW
 import WorkCalPage from "./pages/CategoryPages/KinEnergyAndWork/WorkCalPage.jsx";
 import WorkWithForceAndDistPage from "./pages/CategoryPages/KinEnergyAndWork/FormulaPage/WorkWithForceAndDistPage.jsx";
 import WorkWithWeightAndDistPage from "./pages/CategoryPages/KinEnergyAndWork/FormulaPage/WorkWithWeightAndDistPage.jsx";
+import MphAndFpsDueToKEPage from "./pages/CategoryPages/KinEnergyAndWork/FormulaPage/MphAndFpsDueToKEPage.jsx";
 
 
 function App() {
@@ -89,7 +90,8 @@ function App() {
                     <Route path={"/KinEnergyWithWeightSpdOrVelPage"} element={<KinEnergyWithWeightSpdOrVelPage />} />
                     <Route path={"/WorkCalPage"} element={<WorkCalPage />} />
                     <Route path={"/WorkWithWeightAndDistPage"} element={<WorkWithWeightAndDistPage />} />
-                    <Route path={"/WorkWithForceAndDistPage"} element={<WorkWithForceAndDistPage />} /> 
+                    <Route path={"/WorkWithForceAndDistPage"} element={<WorkWithForceAndDistPage />} />
+                    <Route path={"/MphAndFpsDueToKEPage"} element={<MphAndFpsDueToKEPage />} /> 
 
                 </Routes>
             </Router>
