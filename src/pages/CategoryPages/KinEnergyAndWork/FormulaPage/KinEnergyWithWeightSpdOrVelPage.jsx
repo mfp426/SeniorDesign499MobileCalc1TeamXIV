@@ -28,19 +28,12 @@ function KinEnergyWithWeightSpdOrVel() {
 
     const [ke, setKE] = useState(null);
 
-    // const handleValueChange = (fieldName, newValue) => {
-    //     setFields({ ...fields, [fieldName]: newValue });
-    // };
+    
 
     const handleValueChange = (fieldName, newValue) => {
         setFields((prevFields) => ({ ...prevFields, [fieldName]: newValue }));
     };
 
-    // on toggle, set the value of the field to the other field's value and recalculate the result
-    // const handleToggle = (fieldName, newValue) => {
-
-    //     setFields({ ...fields, [fieldName]: newValue });
-    // };
 
     return (
         <div className={"container mb-5 center"}>
@@ -78,9 +71,7 @@ function KinEnergyWithWeightSpdOrVel() {
                         setKE((fields.weight * ((fields.velocity)**2))/30);
                     }
 
-                    // fields.isSpeed
-                    //     ? setKE((fields.weight * ((fields.sORvInput)**2))/64.4)
-                    //     : setKE((fields.weight * ((fields.sORvInput)**2))/30);
+                    
                 }}
             />
             {ke !== null && (
