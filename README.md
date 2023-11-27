@@ -15,7 +15,7 @@ Before you begin, make sure you have the following installed on your machine:
 
    ```bash
    git clone https://github.com/mfp426/SeniorDesign499MobileCalc1.git
- 
+   ```
 
     OR 
 
