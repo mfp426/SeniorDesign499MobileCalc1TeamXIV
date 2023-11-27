@@ -24,27 +24,37 @@ Before you begin, make sure you have the following installed on your machine:
 2. Navigate to the project directory:
     cd your-vite-react-app    
     OR
-    cd SeniorDesign499MobileCalc1
-
+   ```bash 
+   cd SeniorDesign499MobileCalc1
+   ```
+   
 3. Install project dependencies:
+   
+   ```bash
     npm install
-
+   ```
+   
 4. Running the App
 
     To start the development server, run:
-
+   
+   ```bash
     npm run dev
-
+   ```
+   
 5. Building for Production
 
    To build the app for production, run:
 
+   ```bash
    npm run build
-
+   ```
+   
 6. Unit Testing:
 
+   ```bash
    npm run test
-
+   ```
 
 
 
