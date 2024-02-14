@@ -35,6 +35,7 @@ import MphAndFpsDueToKEPage from "./pages/CategoryPages/KinEnergyAndWork/Formula
 
 
 function App() {
+    //const [data, setData] = useState();
 
     return (
         <div>
