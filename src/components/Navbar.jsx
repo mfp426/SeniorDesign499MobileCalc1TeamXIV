@@ -2,6 +2,7 @@ import {
   Link 
 } from "react-router-dom";
 import SearchBar from './searchBar'; // Import the SearchBar component
+import FetchDataButton from "./FetchDataButton";
 
 // Define a functional component for the navigation bar
 function NavBar() {
@@ -18,8 +19,13 @@ function NavBar() {
           </li>
         
           <li className="nav-item">
-        <SearchBar /> {/* Render the SearchBar component within the navigation bar */}
-        </li>
+            <SearchBar /> {/* Render the SearchBar component within the navigation bar */}
+          </li>
+
+          <li className="nav-item">
+            <FetchDataButton />
+          </li>
+
         </ul>
         
       </div>

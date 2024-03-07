@@ -1,4 +1,5 @@
 import ButtonGrid from "../components/ButtonGrid";
+import FetchDataButton from "../components/FetchDataButton";
 
 // Define an array of buttons with their corresponding routes and titles
 const buttons = [
@@ -10,13 +11,15 @@ const buttons = [
     { route: "/CenterOfMassEquationPage", title: "Center of Mass Equations" },
     { route: "/RadiusCalculationPage", title: "Radius Calculation"},
     { route: "/AcceDeceRatePage", title: "Acceleration / Deceleration rate when Acceleration / Deceleration factor is known"},
-    { route: "/KinEnergyAndWorkPage", title: "Kinetic Energy and Work"}
+    { route: "/KinEnergyAndWorkPage", title: "Kinetic Energy and Work"},
 ]
 
 // Define a functional component for the CalculatorPage
 function CalculatorPage() {
     return (
-        <ButtonGrid categoryName={"Categories"} buttons={buttons} />
+        <div>
+            <ButtonGrid categoryName={"Categories"} buttons={buttons} />
+        </div>
     );
 }
 

@@ -1,4 +1,6 @@
 import {BrowserRouter as Router, Route, Routes,} from "react-router-dom";
+import {createContext, useEffect, useState} from 'react';
+
 import './App.css';
 import NavBar from './components/Navbar';
 import Calculator from "./pages/CalculatorPage";
@@ -33,69 +35,78 @@ import WorkWithForceAndDistPage from "./pages/CategoryPages/KinEnergyAndWork/For
 import WorkWithWeightAndDistPage from "./pages/CategoryPages/KinEnergyAndWork/FormulaPage/WorkWithWeightAndDistPage.jsx";
 import MphAndFpsDueToKEPage from "./pages/CategoryPages/KinEnergyAndWork/FormulaPage/MphAndFpsDueToKEPage.jsx";
 
+export const carContext = createContext({make: "", model: ""});
+
 
 function App() {
-    //const [data, setData] = useState();
+    const [car, setCar] = useState({make: "", model: ""});
+
+    useEffect(() => {
+        console.log("Car: " + car.make + " " + car.model);
+    }, [car]);
+
 
     return (
         <div>
-            <Router>
-                <NavBar />
-                <Routes>
-                    <Route path="/" element={<Calculator/>} />
+            <carContext.Provider value={{car: car, setCar: setCar}}>
+                <Router>
+                    <NavBar />
+                    <Routes>
+                        <Route path="/" element={<Calculator/>} />
 
-                    {/* Main Pages*/}
-                    <Route path="/Calculator" element={<Calculator/>} />
-                    <Route path="/HomePage" element={<HomePage/>} />
-                    <Route path="/SearchPage" element={<SearchPage/>} />
+                        {/* Main Pages*/}
+                        <Route path="/Calculator" element={<Calculator/>} />
+                        <Route path="/HomePage" element={<HomePage/>} />
+                        <Route path="/SearchPage" element={<SearchPage/>} />
 
-                    {/* Conversion */}
-                    <Route path="/Conversions" element={<ConversionPage/>} />
-                    <Route path="/Conversions/SpeedAndVelocity" element={<SpeedAndVelocityPage/>} />
+                        {/* Conversion */}
+                        <Route path="/Conversions" element={<ConversionPage/>} />
+                        <Route path="/Conversions/SpeedAndVelocity" element={<SpeedAndVelocityPage/>} />
 
-                    {/*Kinematic Energy Equivalent */}
-                    <Route path="/KinEnergyEqvSpeedLGPage" element={<KinEnergyEqvSpeedLGPage/>} />
-                    <Route path="/SpeedVelocitySlidingToStopPage" element={<SpeedVelocitySlidingToStop/>} />
+                        {/*Kinematic Energy Equivalent */}
+                        <Route path="/KinEnergyEqvSpeedLGPage" element={<KinEnergyEqvSpeedLGPage/>} />
+                        <Route path="/SpeedVelocitySlidingToStopPage" element={<SpeedVelocitySlidingToStop/>} />
 
-                    {/* Grade and Super elevation */}
-                    <Route path="/GradeAndSuperElevationPage" element={<GradeAndSuperElevationPage/>} />
-                    <Route path="/PercentGradePage" element={<PercentGradePage/>} />
-                    <Route path="/PercentSuperelevationPage" element={<PercentSuperelevationPage/>} />
+                        {/* Grade and Super elevation */}
+                        <Route path="/GradeAndSuperElevationPage" element={<GradeAndSuperElevationPage/>} />
+                        <Route path="/PercentGradePage" element={<PercentGradePage/>} />
+                        <Route path="/PercentSuperelevationPage" element={<PercentSuperelevationPage/>} />
 
-                    {/* EDR */}
-                    <Route path="/EDR" element={<EDRPage/>} />
-                    <Route path="/EDR/SpeedAtImpact" element={<SpeedAtImpactPage />} />
-                    <Route path="/EDR/SpeedAtImpact/Results" element={<SpeedAtImpactResultsPage />} />
+                        {/* EDR */}
+                        <Route path="/EDR" element={<EDRPage/>} />
+                        <Route path="/EDR/SpeedAtImpact" element={<SpeedAtImpactPage />} />
+                        <Route path="/EDR/SpeedAtImpact/Results" element={<SpeedAtImpactResultsPage />} />
 
-                    {/* Constant Uniform Acceleration Equations */}
-                    <Route path="/ConstUniAvgEquationPage" element={<ConstUniAvgEquationPage />} />
-                    <Route path="/ConstantVelocityPage" element={<ConstantVelocityPage />} />
-                    <Route path="/ConstantTimePage" element={<ConstantTimePage />} />
-                    <Route path="/ConstantDistancePage" element={<ConstantDistancePage />} />
-                    <Route path="/SlidetoStopDistWithDragPage" element={<SlidetoStopDistWithDragPage />} />
+                        {/* Constant Uniform Acceleration Equations */}
+                        <Route path="/ConstUniAvgEquationPage" element={<ConstUniAvgEquationPage />} />
+                        <Route path="/ConstantVelocityPage" element={<ConstantVelocityPage />} />
+                        <Route path="/ConstantTimePage" element={<ConstantTimePage />} />
+                        <Route path="/ConstantDistancePage" element={<ConstantDistancePage />} />
+                        <Route path="/SlidetoStopDistWithDragPage" element={<SlidetoStopDistWithDragPage />} />
 
-                    {/* Center of Mass Equations */}
-                    <Route path="/CenterOfMassEquationPage" element={<CenterOfMassEquationPage />} />
-                    <Route path="/COMLateralPage" element={<COMLateralPage />} />
-                    <Route path="/COMLongitudinalPage" element={<COMLongitudinalPage />} />
+                        {/* Center of Mass Equations */}
+                        <Route path="/CenterOfMassEquationPage" element={<CenterOfMassEquationPage />} />
+                        <Route path="/COMLateralPage" element={<COMLateralPage />} />
+                        <Route path="/COMLongitudinalPage" element={<COMLongitudinalPage />} />
 
-                    {/*Radius Calculation*/}
-                    <Route path="/RadiusCalculationPage" element={<RadiusCalculationPage />} />
+                        {/*Radius Calculation*/}
+                        <Route path="/RadiusCalculationPage" element={<RadiusCalculationPage />} />
 
-                    <Route path={"/AcceDeceRatePage"} element={<AcceDeceRatePage />} />
+                        <Route path={"/AcceDeceRatePage"} element={<AcceDeceRatePage />} />
 
-                    {/*Kinetic Energy and Work*/}
-                    <Route path={"/KinEnergyAndWorkPage"} element={<KinEnergyAndWorkPage />} />
-                    <Route path={"/KinEnergyCalPage"} element={<KinEnergyCalPage />} />
-                    <Route path={"/KinEnergyWithMassVelPage"} element={<KinEnergyWithMassVelPage />} />
-                    <Route path={"/KinEnergyWithWeightSpdOrVelPage"} element={<KinEnergyWithWeightSpdOrVelPage />} />
-                    <Route path={"/WorkCalPage"} element={<WorkCalPage />} />
-                    <Route path={"/WorkWithWeightAndDistPage"} element={<WorkWithWeightAndDistPage />} />
-                    <Route path={"/WorkWithForceAndDistPage"} element={<WorkWithForceAndDistPage />} />
-                    <Route path={"/MphAndFpsDueToKEPage"} element={<MphAndFpsDueToKEPage />} /> 
+                        {/*Kinetic Energy and Work*/}
+                        <Route path={"/KinEnergyAndWorkPage"} element={<KinEnergyAndWorkPage />} />
+                        <Route path={"/KinEnergyCalPage"} element={<KinEnergyCalPage />} />
+                        <Route path={"/KinEnergyWithMassVelPage"} element={<KinEnergyWithMassVelPage />} />
+                        <Route path={"/KinEnergyWithWeightSpdOrVelPage"} element={<KinEnergyWithWeightSpdOrVelPage />} />
+                        <Route path={"/WorkCalPage"} element={<WorkCalPage />} />
+                        <Route path={"/WorkWithWeightAndDistPage"} element={<WorkWithWeightAndDistPage />} />
+                        <Route path={"/WorkWithForceAndDistPage"} element={<WorkWithForceAndDistPage />} />
+                        <Route path={"/MphAndFpsDueToKEPage"} element={<MphAndFpsDueToKEPage />} /> 
 
-                </Routes>
-            </Router>
+                    </Routes>
+                </Router>
+            </carContext.Provider>
         </div>
     );
 }
