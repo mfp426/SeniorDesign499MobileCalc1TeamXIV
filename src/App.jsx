@@ -35,14 +35,14 @@ import WorkWithForceAndDistPage from "./pages/CategoryPages/KinEnergyAndWork/For
 import WorkWithWeightAndDistPage from "./pages/CategoryPages/KinEnergyAndWork/FormulaPage/WorkWithWeightAndDistPage.jsx";
 import MphAndFpsDueToKEPage from "./pages/CategoryPages/KinEnergyAndWork/FormulaPage/MphAndFpsDueToKEPage.jsx";
 
-export const carContext = createContext({make: "", model: ""});
+export const carContext = createContext({make: "", model: "", year: ""});
 
 
 function App() {
-    const [car, setCar] = useState({make: "", model: ""});
+    const [car, setCar] = useState({make: "", model: "", year: ""});
 
     useEffect(() => {
-        console.log("Car: " + car.make + " " + car.model);
+        console.log("Car: " + car.year + " " + car.make + " " + car.model);
     }, [car]);
 
 
