@@ -1,8 +1,7 @@
-import {
-  Link 
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 import SearchBar from './searchBar'; // Import the SearchBar component
-import FetchDataButton from "./FetchDataButton";
+import CarSelectDropdownGroup from "./CarSelectDropdownGroup";
+import {useEffect, useState} from 'react';
 
 // Define a functional component for the navigation bar
 function NavBar() {
@@ -14,6 +13,7 @@ function NavBar() {
           <li className="nav-item">
             <Link to ="/Calculator" className="nav-link">Calculator</Link>
           </li>
+
           <li className="nav-item">
             <Link to ="SearchPage" className="nav-link">Search</Link>
           </li>
@@ -21,9 +21,9 @@ function NavBar() {
           <li className="nav-item">
             <SearchBar /> {/* Render the SearchBar component within the navigation bar */}
           </li>
-
-          <li className="nav-item">
-            <FetchDataButton />
+          
+          <li>
+            <CarSelectDropdownGroup></CarSelectDropdownGroup>
           </li>
 
         </ul>
