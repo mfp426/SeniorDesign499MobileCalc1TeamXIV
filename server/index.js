@@ -1,4 +1,4 @@
-import {require, __filename, __dirname, Car} from './serverutils.js'
+import {require, __filename, __dirname, VehicleSpecsAdditional, VehicleSpecsMerged} from './serverutils.js'
 const express = require("express"),
     PORT = 6001,
     app = express();
@@ -21,24 +21,60 @@ app.use('/api', router)
 
 app.use(express.static('src'));
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../index.html'));
-})
-
 app.post('', async (req, res) => {
-    const carList = await Car.find({}, 'Make Model Year');
+    const carList = await VehicleSpecsMerged.find({}, 'model_make_id');
+    let makeList = [];
 
-    const randomCar = carList[Math.floor(Math.random() * carList.length)];
-
-    const foundCar = {
-        make: randomCar.Make,
-        model: randomCar.Model,
-        year: randomCar.Year
+    for (let i = 0; i < carList.length; i++) {
+        let make = carList[i].model_make_id;
+        if (!makeList.includes(make)) {
+            makeList.push(make);
+        }
     }
 
-    console.log(carList);
-    res.send(foundCar);
+    res.send(makeList);
   });
+
+app.get('/get', async (req, res) => {
+    const type = req.query.type;
+    const specifiers = req.query.specifiers;
+
+    let carList = [];
+
+    if (type === "Make") {
+        const result = await VehicleSpecsMerged.find({model_make_id: specifiers[0]}, "model_name");
+        for (let i = 0; i < result.length; i++) {
+            //let model = result[i].Model.split(" ")[0];
+            let model = result[i].model_name;
+            if (!carList.includes(model)) {
+                carList.push(model);
+            }
+        }
+    }
+    else if (type === "Model") {
+        const result = await VehicleSpecsMerged.find({model_make_id: specifiers[0], model_name: specifiers[1]}, "model_year");
+        for (let i = 0; i < result.length; i++) {
+            let year = result[i].model_year;
+            if (!carList.includes(year)) {
+                carList.push(year);
+            }
+        }
+    }
+    else if (type === "Year") {
+        const result = await VehicleSpecsMerged.find({model_make_id: specifiers[0], model_name: specifiers[1], model_year: specifiers[2]}, "model_trim");
+        for (let i = 0; i < result.length; i++) {
+            let trim = result[i].model_trim;
+            if (!carList.includes(trim)) {
+                carList.push(trim);
+            }
+        }
+    }
+    else if (type === "Trim") {
+        carList = await VehicleSpecsMerged.find({model_make_id: specifiers[0], model_name: specifiers[1], model_year: specifiers[2], model_trim: specifiers[3]});
+    }
+
+    res.send(carList);
+})
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
 

@@ -3,14 +3,16 @@ import {useEffect, useState} from 'react';
 import { carContext } from '../App.jsx'
 import { useContext } from 'react';
 
-const FetchDataButton = () => {
+const FetchDataButton = ({setMakeList}) => {
 
   const {setCar} = useContext(carContext);
 
   const handleButtonClick = () => {
       axios.post("http://localhost:6001")
         .then(response => {
-          setCar(response.data)
+          //setCar(response.data)
+          //console.log(response.data)
+          setMakeList(response.data)
         })
         .catch(error => {
           console.error('Error:', error);

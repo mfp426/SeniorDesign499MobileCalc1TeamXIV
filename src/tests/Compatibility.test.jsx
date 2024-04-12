@@ -6,7 +6,7 @@ test('renders without crashing', () => {
     const { asFragment } = render(<App />);
     expect(asFragment()).toMatchSnapshot();
   });
-  
+   
 test('renders correctly on web version', () => {
     // Set the window width to simulate a web view
     global.innerWidth = 1024;

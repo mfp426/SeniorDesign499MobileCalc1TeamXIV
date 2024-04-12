@@ -2,77 +2,62 @@ import FetchDataButton from "./FetchDataButton";
 import CarSelectDropdownButton from "./CarSelectDropdownButton";
 import {useEffect, useState} from 'react';
 
-const fordCars = ["Pinto", "Escape"];
-const chevyCars = ["Malibu", "Cruze"];
-const pintoYears = ["1971", "1976"];
-const escapeYears = ["2013", "2014", "2015", "2016", "2017"];
-const malibuYears = ["2000", "2004"];
-const cruzeYears = ["100 BC", "2024"];
-
 function CarSelectDropdownGroup() {
     const [make, setMake] = useState("");
     const [model, setModel] = useState("");
     const [year, setYear] = useState("");
     const [trim, setTrim] = useState("");
 
-    const [makeList, setMakeList] = useState(["Ford", "Chevy"]);
+    const [makeList, setMakeList] = useState([]);
     const [modelList, setModelList] = useState([]);
     const [yearList, setYearList] = useState([]);
     const [trimList, setTrimList] = useState([]);
 
-    const [makeDisabled, setMakeDisabled] = useState(false);
+    const [makeDisabled, setMakeDisabled] = useState(true);
     const [modelDisabled, setModelDisabled] = useState(true);
     const [yearDisabled, setYearDisabled] = useState(true);
     const [trimDisabled, setTrimDisabled] = useState(true);
 
+    const [specifiers, setSpecifiers] = useState([])
+
 
     useEffect(() => {
-        console.log(make)
-        if (make === "Ford") {
-            setModelList(fordCars);
-        }
-        else if (make === "Chevy") {
-            setModelList(chevyCars);
-        }
+        setSpecifiers([make])
         if (make)
             setModelDisabled(false)
+        setYearDisabled(true)
+        setTrimDisabled(true)
     }, [make]);
 
     useEffect(() => {
-        if (model === "Pinto") {
-            setYearList(pintoYears);
-        }
-        else if (model === "Escape") {
-            setYearList(escapeYears);
-        }
-        else if (model === "Malibu") {
-            setYearList(malibuYears);
-        }
-        else if (model === "Cruze") {
-            setYearList(cruzeYears);
-        }
+        setSpecifiers([make, model])
         if (model)
             setYearDisabled(false)
+        setTrimDisabled(true)
     }, [model]);
 
     useEffect(() => {
+        setSpecifiers([make, model, year])
         if (year)
             setTrimDisabled(false)
     }, [year]);
 
     useEffect(() => {
+        setSpecifiers([make, model, year, trim])
     }, [trim]);
 
     return (
         <div className="btn-group" role="group" aria-label="Car">
 
-        <CarSelectDropdownButton isDisabled={false} type={make ? make : "Make"} dropdownItems={makeList} set={setMake}></CarSelectDropdownButton>
+        <FetchDataButton setMakeList={setMakeList}></FetchDataButton>
 
-        <CarSelectDropdownButton isDisabled={modelDisabled} type={model ? model : "Model"} dropdownItems={modelList} set={setModel}></CarSelectDropdownButton>
+        <CarSelectDropdownButton isDisabled={false} type={"Make"} dropdownItems={makeList} set={setMake} setList={setModelList} specifiers={[]}></CarSelectDropdownButton>
 
-        <CarSelectDropdownButton isDisabled={yearDisabled} type={year ? year : "Year"} dropdownItems={yearList} set={setYear}></CarSelectDropdownButton>
+        <CarSelectDropdownButton isDisabled={modelDisabled} type={"Model"} dropdownItems={modelList} set={setModel} setList={setYearList} specifiers={specifiers}></CarSelectDropdownButton>
 
-        <CarSelectDropdownButton isDisabled={trimDisabled} type={trim ? trim : "Trim"} dropdownItems={trimList} set={setTrim}></CarSelectDropdownButton>
+        <CarSelectDropdownButton isDisabled={yearDisabled} type={"Year"} dropdownItems={yearList} set={setYear} setList={setTrimList} specifiers={specifiers}></CarSelectDropdownButton>
+
+        <CarSelectDropdownButton isDisabled={trimDisabled} type={"Trim"} dropdownItems={trimList} set={setTrim} specifiers={specifiers}></CarSelectDropdownButton>
         </div>
     );
 }

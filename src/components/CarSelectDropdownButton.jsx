@@ -1,9 +1,32 @@
-function CarSelectDropdownButton({isDisabled, type, dropdownItems, set}) {
+import axios from 'axios';
+
+function CarSelectDropdownButton({isDisabled, type, dropdownItems, set, setList, specifiers}) {
+
+    const handleButtonClick = (specifierList) => {
+        axios.get("http://localhost:6001/get", {
+            params: {
+                type: type,
+                specifiers: specifierList
+            }
+        })
+            .then(response => {
+                if (type !== "Trim") {
+                    set(specifierList[specifierList.length - 1])
+                    setList(response.data)
+                }
+                console.log(response.data)
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
 
     const getList = () => {
         let arr = []
+
         for (let i = 0; i < dropdownItems.length; i++) {
-            arr.push(<li className="dropdown-item" key={dropdownItems[i]}><button type="button" className='btn btn-small' onClick={() => set(dropdownItems[i])}>{dropdownItems[i]}</button></li>)
+            let specifier = dropdownItems[i];
+            arr.push(<li className="dropdown-item" key={i}><button type="button" className='btn btn-small' onClick={() => {handleButtonClick(specifiers.concat(specifier))}}>{specifier}</button></li>)
         }
         return arr;
     }
