@@ -3,19 +3,7 @@ import axios from "axios";
 
 // Define a functional component for a grid of buttons
 const ButtonGrid = ({categoryName, buttons}) => {
-
     const navigate = useNavigate();
-
-    const handleButtonClick = () => {
-
-        axios.post("http://localhost:6001")
-          .then(response => {
-            console.log(response.data);
-          })
-          .catch(error => {
-            console.error('Error:', error);
-          });
-      };
 
     return (
         <div className="container mb-5 center">

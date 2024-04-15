@@ -8,7 +8,12 @@ const FetchDataButton = ({setMakeList}) => {
   const {setCar} = useContext(carContext);
 
   const handleButtonClick = () => {
-      axios.post("http://localhost:6001")
+      axios.get("http://localhost:6001/get", {
+        params: {
+          type: '',
+          specifiers: []
+        }
+      })
         .then(response => {
           //setCar(response.data)
           //console.log(response.data)

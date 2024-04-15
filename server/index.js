@@ -21,30 +21,24 @@ app.use('/api', router)
 
 app.use(express.static('src'));
 
-app.post('', async (req, res) => {
-    const carList = await VehicleSpecsMerged.find({}, 'model_make_id');
-    let makeList = [];
-
-    for (let i = 0; i < carList.length; i++) {
-        let make = carList[i].model_make_id;
-        if (!makeList.includes(make)) {
-            makeList.push(make);
-        }
-    }
-
-    res.send(makeList);
-  });
-
 app.get('/get', async (req, res) => {
     const type = req.query.type;
     const specifiers = req.query.specifiers;
 
     let carList = [];
 
-    if (type === "Make") {
+    if (!type) {
+        const result = await VehicleSpecsMerged.find({}, 'model_make_id');
+        for (let i = 0; i < result.length; i++) {
+            let make = result[i].model_make_id;
+            if (!carList.includes(make)) {
+                carList.push(make);
+            }
+        }
+    }
+    else if (type === "Make") {
         const result = await VehicleSpecsMerged.find({model_make_id: specifiers[0]}, "model_name");
         for (let i = 0; i < result.length; i++) {
-            //let model = result[i].Model.split(" ")[0];
             let model = result[i].model_name;
             if (!carList.includes(model)) {
                 carList.push(model);
@@ -73,6 +67,7 @@ app.get('/get', async (req, res) => {
         carList = await VehicleSpecsMerged.find({model_make_id: specifiers[0], model_name: specifiers[1], model_year: specifiers[2], model_trim: specifiers[3]});
     }
 
+    carList.sort()
     res.send(carList);
 })
 

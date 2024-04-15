@@ -8,7 +8,7 @@ function NavBar() {
   return (
     <nav className="navbar  navbar-expand navbar-light bg-light ">
       <div className="container-fluid ">
-        <ul className="nav navbar-nav ">
+        <ul className="nav navbar-nav">
           
           <li className="nav-item">
             <Link to ="/Calculator" className="nav-link">Calculator</Link>
@@ -22,12 +22,14 @@ function NavBar() {
             <SearchBar /> {/* Render the SearchBar component within the navigation bar */}
           </li>
           
-          <li>
-            <CarSelectDropdownGroup></CarSelectDropdownGroup>
-          </li>
+
 
         </ul>
-        
+        <ul className="nav justify-content-right">
+          <li className="nav-item justify-content-right">
+            <CarSelectDropdownGroup></CarSelectDropdownGroup>
+          </li>
+        </ul>
       </div>
     </nav>
   );
