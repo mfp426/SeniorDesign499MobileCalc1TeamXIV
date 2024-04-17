@@ -41,6 +41,7 @@ export const carContext = createContext({make: "", model: "", year: "", trim: ""
 function App() {
     const [car, setCar] = useState({make: "", model: "", year: "", trim: "", body: "", engine_position: "", engine_cc: "", engine_cyl: "", engine_type: "", engine_valves_per_cyl: "", engine_power_ps: "", engine_power_rpm: "", engine_torque_nm: "", engine_torque_rpm: "" , engine_bore_mm: "", engine_stroke_mm: "", engine_compression: "", engine_fuel: "", top_speed_kph: "", zero_to_100_kph: "", drive: "", transmission_type: "", seats: "", doors: "", weight_kg: "", length_mm: "", width_mm: "", height_mm: "", wheelbase_mm: "", lkm_highway: "", lkm_mixed: "", lkm_city: "", fuel_cap_l: "", sold_in_us: "", cO2: "", make_display: "", longDistFront: "", longDistRear: "", maxVertHeight: "", verticalDistance: "", siderailDist: "", fOverhang: "", rOverhang: "", curbWeight: "", rTrackWidth: "", weightDistribution: "", inserted: ""});
 
+    // Log fetched car information to console for debug purposes
     useEffect(() => {
             for (let [key, value] of Object.entries(car)) {
                 if (value) {

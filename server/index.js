@@ -5,7 +5,11 @@ const express = require("express"),
 const cors = require('cors');
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://127.0.0.1:27017/DeltaV_Test_Database_1');
+// Set this to the address of the database
+// The below address is the previously used local address and will not work
+const db_address = 'mongodb://127.0.0.1:27017/DeltaV_Test_Database_1'
+
+mongoose.connect(db_address);
 
 const router = express.Router();
 

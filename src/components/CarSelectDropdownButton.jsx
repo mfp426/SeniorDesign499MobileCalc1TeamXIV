@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { carContext } from '../App.jsx'
-import { useContext, useState, useEffect } from 'react';
+import { useContext } from 'react';
 
 function CarSelectDropdownButton({isDisabled, type, dropdownItems, set, setList, specifiers, selected, setSelected}) {
 
@@ -16,6 +16,7 @@ function CarSelectDropdownButton({isDisabled, type, dropdownItems, set, setList,
 
             setSelected(lastSpecifier)
 
+            // Last specifier needs to be blank so the DB can be searched for that car ('None' is not a trim for any car)
             if (lastSpecifier === 'None') {
                 newSpecifiers[newSpecifiers.length - 1] = '';
             }
@@ -32,6 +33,7 @@ function CarSelectDropdownButton({isDisabled, type, dropdownItems, set, setList,
                     }
                     else {
                         let newCar = {};
+                        // Clean database field names for this car
                         for (let [key, value] of Object.entries(response.data[0])) {
                             if (key !== '_id') {
                                 if (key.match('model_')) {
@@ -67,6 +69,7 @@ function CarSelectDropdownButton({isDisabled, type, dropdownItems, set, setList,
         for (let i = 0; i < dropdownItems.length; i++) {
             let specifier = dropdownItems[i];
 
+            // New specifier list for this car
             let newSpecifiers = [];
             if (type === "Make") {
                 newSpecifiers.push(specifier)

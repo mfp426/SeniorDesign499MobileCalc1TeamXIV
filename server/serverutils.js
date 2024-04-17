@@ -7,6 +7,7 @@ export const __filename = fileURLToPath(import.meta.url);
 export const __dirname = path.dirname(__filename);
 
 const mongoose = require('mongoose')
+
 const VechicleSpecsMergedSchema = new mongoose.Schema({
     model_make_id: String,
     model_name: String,
@@ -15,6 +16,8 @@ const VechicleSpecsMergedSchema = new mongoose.Schema({
 }, {
     collection: 'VEHICLE_SPECS_merge'
 });
+
+// Unused
 const VehicleSpecsAdditionalSchema = new mongoose.Schema({
     Make: String,
     Model: String,
