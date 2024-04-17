@@ -1,5 +1,4 @@
 import ButtonGrid from "../components/ButtonGrid";
-import FetchDataButton from "../components/FetchDataButton";
 
 // Define an array of buttons with their corresponding routes and titles
 const buttons = [
